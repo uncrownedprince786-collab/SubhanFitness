@@ -78,8 +78,15 @@
       }
     },
     "spotlight": {
-      "type": "featured-product",
-      "settings": { "subheading": "Editor's Pick", "heading": "Featured product", "show_description": true }
+      "type": "featured-products",
+      "settings": { "subheading": "Editor's Picks", "heading": "Featured Products", "layout": "carousel" },
+      "blocks": {
+        "p1": { "type": "product", "settings": {} },
+        "p2": { "type": "product", "settings": {} },
+        "p3": { "type": "product", "settings": {} },
+        "p4": { "type": "product", "settings": {} }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"]
     },
     "strength_showcase": {
       "type": "featured-collection",

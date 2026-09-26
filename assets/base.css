@@ -881,12 +881,12 @@ p { margin: 0 0 1em; }
 .carousel-arrow.is-hidden { opacity: 0; pointer-events: none; }
 @media (max-width: 749px) { .carousel-arrow { display: none; } }
 
-.scroll-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: 80%; gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; scrollbar-width: thin; }
+.scroll-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: 80%; gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
 @media (min-width: 600px) { .scroll-carousel { grid-auto-columns: 44%; } }
 @media (min-width: 990px) { .scroll-carousel { grid-auto-columns: 23%; } }
 .scroll-carousel > * { scroll-snap-align: start; }
-.scroll-carousel::-webkit-scrollbar { height: 6px; }
-.scroll-carousel::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 100px; }
+/* Scrollbar hidden — navigate with the prev/next arrows (touch swipe still works on mobile) */
+.scroll-carousel::-webkit-scrollbar { display: none; height: 0; width: 0; }
 
 /* ==========================================================================
    Responsive

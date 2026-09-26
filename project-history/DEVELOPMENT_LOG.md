@@ -259,3 +259,30 @@ test), and **customer accounts** enabled for login/track-order.
   strip, a dedicated multi-product "Featured Products" carousel.
 - Fill `[bracketed]` placeholders in the policy pages.
 - Enable payment provider + customer accounts; then publish the theme.
+
+---
+
+## 13. Session update — 2026-09-27
+
+Three changes made this session:
+
+1. **Replaced the single-product "spotlight" with a multi-product Featured Products section.**
+   - Deleted `sections/featured-product.liquid` (the old Editor's Pick single product).
+   - Added `sections/featured-products.liquid` — block-based (one **Product** block per
+     product), so the owner can hand-pick any number of products to feature. Renders as a
+     carousel (with arrows) or grid, reuses the `card-product` snippet, and falls back to a
+     skeleton placeholder when no products are picked yet. Has a preset, so it also shows in
+     Customize → Add section.
+   - `templates/index.json`: the `spotlight` slot now uses `type: featured-products` with 4
+     empty product blocks pre-seeded. Homepage order is unchanged (still position 8).
+
+2. **Removed the scrollbar under every carousel.** `.scroll-carousel` in `assets/base.css`
+   now hides the scrollbar cross-browser (`scrollbar-width: none`, `-ms-overflow-style: none`,
+   `::-webkit-scrollbar { display:none }`) and drops the old `padding-bottom`. Navigation is
+   via the JS-injected **prev/next arrows** (desktop) and swipe (mobile). No JS change needed —
+   the arrows already call `scrollBy`.
+
+3. **Documented how to add a tango-sports–style home section:** drop a `.liquid` file in
+   `sections/` with a `{% schema %}` + preset (auto-appears in Customize → Add section), or
+   wire it into `templates/index.json` (`sections` + `order`). Reuse `.section`/`.page-width`/
+   `.section-header`/`.scroll-carousel`/`card-product` to match the theme.
