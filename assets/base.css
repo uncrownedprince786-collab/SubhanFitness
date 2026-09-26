@@ -336,10 +336,10 @@ p { margin: 0 0 1em; }
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  padding: 1.4rem 1.6rem;
+  padding: 1rem 1.5rem;
   font-family: var(--font-heading-family);
   font-weight: 600;
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: .02em;
   color: var(--color-header-text);
@@ -1091,7 +1091,7 @@ p { margin: 0 0 1em; }
 /* Header nav: animated accent underline on hover / keyboard focus */
 .header-nav__link { position: relative; }
 .header-nav__link::after {
-  content: ""; position: absolute; left: 1.6rem; right: 1.6rem; bottom: .7rem; height: 2px;
+  content: ""; position: absolute; left: 1.5rem; right: 1.5rem; bottom: .45rem; height: 2px;
   border-radius: 2px; background: var(--color-accent);
   transform: scaleX(0); transform-origin: left; transition: transform .25s var(--ease);
 }
