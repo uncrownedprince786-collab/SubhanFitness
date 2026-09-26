@@ -59,7 +59,7 @@
         "m1": {
           "type": "item",
           "settings": {
-            "text": "Free delivery over Rs.2,000",
+            "text": "Free delivery over Rs.15,000",
             "icon": "truck"
           }
         },
@@ -183,6 +183,7 @@
           "settings": {
             "collection": "fitness-accessories",
             "icon": "yoga",
+            "image": "shopify://shop_images/IMG_9741.jpg",
             "custom_title": "Fitness Accessories",
             "show_count": true
           }
@@ -192,6 +193,7 @@
           "settings": {
             "collection": "recovery-wellness",
             "icon": "massage",
+            "image": "shopify://shop_images/image_2026-09-26_163446204.png",
             "custom_title": "Recovery & Wellness",
             "show_count": true
           }
@@ -201,6 +203,7 @@
           "settings": {
             "collection": "body-support",
             "icon": "brace",
+            "image": "shopify://shop_images/excercise-fitness-natural-1.jpg",
             "custom_title": "Body Support & Braces",
             "show_count": true
           }
@@ -210,6 +213,7 @@
           "settings": {
             "collection": "sports-team",
             "icon": "ball",
+            "image": "shopify://shop_images/IMG_9742.jpg",
             "custom_title": "Sports & Team",
             "show_count": true
           }
@@ -219,6 +223,7 @@
           "settings": {
             "collection": "bags-gear",
             "icon": "gym-bag",
+            "image": "shopify://shop_images/IMG_9740.jpg",
             "custom_title": "Bags & Gear",
             "show_count": true
           }
@@ -228,6 +233,7 @@
           "settings": {
             "collection": "sale",
             "icon": "tag",
+            "image": "shopify://shop_images/99EABBDE-25DF-4633-BBE6-E261E443E698.png",
             "custom_title": "Sale",
             "show_count": true
           }
@@ -267,10 +273,11 @@
     "promo_banner": {
       "type": "image-with-text",
       "settings": {
+        "image": "shopify://shop_images/images.jpg",
         "layout": "image_left",
         "subheading": "Home Gym Essentials",
         "heading": "Everything you need to train at home",
-        "text": "<p>Save on complete home-gym setups — cardio, strength, and recovery in one order. Free delivery over Rs.15,000.</p>",
+        "text": "<p>Save on complete home-gym setups — cardio, strength, and recovery in one order. Free delivery over Rs.2000</p>",
         "button_label": "Shop Home Gym",
         "button_link": "shopify://collections/cardio-machines",
         "background": ""
@@ -375,6 +382,7 @@
     "promo_banner_2": {
       "type": "image-with-text",
       "settings": {
+        "image": "shopify://shop_images/images.jpg",
         "layout": "image_right",
         "subheading": "Feel-Good Recovery",
         "heading": "Massage & recovery, made easy",
