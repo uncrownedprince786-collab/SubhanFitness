@@ -326,3 +326,19 @@ product-system changes; nothing hardcoded; everything still Theme-Editor driven.
 - **Mobile:** larger tap targets (buttons, header icons, drawer rows, quantity). Reduced-motion
   media query disables the added transforms. Section spacing 56→64px, grid gap 20→22px.
 - Verified with a headless browser render of the real base.css before pushing.
+
+## 15. Added missing designed page templates — 2026-09-27
+
+Six new **page templates** (no new sections/code — each assembles existing sections:
+`page-hero`, `multicolumn`, `rich-text`, `faq`, `page-body`), so styling/layout is fixed and
+content is editable from the Theme Editor / page body. Validated: every section type, setting
+id and block type checked against the section schemas.
+- `templates/page.shipping.json` — Shipping & Delivery (hero + trust facts + details).
+- `templates/page.returns.json` — Returns & Exchange (hero + 3-step columns + policy).
+- `templates/page.warranty.json` — Warranty & After-Sales (hero + overview + FAQ).
+- `templates/page.track-order.json` — Track Your Order (hero + steps + how-to + account CTA).
+- `templates/page.privacy.json` — Privacy Policy (hero + page-body).
+- `templates/page.terms.json` — Terms & Conditions (hero + page-body).
+Merchant: create a Page, pick the matching template (see `PAGE_CONTENT.md` table for the
+suggested handles the footer links already point at), then edit the copy. Placeholder text
+uses [bracketed] fields and the Rs.2,000 free-delivery threshold.

@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "subheading": "Order Status",
+        "heading": "Track Your Order",
+        "intro": "Follow your order from checkout to your doorstep."
+      }
+    },
+    "steps": {
+      "type": "multicolumn",
+      "settings": { "style": "columns", "columns": 3, "background": "#f3ebe0", "heading": "What to expect" },
+      "blocks": {
+        "t1": { "type": "column", "settings": { "icon": "check", "title": "Order Confirmed", "text": "You'll get an email/SMS confirmation right after checkout." } },
+        "t2": { "type": "column", "settings": { "icon": "truck", "title": "Dispatched", "text": "Once shipped, we send your tracking details to follow the parcel." } },
+        "t3": { "type": "column", "settings": { "icon": "headset", "title": "Need Help?", "text": "Message us on WhatsApp any time and we'll check your order for you." } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "how": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "How to Track",
+        "heading": "Two easy ways to check your order",
+        "text": "<p><strong>1. From your account.</strong> Sign in and open your order to see its latest status and tracking link.</p><p><strong>2. From your shipping email.</strong> Use the tracking number and courier link we send once your order is dispatched.</p><p>Still not sure? Email [support@subhanfitness.pk] or WhatsApp [+92 300 1234567] with your order number and we'll help right away.</p>",
+        "button_label": "Go to My Account",
+        "button_link": "/account"
+      }
+    }
+  },
+  "order": ["hero", "steps", "how"]
+}

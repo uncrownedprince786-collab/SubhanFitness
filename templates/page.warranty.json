@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "subheading": "Peace of Mind",
+        "heading": "Warranty & After-Sales",
+        "intro": "Buy with confidence — selected equipment is backed by a manufacturer warranty and our after-sales support."
+      }
+    },
+    "overview": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "What's Covered",
+        "heading": "Our warranty promise",
+        "text": "<p>Selected machines and equipment carry a manufacturer warranty. Where a warranty applies, the period is shown on the product page. Warranty covers manufacturing defects under normal, intended use.</p><p>Warranty does not cover normal wear and tear, misuse, accidental damage, unauthorised repairs, or commercial overuse of home-rated equipment. Keep your order confirmation as proof of purchase.</p>",
+        "button_label": "Browse Equipment",
+        "button_link": "shopify://collections"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "subheading": "Questions", "heading": "Warranty FAQs", "open_first": true, "show_contact_cta": true },
+      "blocks": {
+        "w1": { "type": "qa", "settings": { "question": "How long is the warranty?", "answer": "<p>It varies by product. The exact warranty period is listed on each product page where applicable.</p>" } },
+        "w2": { "type": "qa", "settings": { "question": "How do I make a warranty claim?", "answer": "<p>Contact us with your order number and a short description (photos or video help). We'll guide you through the next steps.</p>" } },
+        "w3": { "type": "qa", "settings": { "question": "What do I need to claim?", "answer": "<p>Your proof of purchase (order confirmation) and details of the issue. Keep original packaging where possible.</p>" } }
+      },
+      "block_order": ["w1", "w2", "w3"]
+    }
+  },
+  "order": ["hero", "overview", "faq"]
+}

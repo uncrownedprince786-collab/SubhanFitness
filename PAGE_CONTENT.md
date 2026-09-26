@@ -10,14 +10,23 @@ then assign the matching template. Replace the starter copy with your real detai
 3. On the right, under **Theme template**, pick the template (see table below).
 4. Paste content into the body where noted, fill the SEO **Search engine listing** (title + meta description), **Save**.
 
-| Page | Title to use | Template to select | Content source |
-|---|---|---|---|
-| About Us | About Us | `page.about` | Pre-designed — edit text in Customize → the About page |
-| FAQ | FAQ | `page.faq` | Pre-filled Q&As — edit in Customize, or add more |
-| Shipping Policy | Shipping Policy | `page.content` | Paste body copy below |
-| Returns & Exchange | Returns & Exchange | `page.content` | Paste body copy below |
-| Privacy Policy | Privacy Policy | `page.content` | Paste body copy below |
-| Contact | Contact | `page.contact` | Pre-designed working contact form |
+| Page | Title to use | Handle | Template to select | Content source |
+|---|---|---|---|---|
+| About Us | About Us | `about-us` | `page.about` | Pre-designed — edit text in Customize → the About page |
+| FAQ | FAQ | `faqs` | `page.faq` | Pre-filled Q&As — edit in Customize, or add more |
+| Contact | Contact | `contact` | `page.contact` | Pre-designed working contact form |
+| Shipping & Delivery | Shipping & Delivery | `shipping` | `page.shipping` | **Pre-designed** — edit text in Customize → the page |
+| Returns & Exchange | Returns & Exchange | `returns` | `page.returns` | **Pre-designed** (3-step layout) — edit in Customize |
+| Warranty | Warranty | `warranty` | `page.warranty` | **Pre-designed** (overview + FAQs) — edit in Customize |
+| Track Your Order | Track Your Order | `track-order` | `page.track-order` | **Pre-designed** — edit in Customize |
+| Privacy Policy | Privacy Policy | `privacy-policy` | `page.privacy` | Designed header + paste body copy below |
+| Terms & Conditions | Terms & Conditions | `terms-conditions` | `page.terms` | Designed header + paste your terms into the body |
+
+> **Where the content lives:** for the pre-designed pages (About, FAQ, Shipping, Returns,
+> Warranty, Track Order) the text is in the **section settings** — edit it live in
+> **Online Store → Customize → (the page)**, no code. For Privacy & Terms the designed header
+> is fixed and you paste the long legal text into the page **body** (admin page editor). The
+> layout and styling stay the same either way.
 
 > **Policies note:** Shopify also has built-in policies at **Settings → Policies**
 > (Refund, Privacy, Shipping, Terms) that appear at `/policies/...` and are linked in the

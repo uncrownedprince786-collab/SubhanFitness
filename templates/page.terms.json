@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "subheading": "The Fine Print",
+        "heading": "Terms & Conditions",
+        "intro": "The terms that apply when you browse and buy from Subhan Fitness."
+      }
+    },
+    "body": {
+      "type": "page-body",
+      "settings": { "show_updated": true }
+    }
+  },
+  "order": ["hero", "body"]
+}

@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "subheading": "Easy & Fair",
+        "heading": "Returns & Exchange",
+        "intro": "We want you to love your gear. If something isn't right, here's how we'll make it right."
+      }
+    },
+    "steps": {
+      "type": "multicolumn",
+      "settings": { "style": "columns", "columns": 3, "background": "#f3ebe0", "heading": "How it works" },
+      "blocks": {
+        "s1": { "type": "column", "settings": { "icon": "check", "title": "1. Request", "text": "Contact us within 7 days of delivery with your order number and reason." } },
+        "s2": { "type": "column", "settings": { "icon": "headset", "title": "2. We Review", "text": "Our team confirms eligibility and shares simple return instructions." } },
+        "s3": { "type": "column", "settings": { "icon": "refresh", "title": "3. Exchange", "text": "Once received and inspected, we process your exchange or store credit." } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "details": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "The Policy",
+        "heading": "7-day easy exchange",
+        "text": "<p>You may request an exchange within 7 days of delivery, provided the item is unused, in its original packaging, and with all tags and accessories included.</p><p><strong>Damaged or wrong items.</strong> If you receive a damaged, defective, or incorrect item, contact us within 48 hours of delivery with photos and we'll make it right at no extra cost.</p><p><strong>Non-returnable items.</strong> For hygiene and safety, certain items (e.g. used supports, opened supplements, custom orders) cannot be returned unless faulty.</p><p>To start a return or exchange, email [support@subhanfitness.pk] or WhatsApp [+92 300 1234567] with your order number.</p>",
+        "button_label": "Contact Us",
+        "button_link": "shopify://pages/contact"
+      }
+    }
+  },
+  "order": ["hero", "steps", "details"]
+}
