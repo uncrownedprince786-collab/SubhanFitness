@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="{{ settings.color_accent }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+    {%- liquid
+      assign body_font = settings.font_body
+      assign body_font_bold = body_font | font_modify: 'weight', 'bold'
+      assign heading_font = settings.font_heading
+    -%}
+
+    {%- comment -%} Core stylesheet FIRST so its :root brand defaults always apply, even if the settings block below is unavailable. {%- endcomment -%}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+    {%- comment -%} Web fonts, isolated so a font issue can never blank the color variables. {%- endcomment -%}
+    {% style %}
+      {%- if body_font %}{{ body_font | font_face: font_display: 'swap' }}{% endif -%}
+      {%- if body_font_bold %}{{ body_font_bold | font_face: font_display: 'swap' }}{% endif -%}
+      {%- if heading_font %}{{ heading_font | font_face: font_display: 'swap' }}{% endif -%}
+    {% endstyle %}
+
+    {%- comment -%} Merchant color/type/layout settings OVERRIDE the base.css :root defaults. Each value has a fallback so nothing goes blank. {%- endcomment -%}
+    {% style %}
+      :root {
+        --color-accent: {{ settings.color_accent | default: '#ff4d04' }};
+        --color-accent-dark: {{ settings.color_accent_dark | default: '#d63e02' }};
+        --color-text: {{ settings.color_text | default: '#0c0807' }};
+        --color-heading: {{ settings.color_heading | default: '#0c0807' }};
+        --color-body-bg: {{ settings.color_body_bg | default: '#fbf7f1' }};
+        --color-muted-bg: {{ settings.color_muted_bg | default: '#f3ebe0' }};
+        --color-border: {{ settings.color_border | default: '#e7ddd0' }};
+        --color-header-bg: {{ settings.color_header_bg | default: '#ffffff' }};
+        --color-header-text: {{ settings.color_header_text | default: '#0c0807' }};
+        --color-announcement-bg: {{ settings.color_announcement_bg | default: '#0c0807' }};
+        --color-announcement-text: {{ settings.color_announcement_text | default: '#ffffff' }};
+        --color-footer-bg: {{ settings.color_footer_bg | default: '#0c0807' }};
+        --color-footer-text: {{ settings.color_footer_text | default: '#c9c3bd' }};
+        --color-sale: {{ settings.color_sale_badge | default: '#ff4d04' }};
+        --color-soldout: {{ settings.color_soldout_badge | default: '#8a8078' }};
+
+        --font-body-scale: {{ settings.font_body_scale | default: 100 | divided_by: 100.0 }};
+        --font-heading-scale: {{ settings.font_heading_scale | default: 110 | divided_by: 100.0 }};
+        --heading-transform: {% if settings.heading_uppercase %}uppercase{% else %}none{% endif %};
+
+        --page-width: {{ settings.page_width | default: 1400 }}px;
+        --section-spacing: {{ settings.spacing_sections | default: 56 }}px;
+        --grid-gap: {{ settings.grid_gap | default: 20 }}px;
+        --radius: {{ settings.corner_radius | default: '12px' }};
+      }
+    {% endstyle %}
+
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="template-{{ request.page_type | handle }} cart-type-{{ settings.cart_type }}">
+    {% sections 'header-group' %}
+
+    <main id="MainContent" class="content-for-layout" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {%- if settings.cart_type == 'drawer' -%}
+      {% render 'cart-drawer' %}
+    {%- endif -%}
+
+    {%- if settings.cart_type == 'notification' -%}
+      {% render 'cart-notification' %}
+    {%- endif -%}
+
+    {% render 'whatsapp-button' %}
+
+    <div id="cart-live-region" class="visually-hidden" role="status"></div>
+
+    <script>
+      window.routes = {
+        cart_add_url: "{{ routes.cart_add_url }}",
+        cart_change_url: "{{ routes.cart_change_url }}",
+        cart_update_url: "{{ routes.cart_update_url }}",
+        cart_url: "{{ routes.cart_url }}",
+        predictive_search_url: "{{ routes.predictive_search_url }}"
+      };
+      window.cartStrings = {
+        error: "There was an error while updating your cart. Please try again.",
+        quantityError: "You can only add {{ quantity }} of this item to your cart."
+      };
+      window.themeSettings = {
+        cartType: "{{ settings.cart_type }}",
+        moneyFormat: {{ shop.money_format | json }},
+        moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }}
+      };
+    </script>
+  </body>
+</html>

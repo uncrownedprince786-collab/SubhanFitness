@@ -1,0 +1,25 @@
+{%- comment -%}
+  Default footer links, shown when the column's Navigation menu is empty/unset.
+  Param: set = 'shop' | 'help' | 'company'
+  Policy links resolve automatically once you set them in Settings → Policies.
+  Page links resolve once you create the matching pages.
+{%- endcomment -%}
+{%- case set -%}
+  {%- when 'shop' -%}
+    <li><a href="/collections/best-sellers">Best Sellers</a></li>
+    <li><a href="/collections/sale">Sale</a></li>
+    <li><a href="/collections/strength-weights">Strength &amp; Weights</a></li>
+    <li><a href="/collections/cardio-machines">Cardio Machines</a></li>
+    <li><a href="/collections">All Categories</a></li>
+  {%- when 'help' -%}
+    <li><a href="{{ pages.contact.url | default: '/pages/contact' }}">Contact Us</a></li>
+    <li><a href="{{ shop.shipping_policy.url | default: '/pages/shipping' }}">Shipping Policy</a></li>
+    <li><a href="{{ shop.refund_policy.url | default: '/pages/returns' }}">Returns &amp; Exchange</a></li>
+    <li><a href="{{ pages.faqs.url | default: '/pages/faqs' }}">FAQs</a></li>
+    {%- if shop.customer_accounts_enabled -%}<li><a href="{{ routes.account_url }}">Track Order</a></li>{%- endif -%}
+  {%- when 'company' -%}
+    <li><a href="{{ pages['about-us'].url | default: '/pages/about-us' }}">About Us</a></li>
+    <li><a href="{{ shop.terms_of_service.url | default: '/pages/terms-conditions' }}">Terms &amp; Conditions</a></li>
+    <li><a href="{{ shop.privacy_policy.url | default: '/pages/privacy-policy' }}">Privacy Policy</a></li>
+    <li><a href="{{ blogs.news.url | default: '/blogs/news' }}">Blog</a></li>
+{%- endcase -%}

@@ -1,0 +1,11 @@
+{%- comment -%} Cart drawer shell — always present in the DOM (rendered from theme.liquid) {%- endcomment -%}
+<div id="CartDrawer" class="drawer" data-overlay="#CartOverlay" aria-hidden="true" role="dialog" aria-label="{{ 'sections.cart.title' | t }}">
+  <div class="drawer__header">
+    <h2 class="drawer__title">{{ 'sections.cart.title' | t }} <span data-cart-count-title>({{ cart.item_count }})</span></h2>
+    <button type="button" class="drawer__close" data-drawer-close aria-label="{{ 'general.accessibility.close' | t }}">
+      {% render 'icon', icon: 'close' %}
+    </button>
+  </div>
+  {% render 'cart-drawer-items' %}
+</div>
+<div id="CartOverlay" class="drawer__overlay"></div>

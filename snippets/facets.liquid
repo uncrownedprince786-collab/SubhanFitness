@@ -1,0 +1,69 @@
+{%- comment -%}
+  Storefront filtering UI. Reads `collection.filters` (enable filters in
+  Shopify admin → Search & Discovery). Falls back gracefully if none set.
+  Params: results (collection or search object), enable_sorting (bool)
+{%- endcomment -%}
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+-%}
+<div class="facets__panel">
+  <div class="facets__mobile-header">
+    <span>{{ 'products.facets.filter_and_sort' | t }}</span>
+    <button type="button" data-facets-close class="drawer__close">{% render 'icon', icon: 'close' %}</button>
+  </div>
+
+  <div data-facets-inner>
+    <form id="FacetForm">
+      <input type="hidden" name="sort_by" value="{{ sort_by }}">
+
+      {%- for filter in results.filters -%}
+        <details class="facets__group" open>
+          <summary>
+            {{ filter.label }}
+            {% render 'icon', icon: 'caret' %}
+          </summary>
+
+          {%- case filter.type -%}
+            {%- when 'list', 'boolean' -%}
+              <div class="facets__values">
+                {%- for value in filter.values -%}
+                  <label class="facet-checkbox">
+                    <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
+                           {% if value.active %}checked{% endif %}
+                           {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                    <span>{{ value.label }}</span>
+                    <span class="count">{{ value.count }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+
+            {%- when 'price_range' -%}
+              <div class="facets__price">
+                <input type="number" name="{{ filter.min_value.param_name }}"
+                       placeholder="{{ 'products.facets.from' | t }}"
+                       value="{{ filter.min_value.value }}"
+                       min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}">
+                <span>–</span>
+                <input type="number" name="{{ filter.max_value.param_name }}"
+                       placeholder="{{ 'products.facets.to' | t }}"
+                       value="{{ filter.max_value.value }}"
+                       min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}">
+              </div>
+              <p class="count" style="margin-top:.6rem;">{{ 'products.facets.max_price' | t: price: filter.range_max | money }}</p>
+          {%- endcase -%}
+        </details>
+      {%- endfor -%}
+
+      <noscript><button type="submit" class="button button--full mt-2">{{ 'products.facets.apply' | t }}</button></noscript>
+    </form>
+
+    {%- if results.filters.size == 0 -%}
+      <p class="count">Turn on storefront filters in <strong>Search &amp; Discovery</strong> to show filters here.</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% style %}
+  .facets__mobile-header { display: none; align-items: center; justify-content: space-between; font-family: var(--font-heading-family); text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; }
+  @media (max-width: 989px) { .facets__mobile-header { display: flex; } }
+{% endstyle %}

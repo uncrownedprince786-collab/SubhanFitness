@@ -1,0 +1,29 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "a1": { "type": "announcement", "settings": { "text": "Free delivery on orders over Rs.15,000 — nationwide", "link": "" } },
+        "a2": { "type": "announcement", "settings": { "text": "Cash on delivery available across Pakistan", "link": "" } },
+        "a3": { "type": "announcement", "settings": { "text": "New arrivals every week — gear up for your goals", "link": "" } }
+      },
+      "block_order": ["a1", "a2", "a3"],
+      "settings": {
+        "show_social": true,
+        "rotate": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "sticky": true,
+        "show_search": true,
+        "show_account": true
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

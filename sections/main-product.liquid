@@ -1,0 +1,201 @@
+<section class="section">
+  <div class="page-width">
+    {% render 'breadcrumbs' %}
+    <div class="product" id="ProductSection-{{ section.id }}">
+      <!-- Media -->
+      <div class="product__media-wrapper">
+        {% render 'product-media-gallery', product: product %}
+      </div>
+
+      <!-- Info -->
+      <div class="product__info" id="ProductInfo">
+        <variant-selects data-section="ProductInfo" data-form-id="product-form-{{ section.id }}">
+          <script type="application/json" data-variant-json>
+            [
+              {%- for variant in product.variants -%}
+                {
+                  "id": {{ variant.id }},
+                  "options": {{ variant.options | json }},
+                  "price": {{ variant.price }},
+                  "compare_at_price": {{ variant.compare_at_price | default: 'null' }},
+                  "available": {{ variant.available }},
+                  "featured_media": {% if variant.featured_media %}{ "id": {{ variant.featured_media.id }} }{% else %}null{% endif %}
+                }{%- unless forloop.last -%},{%- endunless -%}
+              {%- endfor -%}
+            ]
+          </script>
+
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'vendor' -%}
+                {%- if product.vendor != blank -%}
+                  <span class="product__vendor" {{ block.shopify_attributes }}>{{ product.vendor }}</span>
+                {%- endif -%}
+
+              {%- when 'title' -%}
+                <h1 class="product__title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+
+              {%- when 'rating' -%}
+                <div {{ block.shopify_attributes }}>{% render 'rating', product: product %}</div>
+
+              {%- when 'price' -%}
+                <div class="product__price" data-price-wrapper {{ block.shopify_attributes }}>
+                  {% render 'price', product: product, use_variant: true, show_badge: true %}
+                </div>
+                {%- if product.compare_at_price > product.price -%}
+                  {%- assign save = product.compare_at_price | minus: product.price -%}
+                  <span class="product__save">{{ 'products.product.save' | t: amount: save | money }}</span>
+                {%- endif -%}
+
+              {%- when 'availability' -%}
+                {%- assign v = product.selected_or_first_available_variant -%}
+                <span class="product__availability {% if v.available %}in-stock{% else %}out-stock{% endif %}" data-availability {{ block.shopify_attributes }}>
+                  <span class="dot"></span>
+                  <span data-availability-text>{% if v.available %}{{ 'products.product.in_stock' | t }}{% else %}{{ 'products.product.out_of_stock' | t }}{% endif %}</span>
+                </span>
+
+              {%- when 'variant_picker' -%}
+                <div {{ block.shopify_attributes }}>
+                  {% render 'variant-picker', product: product, picker_type: block.settings.picker_type %}
+                </div>
+
+              {%- when 'buy_buttons' -%}
+                <div {{ block.shopify_attributes }}>
+                  {% render 'buy-buttons', product: product, form_id: 'product-form-' | append: section.id, show_dynamic_checkout: block.settings.show_dynamic_checkout %}
+                </div>
+
+              {%- when 'icon_row' -%}
+                <div class="product__icon-row" {{ block.shopify_attributes }}>
+                  {%- if block.settings.show_delivery -%}
+                    <div class="product__icon-item">{% render 'icon', icon: 'truck' %} <span>{{ block.settings.delivery_text }}</span></div>
+                  {%- endif -%}
+                  {%- if block.settings.show_returns -%}
+                    <div class="product__icon-item">{% render 'icon', icon: 'refresh' %} <span>{{ block.settings.returns_text }}</span></div>
+                  {%- endif -%}
+                  {%- if block.settings.show_secure -%}
+                    <div class="product__icon-item">{% render 'icon', icon: 'shield' %} <span>{{ block.settings.secure_text }}</span></div>
+                  {%- endif -%}
+                </div>
+
+              {%- when 'description' -%}
+                <div class="product__description rte" {{ block.shopify_attributes }}>
+                  {{ product.description }}
+                </div>
+
+              {%- when 'collapsible_tab' -%}
+                <div class="accordion" {{ block.shopify_attributes }}>
+                  <details class="accordion__item" {% if block.settings.open_default %}open{% endif %}>
+                    <summary class="accordion__summary">{{ block.settings.heading }} {% render 'icon', icon: 'plus' %}</summary>
+                    <div class="accordion__content rte">
+                      {%- if block.settings.metafield != blank and product.metafields.custom[block.settings.metafield] != blank -%}
+                        {{ product.metafields.custom[block.settings.metafield].value }}
+                      {%- else -%}
+                        {{ block.settings.content }}
+                      {%- endif -%}
+                    </div>
+                  </details>
+                </div>
+
+              {%- when 'specifications' -%}
+                {%- assign specs = product.metafields.custom.specifications.value -%}
+                {%- if specs != blank -%}
+                  <div class="accordion" {{ block.shopify_attributes }}>
+                    <details class="accordion__item" {% if block.settings.open_default %}open{% endif %}>
+                      <summary class="accordion__summary">{{ 'products.product.specifications' | t }} {% render 'icon', icon: 'plus' %}</summary>
+                      <div class="accordion__content">
+                        {%- if specs.first -%}
+                          <table class="spec-table">
+                            {%- for row in specs -%}
+                              <tr><th>{{ row.label | default: row[0] }}</th><td>{{ row.value | default: row[1] }}</td></tr>
+                            {%- endfor -%}
+                          </table>
+                        {%- else -%}
+                          <div class="rte">{{ specs }}</div>
+                        {%- endif -%}
+                      </div>
+                    </details>
+                  </div>
+                {%- endif -%}
+
+              {%- when 'share' -%}
+                <div class="product__share" {{ block.shopify_attributes }}>
+                  <button type="button" class="link" onclick="navigator.share ? navigator.share({title: '{{ product.title | escape }}', url: window.location.href}) : navigator.clipboard.writeText(window.location.href)">
+                    {% render 'icon', icon: 'arrow-right' %} {{ block.settings.share_label | default: 'Share this product' }}
+                  </button>
+                </div>
+
+              {%- when 'custom_liquid' -%}
+                <div {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
+
+              {%- when '@app' -%}
+                <div class="product__app-block" {{ block.shopify_attributes }}>{% render block %}</div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </variant-selects>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .product__icon-row { display: flex; flex-wrap: wrap; gap: 1.6rem; padding: 1.6rem; background: var(--color-muted-bg); border-radius: var(--radius); }
+  .product__icon-item { display: flex; align-items: center; gap: .8rem; font-size: 1.3rem; font-weight: 500; }
+  .product__icon-item .icon { width: 2.4rem; height: 2.4rem; color: var(--color-accent); flex-shrink: 0; }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product information",
+  "tag": "section",
+  "blocks": [
+    { "type": "vendor", "name": "Vendor", "limit": 1 },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "rating", "name": "Rating", "limit": 1 },
+    { "type": "price", "name": "Price", "limit": 1 },
+    { "type": "availability", "name": "Availability", "limit": 1 },
+    {
+      "type": "variant_picker", "name": "Variant picker", "limit": 1,
+      "settings": [
+        { "type": "select", "id": "picker_type", "label": "Type",
+          "options": [ { "value": "button", "label": "Swatch buttons" }, { "value": "dropdown", "label": "Dropdown" } ],
+          "default": "button" }
+      ]
+    },
+    {
+      "type": "buy_buttons", "name": "Buy buttons", "limit": 1,
+      "settings": [
+        { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout (Buy it now)", "default": true }
+      ]
+    },
+    {
+      "type": "icon_row", "name": "Delivery & trust icons",
+      "settings": [
+        { "type": "checkbox", "id": "show_delivery", "label": "Show delivery", "default": true },
+        { "type": "text", "id": "delivery_text", "label": "Delivery text", "default": "Delivery in 2–5 days" },
+        { "type": "checkbox", "id": "show_returns", "label": "Show returns", "default": true },
+        { "type": "text", "id": "returns_text", "label": "Returns text", "default": "7-day exchange" },
+        { "type": "checkbox", "id": "show_secure", "label": "Show secure", "default": true },
+        { "type": "text", "id": "secure_text", "label": "Secure text", "default": "Secure checkout" }
+      ]
+    },
+    { "type": "description", "name": "Description", "limit": 1 },
+    { "type": "specifications", "name": "Specifications (metafield)", "limit": 1,
+      "settings": [ { "type": "checkbox", "id": "open_default", "label": "Open by default", "default": false } ] },
+    {
+      "type": "collapsible_tab", "name": "Collapsible row",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shipping & Delivery" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Nationwide delivery in 2–5 working days. Cash on delivery available.</p>" },
+        { "type": "text", "id": "metafield", "label": "Metafield key (custom namespace, optional)", "info": "e.g. shipping_info — overrides content if set on the product." },
+        { "type": "checkbox", "id": "open_default", "label": "Open by default", "default": false }
+      ]
+    },
+    { "type": "share", "name": "Share", "limit": 1,
+      "settings": [ { "type": "text", "id": "share_label", "label": "Label", "default": "Share this product" } ] },
+    { "type": "custom_liquid", "name": "Custom Liquid",
+      "settings": [ { "type": "liquid", "id": "custom_liquid", "label": "Custom Liquid" } ] },
+    { "type": "@app" }
+  ],
+  "settings": []
+}
+{% endschema %}

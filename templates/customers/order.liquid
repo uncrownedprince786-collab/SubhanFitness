@@ -1,0 +1,31 @@
+<section class="section">
+  <div class="page-width">
+    <h1 class="h2">Order {{ order.name }}</h1>
+    <p class="card__vendor">Placed on {{ order.created_at | date: '%d %B %Y' }}</p>
+    <table class="account-table mt-2">
+      <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th></tr></thead>
+      <tbody>
+        {%- for line in order.line_items -%}
+          <tr>
+            <td>{{ line.title }}</td>
+            <td>{{ line.price | money }}</td>
+            <td>{{ line.quantity }}</td>
+            <td>{{ line.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+      <tfoot>
+        <tr><th colspan="3">Subtotal</th><td>{{ order.line_items_subtotal_price | money }}</td></tr>
+        {%- for shipping in order.shipping_methods -%}
+          <tr><th colspan="3">Shipping ({{ shipping.title }})</th><td>{{ shipping.price | money }}</td></tr>
+        {%- endfor -%}
+        <tr><th colspan="3">Total</th><td>{{ order.total_net_amount | money }}</td></tr>
+      </tfoot>
+    </table>
+    <div class="account-layout mt-3">
+      <div><h3 class="h4">Billing address</h3>{{ order.billing_address | format_address }}</div>
+      <div><h3 class="h4">Shipping address</h3>{{ order.shipping_address | format_address }}</div>
+    </div>
+    <a href="{{ routes.account_url }}" class="link mt-3">← Back to account</a>
+  </div>
+</section>

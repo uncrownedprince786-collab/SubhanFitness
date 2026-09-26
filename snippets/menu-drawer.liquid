@@ -1,0 +1,48 @@
+{%- comment -%} Mobile navigation drawer. Param: menu (linklist) {%- endcomment -%}
+<div id="MenuDrawer" class="drawer menu-drawer" data-overlay="#MenuOverlay" aria-hidden="true" role="dialog" aria-label="Menu">
+  <div class="drawer__header">
+    <span class="drawer__title">Menu</span>
+    <button type="button" class="drawer__close" data-drawer-close aria-label="{{ 'general.accessibility.close' | t }}">
+      {% render 'icon', icon: 'close' %}
+    </button>
+  </div>
+  <div class="drawer__body">
+    <nav class="menu-drawer__nav">
+      <ul class="menu-drawer__list">
+        {%- for link in menu.links -%}
+          {%- if link.links.size > 0 -%}
+            <li>
+              <details>
+                <summary>{{ link.title }} {% render 'icon', icon: 'caret' %}</summary>
+                <div class="menu-drawer__sublist">
+                  {%- for child in link.links -%}
+                    {%- if child.links.size > 0 -%}
+                      <div class="menu-drawer__group-title">{{ child.title }}</div>
+                      {%- for grandchild in child.links -%}
+                        <a href="{{ grandchild.url }}" class="menu-drawer__sublink">{{ grandchild.title }}</a>
+                      {%- endfor -%}
+                    {%- else -%}
+                      <a href="{{ child.url }}" class="menu-drawer__sublink">{{ child.title }}</a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                  <a href="{{ link.url }}" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all {{ link.title }} →</a>
+                </div>
+              </details>
+            </li>
+          {%- else -%}
+            <li><a href="{{ link.url }}" class="menu-drawer__link">{{ link.title }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+    <div style="padding:2rem;">
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="button button--secondary button--full">{{ 'sections.header.account' | t }}</a>
+      {%- endif -%}
+      {%- if settings.social_whatsapp != blank -%}
+        <a href="https://wa.me/{{ settings.social_whatsapp }}" class="button button--full mt-2" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+<div id="MenuOverlay" class="drawer__overlay"></div>

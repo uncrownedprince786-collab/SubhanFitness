@@ -1,0 +1,27 @@
+<section class="section">
+  <div class="page-width page-width--narrow">
+    <div class="rich-text text-center">
+      {%- if section.settings.subheading != blank -%}<span class="card__vendor">{{ section.settings.subheading }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h1">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rte" style="font-size:1.7rem;">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="button mt-2">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Our Promise" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Train Hard. Live Strong." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Subhan Fitness brings you carefully selected home and commercial gym equipment, strength gear, cardio machines, and recovery tools — everything you need under one roof.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [ { "name": "Rich text" } ]
+}
+{% endschema %}

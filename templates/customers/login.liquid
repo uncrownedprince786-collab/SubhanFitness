@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="page-width">
+    <div class="account-card">
+      <h1 class="h2 text-center">Sign in</h1>
+
+      <div id="RecoverPassword" style="display:none;">
+        <p>We'll send you an email to reset your password.</p>
+        {%- form 'recover_customer_password' -%}
+          {%- if form.errors -%}<div class="account-errors">{{ form.errors | default_errors }}</div>{%- endif -%}
+          {%- if form.posted_successfully? -%}<p style="color:#2b8a45;">We've sent you an email with a link to reset your password.</p>{%- endif -%}
+          <div class="field"><label for="RecoverEmail">Email</label><input type="email" name="email" id="RecoverEmail" required></div>
+          <button type="submit" class="button button--full">Reset password</button>
+          <p class="text-center mt-2"><a href="#" class="link" onclick="document.getElementById('RecoverPassword').style.display='none';document.getElementById('LoginForm').style.display='block';return false;">Back to sign in</a></p>
+        {%- endform -%}
+      </div>
+
+      <div id="LoginForm">
+        {%- form 'customer_login' -%}
+          {%- if form.errors -%}<div class="account-errors">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <div class="field"><label for="Email">Email</label><input type="email" name="customer[email]" id="Email" required></div>
+          <div class="field"><label for="Password">Password</label><input type="password" name="customer[password]" id="Password" required></div>
+          <button type="submit" class="button button--full">Sign in</button>
+          <p class="text-center mt-2"><a href="#" class="link" onclick="document.getElementById('LoginForm').style.display='none';document.getElementById('RecoverPassword').style.display='block';return false;">Forgot your password?</a></p>
+        {%- endform -%}
+        <p class="text-center mt-3">New customer? <a href="{{ routes.account_register_url }}" class="link">Create an account</a></p>
+      </div>
+    </div>
+  </div>
+</section>

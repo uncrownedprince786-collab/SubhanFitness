@@ -1,0 +1,53 @@
+{%- liquid
+  assign product = section.settings.product
+-%}
+{%- if product != blank or request.design_mode -%}
+<section class="section">
+  <div class="page-width">
+    {%- if product != blank -%}
+      <div class="product" id="FeaturedProduct-{{ section.id }}">
+        <div class="product__media-wrapper">
+          {% render 'product-media-gallery', product: product %}
+        </div>
+        <div class="product__info" id="FeaturedProductInfo-{{ section.id }}">
+          <variant-selects data-section="FeaturedProductInfo-{{ section.id }}">
+            <script type="application/json" data-variant-json>
+              [
+                {%- for variant in product.variants -%}
+                  { "id": {{ variant.id }}, "options": {{ variant.options | json }}, "price": {{ variant.price }}, "compare_at_price": {{ variant.compare_at_price | default: 'null' }}, "available": {{ variant.available }}, "featured_media": {% if variant.featured_media %}{ "id": {{ variant.featured_media.id }} }{% else %}null{% endif %} }{%- unless forloop.last -%},{%- endunless -%}
+                {%- endfor -%}
+              ]
+            </script>
+            {%- if section.settings.subheading != blank -%}<span class="product__vendor">{{ section.settings.subheading }}</span>{%- endif -%}
+            <h2 class="product__title">{{ product.title }}</h2>
+            {% render 'rating', product: product %}
+            <div class="product__price" data-price-wrapper>{% render 'price', product: product, use_variant: true, show_badge: true %}</div>
+            {%- assign v = product.selected_or_first_available_variant -%}
+            <span class="product__availability {% if v.available %}in-stock{% else %}out-stock{% endif %}" data-availability><span class="dot"></span><span data-availability-text>{% if v.available %}{{ 'products.product.in_stock' | t }}{% else %}{{ 'products.product.out_of_stock' | t }}{% endif %}</span></span>
+            {%- if section.settings.show_description -%}<div class="rte">{{ product.description | truncatewords: 60 }}</div>{%- endif -%}
+            {% render 'variant-picker', product: product, picker_type: 'button' %}
+            {% render 'buy-buttons', product: product, form_id: 'featured-form-' | append: section.id, show_dynamic_checkout: true %}
+            <a href="{{ product.url }}" class="link">{{ 'products.product.view_full_details' | t }} →</a>
+          </variant-selects>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="section-title-center"><h2 class="h2">{{ section.settings.heading }}</h2><p class="count">Select a product for this spotlight in the theme editor. This message is only visible in the editor.</p></div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured product",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Spotlight" },
+    { "type": "text", "id": "heading", "label": "Fallback heading", "default": "Featured product" },
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "checkbox", "id": "show_description", "label": "Show short description", "default": true }
+  ],
+  "presets": [ { "name": "Featured product" } ]
+}
+{% endschema %}

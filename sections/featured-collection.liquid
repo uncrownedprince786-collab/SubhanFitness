@@ -1,0 +1,83 @@
+{%- liquid
+  assign coll = section.settings.collection
+  assign product_count = section.settings.products_to_show
+  assign has_products = false
+  if coll != blank and coll.products.size > 0
+    assign has_products = true
+  endif
+-%}
+{%- comment -%} On the live storefront a section with no products is hidden entirely. In the theme editor (design mode) a preview + hint is shown so the merchant knows to assign a collection. {%- endcomment -%}
+{%- if has_products or request.design_mode -%}
+<section class="section" style="{% if section.settings.background %}background:{{ section.settings.background }};padding:var(--section-spacing) 0;{% endif %}">
+  <div class="page-width">
+    <div class="section-header">
+      <div class="section-header__text">
+        {%- if section.settings.subheading != blank -%}<span class="section-eyebrow">{{ section.settings.subheading }}</span>{%- endif -%}
+        <h2 class="section-header__title h2">{{ section.settings.heading | default: coll.title | default: 'Featured products' }}</h2>
+      </div>
+      {%- if section.settings.show_view_all and coll != blank -%}
+        <a href="{{ coll.url }}" class="button button--secondary button--small section-header__cta">
+          {{ 'sections.featured_collection.view_all' | t }} {% render 'icon', icon: 'arrow-right' %}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if has_products -%}
+      {%- if section.settings.layout == 'carousel' -%}
+        <div class="scroll-carousel">
+          {%- for product in coll.products limit: product_count -%}
+            {% render 'card-product', product: product %}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="product-grid grid--{{ section.settings.products_per_row }}">
+          {%- for product in coll.products limit: product_count -%}
+            {% render 'card-product', product: product %}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_view_all and coll != blank -%}
+        <div class="featured-collection__viewall text-center">
+          <a href="{{ coll.url }}" class="button button--secondary">
+            {{ 'sections.featured_collection.view_all' | t }}{% if coll.title != blank %} — {{ coll.title }}{% endif %} {% render 'icon', icon: 'arrow-right' %}
+          </a>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      {%- comment -%} Editor-only preview {%- endcomment -%}
+      <div class="product-grid grid--{{ section.settings.products_per_row }}">
+        {%- for i in (1..section.settings.products_per_row) -%}
+          <div class="card">
+            <div class="card__media ratio-square">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div>
+            <div class="card__content">
+              <h3 class="card__title">Example product</h3>
+              <div class="card__price"><span class="price"><span class="price__regular">{{ 1000 | money }}</span></span></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+      <p class="text-center count" style="margin-top:1.4rem;color:#9298a0;">Assign a collection to this section (and add products to it) to show items here. This message is only visible in the editor.</p>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "subheading", "label": "Subheading (small label)" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Featured products" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "select", "id": "layout", "label": "Layout",
+      "options": [ { "value": "grid", "label": "Grid" }, { "value": "carousel", "label": "Carousel (scroll)" } ], "default": "carousel" },
+    { "type": "range", "id": "products_per_row", "min": 2, "max": 5, "step": 1, "label": "Products per row (grid)", "default": 4 },
+    { "type": "range", "id": "products_to_show", "min": 4, "max": 16, "step": 1, "label": "Products to show", "default": 8 },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show 'View all' link", "default": true },
+    { "type": "color", "id": "background", "label": "Background color (optional)" }
+  ],
+  "presets": [ { "name": "Featured collection" } ]
+}
+{% endschema %}

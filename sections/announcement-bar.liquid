@@ -1,0 +1,75 @@
+<div class="announcement-bar" data-announcement {% if section.settings.rotate %}data-rotate{% endif %}>
+  <div class="announcement-bar__inner">
+    <div class="announcement-bar__messages" data-announcement-messages>
+      {%- for block in section.blocks -%}
+        <div class="announcement-bar__message" {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}">{{ block.settings.text }}</a>
+          {%- else -%}
+            <span>{{ block.settings.text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.show_social -%}
+      <div class="announcement-bar__utility">
+        <a href="{{ pages.contact.url | default: '/pages/contact' }}">Help</a>
+        {%- if shop.customer_accounts_enabled -%}
+          <a href="{{ routes.account_url }}">Track order</a>
+        {%- endif -%}
+        <span class="announcement-bar__social">
+          {%- if settings.social_whatsapp != blank -%}
+            <a href="https://wa.me/{{ settings.social_whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% render 'icon', icon: 'whatsapp' %}</a>
+          {%- endif -%}
+          {%- if settings.social_facebook != blank -%}
+            <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'icon', icon: 'facebook' %}</a>
+          {%- endif -%}
+          {%- if settings.social_instagram != blank -%}
+            <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', icon: 'instagram' %}</a>
+          {%- endif -%}
+          {%- if settings.social_tiktok != blank -%}
+            <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'icon', icon: 'tiktok' %}</a>
+          {%- endif -%}
+        </span>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if section.settings.rotate and section.blocks.size > 1 -%}
+  <script>
+    (function () {
+      var wrap = document.currentScript.previousElementSibling.querySelector('[data-announcement-messages]');
+      if (!wrap) return;
+      var items = wrap.querySelectorAll('.announcement-bar__message');
+      var i = 0;
+      setInterval(function () {
+        items[i].hidden = true;
+        i = (i + 1) % items.length;
+        items[i].hidden = false;
+      }, 4000);
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "checkbox", "id": "rotate", "label": "Rotate messages", "default": true },
+    { "type": "checkbox", "id": "show_social", "label": "Show utility links (WhatsApp, Help)", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Announce something here" },
+        { "type": "url", "id": "link", "label": "Link (optional)" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Announcement bar" }]
+}
+{% endschema %}

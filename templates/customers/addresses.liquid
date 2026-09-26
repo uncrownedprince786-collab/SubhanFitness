@@ -1,0 +1,31 @@
+<section class="section">
+  <div class="page-width page-width--narrow">
+    <h1 class="h2">Your addresses</h1>
+    <a href="{{ routes.account_url }}" class="link">← Back to account</a>
+
+    <div class="mt-3">
+      <h2 class="h3">Add a new address</h2>
+      {%- form 'customer_address', customer.new_address -%}
+        <div class="field"><label>First name</label><input type="text" name="address[first_name]"></div>
+        <div class="field"><label>Last name</label><input type="text" name="address[last_name]"></div>
+        <div class="field"><label>Address</label><input type="text" name="address[address1]"></div>
+        <div class="field"><label>City</label><input type="text" name="address[city]"></div>
+        <div class="field"><label>Country</label><input type="text" name="address[country]"></div>
+        <div class="field"><label>Phone</label><input type="tel" name="address[phone]"></div>
+        <button type="submit" class="button">Add address</button>
+      {%- endform -%}
+    </div>
+
+    {%- if customer.addresses.size > 0 -%}
+      <div class="mt-3">
+        <h2 class="h3">Saved addresses</h2>
+        {%- for address in customer.addresses -%}
+          <div style="padding:1.6rem 0;border-bottom:1px solid var(--color-border);">
+            {{ address | format_address }}
+            {%- if address == customer.default_address -%}<span class="badge badge--new">Default</span>{%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>

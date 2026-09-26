@@ -1,0 +1,8 @@
+{%- comment -%}
+  Section used only for AJAX re-rendering of the cart drawer contents
+  (fetched via ?section_id=cart-drawer). Outputs the inner content block.
+{%- endcomment -%}
+{% render 'cart-drawer-items' %}
+{% schema %}
+{ "name": "Cart drawer" }
+{% endschema %}

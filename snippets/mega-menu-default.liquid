@@ -1,0 +1,214 @@
+{%- comment -%}
+  Built-in default mega menu with the full Subhan Fitness category hierarchy.
+  Renders immediately on install (no Shopify Navigation setup required).
+  Links point at /collections/<handle>; if a collection doesn't exist yet the
+  link still renders and resolves once the collection is created.
+  To switch to a fully admin-managed menu, set Header → "Menu source" to
+  "Shopify Navigation".
+{%- endcomment -%}
+{%- assign c = '/collections/' -%}
+<ul class="header-nav__list">
+  <li class="header-nav__item">
+    <a href="{{ c }}strength-weights" class="header-nav__link">Strength &amp; Weights {% render 'icon', icon: 'caret' %}</a>
+    <div class="mega-menu" role="menu">
+      <div class="mega-menu__grid">
+        <div class="mega-menu__col">
+          <a href="{{ c }}strength-weights" class="mega-menu__col-title">Free Weights</a>
+          <ul>
+            <li><a href="{{ c }}dumbbells" class="mega-menu__link">Dumbbells</a></li>
+            <li><a href="{{ c }}adjustable-dumbbells" class="mega-menu__link">Adjustable Dumbbells</a></li>
+            <li><a href="{{ c }}kettlebells" class="mega-menu__link">Kettlebells</a></li>
+            <li><a href="{{ c }}barbells-plates" class="mega-menu__link">Barbells &amp; Plates</a></li>
+            <li><a href="{{ c }}weight-sets" class="mega-menu__link">Weight Sets</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}weight-benches" class="mega-menu__col-title">Benches &amp; Racks</a>
+          <ul>
+            <li><a href="{{ c }}weight-benches" class="mega-menu__link">Weight Benches</a></li>
+            <li><a href="{{ c }}power-racks" class="mega-menu__link">Power Racks</a></li>
+            <li><a href="{{ c }}multi-gym-stations" class="mega-menu__link">Multi-Gym Stations</a></li>
+            <li><a href="{{ c }}smith-machines" class="mega-menu__link">Smith Machines</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}weightlifting-belts" class="mega-menu__col-title">Lifting Accessories</a>
+          <ul>
+            <li><a href="{{ c }}weightlifting-belts" class="mega-menu__link">Weightlifting Belts</a></li>
+            <li><a href="{{ c }}lifting-straps" class="mega-menu__link">Straps &amp; Grips</a></li>
+            <li><a href="{{ c }}ankle-wrist-weights" class="mega-menu__link">Ankle &amp; Wrist Weights</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ c }}strength-weights" class="mega-menu__promo">Shop all Strength &amp; Weights {% render 'icon', icon: 'arrow-right' %}</a>
+    </div>
+  </li>
+
+  <li class="header-nav__item">
+    <a href="{{ c }}cardio-machines" class="header-nav__link">Cardio Machines {% render 'icon', icon: 'caret' %}</a>
+    <div class="mega-menu" role="menu">
+      <div class="mega-menu__grid">
+        <div class="mega-menu__col">
+          <a href="{{ c }}treadmills" class="mega-menu__col-title">Running &amp; Walking</a>
+          <ul>
+            <li><a href="{{ c }}treadmills" class="mega-menu__link">Treadmills</a></li>
+            <li><a href="{{ c }}walking-pads" class="mega-menu__link">Walking Pads</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}exercise-bikes" class="mega-menu__col-title">Cycling</a>
+          <ul>
+            <li><a href="{{ c }}exercise-bikes" class="mega-menu__link">Exercise Bikes</a></li>
+            <li><a href="{{ c }}spin-bikes" class="mega-menu__link">Spin Bikes</a></li>
+            <li><a href="{{ c }}upright-bikes" class="mega-menu__link">Upright Bikes</a></li>
+            <li><a href="{{ c }}recumbent-bikes" class="mega-menu__link">Recumbent Bikes</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}elliptical-trainers" class="mega-menu__col-title">Other Cardio</a>
+          <ul>
+            <li><a href="{{ c }}elliptical-trainers" class="mega-menu__link">Elliptical Trainers</a></li>
+            <li><a href="{{ c }}rowing-machines" class="mega-menu__link">Rowing Machines</a></li>
+            <li><a href="{{ c }}steppers-aerobic" class="mega-menu__link">Steppers &amp; Aerobic</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ c }}cardio-machines" class="mega-menu__promo">Shop all Cardio Machines {% render 'icon', icon: 'arrow-right' %}</a>
+    </div>
+  </li>
+
+  <li class="header-nav__item">
+    <a href="{{ c }}fitness-accessories" class="header-nav__link">Fitness Accessories {% render 'icon', icon: 'caret' %}</a>
+    <div class="mega-menu" role="menu">
+      <div class="mega-menu__grid">
+        <div class="mega-menu__col">
+          <a href="{{ c }}fitness-accessories" class="mega-menu__col-title">Training</a>
+          <ul>
+            <li><a href="{{ c }}resistance-bands" class="mega-menu__link">Resistance Bands</a></li>
+            <li><a href="{{ c }}jump-ropes" class="mega-menu__link">Jump Ropes</a></li>
+            <li><a href="{{ c }}hand-grippers" class="mega-menu__link">Hand Grippers</a></li>
+            <li><a href="{{ c }}ab-core" class="mega-menu__link">Ab &amp; Core Trainers</a></li>
+            <li><a href="{{ c }}tummy-trimmers" class="mega-menu__link">Tummy Trimmers</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}yoga-mats" class="mega-menu__col-title">Yoga &amp; Pilates</a>
+          <ul>
+            <li><a href="{{ c }}yoga-mats" class="mega-menu__link">Yoga Mats</a></li>
+            <li><a href="{{ c }}yoga-accessories" class="mega-menu__link">Yoga Accessories</a></li>
+            <li><a href="{{ c }}pilates-boards" class="mega-menu__link">Pilates &amp; Push-up Boards</a></li>
+            <li><a href="{{ c }}foam-rollers" class="mega-menu__link">Foam Rollers</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ c }}fitness-accessories" class="mega-menu__promo">Shop all Fitness Accessories {% render 'icon', icon: 'arrow-right' %}</a>
+    </div>
+  </li>
+
+  <li class="header-nav__item">
+    <a href="{{ c }}recovery-wellness" class="header-nav__link">Recovery &amp; Wellness {% render 'icon', icon: 'caret' %}</a>
+    <div class="mega-menu" role="menu">
+      <div class="mega-menu__grid">
+        <div class="mega-menu__col">
+          <a href="{{ c }}massage-guns" class="mega-menu__col-title">Massage</a>
+          <ul>
+            <li><a href="{{ c }}massage-guns" class="mega-menu__link">Massage Guns</a></li>
+            <li><a href="{{ c }}body-massagers" class="mega-menu__link">Body Massagers</a></li>
+            <li><a href="{{ c }}foot-leg-massagers" class="mega-menu__link">Foot &amp; Leg Massagers</a></li>
+            <li><a href="{{ c }}massage-chairs" class="mega-menu__link">Massage Chairs</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}vibration-plates" class="mega-menu__col-title">Therapy</a>
+          <ul>
+            <li><a href="{{ c }}vibration-plates" class="mega-menu__link">Vibration Plates</a></li>
+            <li><a href="{{ c }}cupping-hijama" class="mega-menu__link">Cupping &amp; Hijama</a></li>
+            <li><a href="{{ c }}heat-therapy" class="mega-menu__link">Heat Therapy</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ c }}recovery-wellness" class="mega-menu__promo">Shop all Recovery &amp; Wellness {% render 'icon', icon: 'arrow-right' %}</a>
+    </div>
+  </li>
+
+  <li class="header-nav__item">
+    <a href="{{ c }}body-support" class="header-nav__link">Body Support {% render 'icon', icon: 'caret' %}</a>
+    <div class="mega-menu" role="menu">
+      <div class="mega-menu__grid">
+        <div class="mega-menu__col">
+          <a href="{{ c }}body-support" class="mega-menu__col-title">Joint Supports</a>
+          <ul>
+            <li><a href="{{ c }}knee-supports" class="mega-menu__link">Knee Supports</a></li>
+            <li><a href="{{ c }}ankle-supports" class="mega-menu__link">Ankle Supports</a></li>
+            <li><a href="{{ c }}elbow-supports" class="mega-menu__link">Elbow Supports</a></li>
+            <li><a href="{{ c }}wrist-supports" class="mega-menu__link">Wrist &amp; Palm Supports</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}back-supports" class="mega-menu__col-title">Back &amp; Taping</a>
+          <ul>
+            <li><a href="{{ c }}back-supports" class="mega-menu__link">Back Supports</a></li>
+            <li><a href="{{ c }}kinesiology-tape" class="mega-menu__link">Kinesiology Tape</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ c }}body-support" class="mega-menu__promo">Shop all Body Support {% render 'icon', icon: 'arrow-right' %}</a>
+    </div>
+  </li>
+
+  <li class="header-nav__item">
+    <a href="{{ c }}sports-team" class="header-nav__link">Sports &amp; Team {% render 'icon', icon: 'caret' %}</a>
+    <div class="mega-menu" role="menu">
+      <div class="mega-menu__grid">
+        <div class="mega-menu__col">
+          <a href="{{ c }}table-tennis" class="mega-menu__col-title">Racket &amp; Table</a>
+          <ul>
+            <li><a href="{{ c }}table-tennis" class="mega-menu__link">Table Tennis</a></li>
+            <li><a href="{{ c }}badminton" class="mega-menu__link">Badminton</a></li>
+            <li><a href="{{ c }}snooker-billiards" class="mega-menu__link">Snooker &amp; Billiards</a></li>
+            <li><a href="{{ c }}snooker-cues" class="mega-menu__link">Snooker Cues</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}cricket" class="mega-menu__col-title">Team &amp; Combat</a>
+          <ul>
+            <li><a href="{{ c }}cricket" class="mega-menu__link">Cricket</a></li>
+            <li><a href="{{ c }}football" class="mega-menu__link">Football</a></li>
+            <li><a href="{{ c }}basketball" class="mega-menu__link">Basketball</a></li>
+            <li><a href="{{ c }}boxing-mma" class="mega-menu__link">Boxing &amp; MMA</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ c }}sports-team" class="mega-menu__promo">Shop all Sports &amp; Team {% render 'icon', icon: 'arrow-right' %}</a>
+    </div>
+  </li>
+
+  <li class="header-nav__item">
+    <a href="{{ c }}bags-gear" class="header-nav__link">Bags &amp; Gear {% render 'icon', icon: 'caret' %}</a>
+    <div class="mega-menu" role="menu">
+      <div class="mega-menu__grid">
+        <div class="mega-menu__col">
+          <a href="{{ c }}bags-gear" class="mega-menu__col-title">Bags</a>
+          <ul>
+            <li><a href="{{ c }}duffel-bags" class="mega-menu__link">Duffel Bags</a></li>
+            <li><a href="{{ c }}backpacks" class="mega-menu__link">Gym Backpacks</a></li>
+            <li><a href="{{ c }}cross-body-bags" class="mega-menu__link">Cross-Body Bags</a></li>
+          </ul>
+        </div>
+        <div class="mega-menu__col">
+          <a href="{{ c }}bottles-shakers" class="mega-menu__col-title">Accessories</a>
+          <ul>
+            <li><a href="{{ c }}bottles-shakers" class="mega-menu__link">Bottles &amp; Shakers</a></li>
+            <li><a href="{{ c }}gym-gloves" class="mega-menu__link">Gym Gloves</a></li>
+            <li><a href="{{ c }}gym-towels" class="mega-menu__link">Gym Towels</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ c }}bags-gear" class="mega-menu__promo">Shop all Bags &amp; Gear {% render 'icon', icon: 'arrow-right' %}</a>
+    </div>
+  </li>
+
+  <li class="header-nav__item header-nav__item--sale">
+    <a href="{{ c }}sale" class="header-nav__link">Sale</a>
+  </li>
+</ul>

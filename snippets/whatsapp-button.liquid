@@ -1,0 +1,29 @@
+{%- comment -%}
+  Floating WhatsApp button. Shown only when a WhatsApp number is set in
+  Theme settings → Social media → WhatsApp number.
+{%- endcomment -%}
+{%- if settings.social_whatsapp != blank -%}
+  <a class="whatsapp-fab" href="https://wa.me/{{ settings.social_whatsapp }}" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    {% render 'icon', icon: 'whatsapp' %}
+    <span class="whatsapp-fab__label">Chat with us</span>
+  </a>
+  <style>
+    .whatsapp-fab {
+      position: fixed; right: 2rem; bottom: 2rem; z-index: 50;
+      display: inline-flex; align-items: center; gap: 0;
+      height: 5.6rem; padding: 0 1.6rem;
+      background: #25D366; color: #fff; border-radius: 100px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.22);
+      transition: gap .25s, padding .25s, transform .2s;
+      overflow: hidden;
+    }
+    .whatsapp-fab:hover { color: #fff; transform: translateY(-2px); }
+    .whatsapp-fab .icon { width: 2.8rem; height: 2.8rem; flex-shrink: 0; }
+    .whatsapp-fab__label {
+      max-width: 0; opacity: 0; white-space: nowrap; font-weight: 600; font-size: 1.4rem;
+      transition: max-width .3s, opacity .3s, margin .3s;
+    }
+    .whatsapp-fab:hover .whatsapp-fab__label { max-width: 16rem; opacity: 1; margin-left: .8rem; }
+    @media (max-width: 749px) { .whatsapp-fab { right: 1.4rem; bottom: 1.4rem; height: 5rem; padding: 0 1.3rem; } }
+  </style>
+{%- endif -%}

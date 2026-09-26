@@ -1,0 +1,87 @@
+{%- comment -%}
+  Reusable product card.
+  Params:
+    product           - the product object (required)
+    show_quick_add    - override theme setting (optional bool)
+    image_ratio       - override (optional)
+{%- endcomment -%}
+{%- liquid
+  assign ratio = image_ratio | default: settings.card_image_ratio
+  assign has_second = false
+  if settings.card_show_second_image and product.media.size > 1
+    assign has_second = true
+  endif
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+{%- if product and product != empty -%}
+  <div class="card" data-product-card>
+    <div class="card__badges">
+      {%- if on_sale and settings.card_show_save_amount -%}
+        {%- assign pct = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
+        <span class="badge badge--sale">-{{ pct }}%</span>
+      {%- elsif on_sale -%}
+        <span class="badge badge--sale">{{ 'products.product.on_sale' | t }}</span>
+      {%- endif -%}
+      {%- unless product.available -%}
+        <span class="badge badge--soldout">{{ 'products.product.sold_out' | t }}</span>
+      {%- endunless -%}
+    </div>
+
+    <a href="{{ product.url }}" class="card__media ratio-{{ ratio }}" aria-label="{{ product.title | escape }}">
+      {%- if product.featured_media -%}
+        <img
+          class="card__image--main"
+          src="{{ product.featured_media | image_url: width: 500 }}"
+          srcset="{{ product.featured_media | image_url: width: 300 }} 300w, {{ product.featured_media | image_url: width: 500 }} 500w, {{ product.featured_media | image_url: width: 700 }} 700w"
+          sizes="(min-width: 990px) 25vw, 50vw"
+          alt="{{ product.featured_media.alt | escape }}"
+          loading="lazy" width="500" height="500">
+        {%- if has_second -%}
+          <img class="card__image--hover" src="{{ product.media[1] | image_url: width: 500 }}" alt="" loading="lazy" width="500" height="500">
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'card__image--main placeholder' }}
+      {%- endif -%}
+    </a>
+
+    <div class="card__content">
+      {%- if settings.card_show_vendor and product.vendor != blank -%}
+        <span class="card__vendor">{{ product.vendor }}</span>
+      {%- endif -%}
+      <h3 class="card__title">
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </h3>
+      {%- if settings.card_show_rating -%}
+        {% render 'rating', product: product %}
+      {%- endif -%}
+      <div class="card__price">
+        {% render 'price', product: product, show_badge: false %}
+      </div>
+
+      {%- assign quick = show_quick_add | default: settings.card_show_quick_add -%}
+      {%- if quick and product.available -%}
+        <div class="card__quick-add">
+          {%- if product.variants.size > 1 -%}
+            <a href="{{ product.url }}" class="button button--secondary button--small button--full">
+              {{ 'products.product.choose_options' | t }}
+            </a>
+          {%- else -%}
+            <product-form data-product-title="{{ product.title | escape }}">
+              <form method="post" action="{{ routes.cart_add_url }}">
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="button button--secondary button--small button--full" data-add-button>
+                  <span>{{ 'products.product.add_to_cart' | t }}</span>
+                  <span class="loading__spinner"><span class="spinner" style="border-color:rgba(20,24,28,.3);border-top-color:var(--color-accent)"></span></span>
+                </button>
+              </form>
+            </product-form>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

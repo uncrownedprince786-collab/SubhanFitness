@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "settings": { "heading": "Shop by category", "columns": 4, "show_empty": true }
+    }
+  },
+  "order": ["main"]
+}

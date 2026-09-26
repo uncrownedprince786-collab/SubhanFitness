@@ -1,0 +1,118 @@
+<div class="section-header-wrapper" {% if section.settings.sticky %}data-sticky-header style="position:sticky;top:0;"{% endif %}>
+  <header class="header">
+    <div class="header__inner">
+      <!-- Mobile menu toggle -->
+      <button type="button" class="header__icon header__mobile-only" data-menu-toggle aria-label="{{ 'sections.header.menu' | t }}">
+        {% render 'icon', icon: 'menu' %}
+      </button>
+
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="header__logo">
+        {%- if settings.logo != blank -%}
+          <img src="{{ settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}" width="200" height="60" style="--logo-width: {{ settings.logo_width }}px;">
+        {%- else -%}
+          <span class="header__logo-text">SUBHAN&nbsp;<span>FITNESS</span></span>
+        {%- endif -%}
+      </a>
+
+      <!-- Search (desktop) -->
+      {%- if section.settings.show_search -%}
+        <div class="header__search">
+          <predictive-search>
+            <form action="{{ routes.search_url }}" method="get" role="search" class="search-field">
+              <input type="search" name="q" value="{{ search.terms | escape }}"
+                     placeholder="{{ 'general.search.placeholder' | t }}"
+                     autocomplete="off" autocorrect="off" spellcheck="false" aria-label="{{ 'general.search.search' | t }}">
+              <input type="hidden" name="options[prefix]" value="last">
+              <button type="submit" class="search-field__submit" aria-label="{{ 'general.search.search' | t }}">
+                {% render 'icon', icon: 'search' %}
+              </button>
+            </form>
+            <div class="predictive-search" data-predictive-results hidden>
+              <div data-predictive-inner></div>
+            </div>
+          </predictive-search>
+        </div>
+      {%- endif -%}
+
+      <!-- Icons -->
+      <div class="header__icons">
+        <button type="button" class="header__icon header__mobile-only" data-search-toggle aria-label="{{ 'general.search.search' | t }}" onclick="document.querySelector('.header__search').classList.toggle('is-open')">
+          {% render 'icon', icon: 'search' %}
+        </button>
+        {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
+          <a href="{{ routes.account_url }}" class="header__icon" aria-label="{{ 'sections.header.account' | t }}">
+            {% render 'icon', icon: 'account' %}
+          </a>
+        {%- endif -%}
+        <a href="{{ routes.cart_url }}" class="header__icon" data-cart-drawer-toggle aria-label="{{ 'sections.header.cart_count' | t: count: cart.item_count }}">
+          {% render 'icon', icon: 'cart' %}
+          <span class="cart-count-bubble{% if cart.item_count == 0 %} hidden{% endif %}" data-cart-count>{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main navigation + mega menu -->
+  {%- assign menu = linklists[section.settings.menu] -%}
+  {%- if section.settings.menu_source == 'navigation' and menu.links.size > 0 -%}
+    <nav class="header-nav" aria-label="Primary">
+      <ul class="header-nav__list">
+        {%- for link in menu.links -%}
+          {%- assign is_sale = false -%}
+          {%- if link.title contains 'Sale' or link.title contains 'Clearance' -%}{%- assign is_sale = true -%}{%- endif -%}
+          <li class="header-nav__item{% if is_sale %} header-nav__item--sale{% endif %}">
+            <a href="{{ link.url }}" class="header-nav__link">
+              {{ link.title }}
+              {%- if link.links.size > 0 -%}{% render 'icon', icon: 'caret' %}{%- endif -%}
+            </a>
+            {%- if link.links.size > 0 -%}
+              {% render 'header-mega-menu', link: link %}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  {%- else -%}
+    <nav class="header-nav" aria-label="Primary">
+      {% render 'mega-menu-default' %}
+    </nav>
+  {%- endif -%}
+</div>
+
+{%- if section.settings.menu_source == 'navigation' and menu.links.size > 0 -%}
+  {% render 'menu-drawer', menu: menu %}
+{%- else -%}
+  {% render 'menu-drawer-default' %}
+{%- endif -%}
+
+{% style %}
+  [data-sticky-header] { transition: box-shadow .2s; z-index: 30; }
+  [data-sticky-header].is-scrolled { box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+  @media (max-width: 989px) {
+    .header__search { position: absolute; top: 100%; left: 0; right: 0; padding: 1rem 2rem; background: var(--color-header-bg); border-bottom: 1px solid var(--color-border); display: none; z-index: 20; }
+    .header__search.is-open { display: block; }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "header", "content": "Logo" },
+    { "type": "paragraph", "content": "Upload your logo in Theme settings → Brand. If no logo is uploaded, a SUBHAN FITNESS wordmark is shown." },
+    { "type": "header", "content": "Navigation" },
+    { "type": "select", "id": "menu_source", "label": "Menu source", "default": "theme",
+      "options": [
+        { "value": "theme", "label": "Built-in Subhan Fitness mega menu" },
+        { "value": "navigation", "label": "Shopify Navigation menu" }
+      ],
+      "info": "The built-in menu ships with the full category hierarchy and works immediately. Switch to Shopify Navigation once you want to manage the menu from Online Store → Navigation." },
+    { "type": "link_list", "id": "menu", "label": "Shopify Navigation menu", "default": "main-menu",
+      "info": "Used only when Menu source is set to Shopify Navigation. Top-level links become tabs; their children become mega-menu columns; grandchildren become links in each column." },
+    { "type": "checkbox", "id": "sticky", "label": "Sticky header on scroll", "default": true },
+    { "type": "checkbox", "id": "show_search", "label": "Show search", "default": true },
+    { "type": "checkbox", "id": "show_account", "label": "Show account icon", "default": true }
+  ]
+}
+{% endschema %}

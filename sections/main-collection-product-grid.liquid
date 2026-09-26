@@ -1,0 +1,105 @@
+<section class="section">
+  <div class="page-width">
+    {% render 'breadcrumbs' %}
+
+    <div class="collection-toolbar">
+      <button type="button" class="button button--secondary button--small mobile-facets-toggle" data-facets-open>
+        {% render 'icon', icon: 'filter' %} {{ 'products.facets.filter_and_sort' | t }}
+      </button>
+      <span class="collection-toolbar__count" data-collection-count>
+        {{ collection.products_count | default: collection.products.size }} {{ 'sections.collection.products_count' | t }}
+      </span>
+      <label class="collection-toolbar__sort">
+        <span class="visually-hidden">{{ 'products.facets.sort_by_label' | t }}</span>
+        <select data-sort-by aria-label="{{ 'products.facets.sort_by_label' | t }}">
+          {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}" {% if option.value == current_sort %}selected{% endif %}>{{ option.name }}</option>
+          {%- endfor -%}
+        </select>
+      </label>
+    </div>
+
+    <facet-filters data-section="{{ section.id }}" class="collection-layout">
+      {%- if section.settings.enable_filtering -%}
+        <aside class="facets" data-facets>
+          {% render 'facets', results: collection %}
+        </aside>
+        <div class="facets__overlay"></div>
+      {%- endif -%}
+
+      <div class="collection-results">
+        {%- comment -%} Active filter pills {%- endcomment -%}
+        <div class="active-facets" data-active-facets>
+          {%- assign has_active = false -%}
+          {%- for filter in collection.filters -%}
+            {%- for value in filter.active_values -%}
+              {%- assign has_active = true -%}
+              <a href="{{ value.url_to_remove }}" class="active-facet" data-facet-remove>
+                {{ filter.label }}: {{ value.label }} {% render 'icon', icon: 'x' %}
+              </a>
+            {%- endfor -%}
+            {%- if filter.type == 'price_range' -%}
+              {%- if filter.min_value.value or filter.max_value.value -%}
+                {%- assign has_active = true -%}
+                <a href="{{ filter.url_to_remove }}" class="active-facet" data-facet-remove>
+                  {{ filter.label }} {% render 'icon', icon: 'x' %}
+                </a>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if has_active -%}
+            <a href="{{ collection.url }}" class="active-facet" data-facet-remove style="font-weight:600;">{{ 'products.facets.clear_all' | t }}</a>
+          {%- endif -%}
+        </div>
+
+        <div id="ProductGridContainer">
+          {%- paginate collection.products by section.settings.products_per_page -%}
+            {%- if collection.products.size > 0 -%}
+              <div class="product-grid grid--{{ section.settings.products_per_row }}" data-product-grid>
+                {%- for product in collection.products -%}
+                  {% render 'card-product', product: product %}
+                {%- endfor -%}
+              </div>
+
+              {%- if paginate.pages > 1 -%}
+                {%- if section.settings.pagination_style == 'load_more' -%}
+                  {%- if paginate.next -%}
+                    <div class="text-center mt-3" data-load-more-wrap>
+                      <a href="{{ paginate.next.url }}" class="button button--secondary" data-load-more data-section="{{ section.id }}">
+                        {{ 'general.pagination.load_more' | t }}
+                      </a>
+                    </div>
+                  {%- endif -%}
+                {%- else -%}
+                  {% render 'pagination', paginate: paginate %}
+                {%- endif -%}
+              {%- endif -%}
+            {%- else -%}
+              <div class="cart-empty">
+                <h3>{{ 'sections.collection.empty' | t }}</h3>
+                <p>{{ 'sections.collection.use_fewer_filters_html' | t: link: collection.url }}</p>
+              </div>
+            {%- endif -%}
+          {%- endpaginate -%}
+        </div>
+      </div>
+    </facet-filters>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product grid",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "enable_filtering", "label": "Enable filtering", "default": true,
+      "info": "Filters come from Shopify admin → Search & Discovery." },
+    { "type": "range", "id": "products_per_row", "min": 2, "max": 5, "step": 1, "label": "Products per row (desktop)", "default": 4 },
+    { "type": "range", "id": "products_per_page", "min": 8, "max": 48, "step": 4, "label": "Products per page", "default": 24 },
+    { "type": "select", "id": "pagination_style", "label": "Pagination style",
+      "options": [ { "value": "pagination", "label": "Numbered pages" }, { "value": "load_more", "label": "Load more button" } ],
+      "default": "pagination" }
+  ]
+}
+{% endschema %}

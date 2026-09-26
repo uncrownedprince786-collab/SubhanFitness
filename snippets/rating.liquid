@@ -1,0 +1,18 @@
+{%- comment -%}
+  Product star rating from the standard `reviews.rating` metafield.
+  Works with Shopify Product Reviews, Judge.me, Loox, etc. that populate it.
+  Params: product
+{%- endcomment -%}
+{%- liquid
+  assign rating_value = product.metafields.reviews.rating.value
+  assign rating_count = product.metafields.reviews.rating_count.value | default: 0
+-%}
+{%- if rating_value and rating_count > 0 -%}
+  {%- assign rounded = rating_value.rating | default: rating_value | round -%}
+  <span class="card__rating" aria-label="Rated {{ rounded }} out of 5">
+    <span class="card__stars" aria-hidden="true">
+      {%- for i in (1..5) -%}{%- if i <= rounded -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}
+    </span>
+    <span class="card__rating-count">({{ rating_count }})</span>
+  </span>
+{%- endif -%}

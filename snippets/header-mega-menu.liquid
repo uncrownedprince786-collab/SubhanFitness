@@ -1,0 +1,40 @@
+{%- comment -%}
+  Renders a mega menu (2 levels of children) or a simple dropdown (1 level).
+  Param: link (a linklist link that has .links)
+{%- endcomment -%}
+{%- liquid
+  assign has_grandchildren = false
+  for child in link.links
+    if child.links.size > 0
+      assign has_grandchildren = true
+      break
+    endif
+  endfor
+-%}
+{%- if has_grandchildren -%}
+  <div class="mega-menu" role="menu">
+    <div class="mega-menu__grid">
+      {%- for child in link.links -%}
+        <div class="mega-menu__col">
+          <a href="{{ child.url }}" class="mega-menu__col-title">{{ child.title }}</a>
+          {%- if child.links.size > 0 -%}
+            <ul>
+              {%- for grandchild in child.links -%}
+                <li><a href="{{ grandchild.url }}" class="mega-menu__link">{{ grandchild.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    <a href="{{ link.url }}" class="mega-menu__promo">
+      Shop all {{ link.title }} {% render 'icon', icon: 'arrow-right' %}
+    </a>
+  </div>
+{%- else -%}
+  <ul class="dropdown-menu" role="menu">
+    {%- for child in link.links -%}
+      <li><a href="{{ child.url }}" class="dropdown-menu__link">{{ child.title }}</a></li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

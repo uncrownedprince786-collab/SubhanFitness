@@ -1,0 +1,45 @@
+<section class="section">
+  <div class="page-width">
+    <div class="newsletter" style="background:{{ section.settings.background | default: '#0c0f12' }};">
+      <div class="newsletter__inner">
+        {%- if section.settings.heading != blank -%}<h2 class="h2" style="color:#fff;">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<p style="color:rgba(255,255,255,.75);">{{ section.settings.text }}</p>{%- endif -%}
+        {%- form 'customer', class: 'newsletter__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          {%- if form.posted_successfully? -%}
+            <p class="newsletter__success">{% render 'icon', icon: 'check' %} {{ 'general.newsletter_form.confirmation' | t }}</p>
+          {%- else -%}
+            <div class="newsletter__field">
+              <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" required aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}">
+              <button type="submit" class="button">{{ 'general.newsletter_form.button_label' | t }}</button>
+            </div>
+            {%- if form.errors -%}<p class="newsletter__error">{{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}</p>{%- endif -%}
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .newsletter { border-radius: var(--radius); padding: 5rem 2rem; text-align: center; }
+  .newsletter__inner { max-width: 56rem; margin: 0 auto; }
+  .newsletter__field { display: flex; gap: 1rem; margin-top: 2rem; }
+  .newsletter__field input { flex: 1; padding: 1.4rem 1.8rem; border: 0; border-radius: var(--radius); font-size: 1.5rem; }
+  .newsletter__success { color: #4ade80; font-weight: 600; margin-top: 1.6rem; }
+  .newsletter__error { color: #fca5a5; margin-top: 1rem; }
+  @media (max-width: 600px) { .newsletter__field { flex-direction: column; } }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Join the Subhan Fitness community" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Get early access to new arrivals, training tips, and exclusive offers." },
+    { "type": "color", "id": "background", "label": "Background", "default": "#0c0f12" }
+  ],
+  "presets": [ { "name": "Newsletter" } ]
+}
+{% endschema %}

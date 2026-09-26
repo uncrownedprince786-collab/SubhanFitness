@@ -1,0 +1,112 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-slideshow",
+      "settings": { "height": "wide", "autoplay": true, "speed": 6 },
+      "blocks": {
+        "slide1": { "type": "slide", "settings": {
+          "show_overlay": true, "subheading": "New Season Gear",
+          "heading": "Gear Up For Greatness", "text": "Premium fitness & sports equipment, delivered across Pakistan.",
+          "text_align": "left", "button_label": "Shop Best Sellers", "button_link": "shopify://collections/best-sellers",
+          "button_label_2": "Explore Categories", "button_link_2": "shopify://collections" } },
+        "slide2": { "type": "slide", "settings": {
+          "show_overlay": true, "subheading": "Home Gym Sale",
+          "heading": "Build Your Home Gym", "text": "Treadmills, dumbbells, benches & more — up to 40% off.",
+          "text_align": "center", "button_label": "Shop the Sale", "button_link": "shopify://collections/sale" } }
+      },
+      "block_order": ["slide1", "slide2"]
+    },
+    "trust": {
+      "type": "multicolumn",
+      "settings": { "style": "trust", "background": "#f4f5f6" },
+      "blocks": {
+        "t1": { "type": "column", "settings": { "icon": "truck", "title": "Nationwide Delivery", "text": "Delivered in 2–5 days" } },
+        "t2": { "type": "column", "settings": { "icon": "refresh", "title": "Easy Exchange", "text": "7-day hassle-free returns" } },
+        "t3": { "type": "column", "settings": { "icon": "shield", "title": "Secure Checkout", "text": "Safe & encrypted payments" } },
+        "t4": { "type": "column", "settings": { "icon": "headset", "title": "Expert Support", "text": "Real people, real help" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "categories": {
+      "type": "collection-list",
+      "settings": { "subheading": "Find Your Gear", "heading": "Shop By Category", "center_heading": true, "columns": 4, "show_count": true },
+      "blocks": {
+        "c1": { "type": "collection_item", "settings": { "collection": "strength-weights", "custom_title": "Strength & Weights", "icon": "dumbbell" } },
+        "c2": { "type": "collection_item", "settings": { "collection": "cardio-machines", "custom_title": "Cardio Machines", "icon": "treadmill" } },
+        "c3": { "type": "collection_item", "settings": { "collection": "fitness-accessories", "custom_title": "Fitness Accessories", "icon": "yoga" } },
+        "c4": { "type": "collection_item", "settings": { "collection": "recovery-wellness", "custom_title": "Recovery & Wellness", "icon": "massage" } },
+        "c5": { "type": "collection_item", "settings": { "collection": "body-support", "custom_title": "Body Support & Braces", "icon": "brace" } },
+        "c6": { "type": "collection_item", "settings": { "collection": "sports-team", "custom_title": "Sports & Team", "icon": "ball" } },
+        "c7": { "type": "collection_item", "settings": { "collection": "bags-gear", "custom_title": "Bags & Gear", "icon": "gym-bag" } },
+        "c8": { "type": "collection_item", "settings": { "collection": "sale", "custom_title": "Sale", "icon": "tag" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"]
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Most Popular", "heading": "Best Sellers", "collection": "best-sellers",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+      }
+    },
+    "promo_banner": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "image_left", "subheading": "Home Gym Essentials",
+        "heading": "Everything you need to train at home",
+        "text": "<p>Save on complete home-gym setups — cardio, strength, and recovery in one order. Free delivery over Rs.15,000.</p>",
+        "button_label": "Shop Home Gym", "button_link": "shopify://collections/cardio-machines"
+      }
+    },
+    "cardio_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Move More", "heading": "Cardio Machines", "collection": "cardio-machines",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+      }
+    },
+    "spotlight": {
+      "type": "featured-product",
+      "settings": { "subheading": "Editor's Pick", "heading": "Featured product", "show_description": true }
+    },
+    "strength_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Get Stronger", "heading": "Strength & Weights", "collection": "strength-weights",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true, "background": "#f4f5f6"
+      }
+    },
+    "sale_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Limited Time", "heading": "On Sale Now", "collection": "sale",
+        "layout": "grid", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+      }
+    },
+    "brand_story": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "Our Promise", "heading": "Train Hard. Live Strong.",
+        "text": "<p>Subhan Fitness brings you carefully selected home and commercial gym equipment, strength gear, cardio machines, sports goods, and recovery tools — everything you need under one roof, backed by real support.</p>",
+        "button_label": "About Us", "button_link": "shopify://pages/about-us"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": { "heading": "Join the Subhan Fitness community", "text": "Get early access to new arrivals, training tips, and exclusive offers.", "background": "#0c0f12" }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "categories",
+    "best_sellers",
+    "promo_banner",
+    "cardio_showcase",
+    "spotlight",
+    "strength_showcase",
+    "sale_showcase",
+    "brand_story",
+    "newsletter"
+  ]
+}

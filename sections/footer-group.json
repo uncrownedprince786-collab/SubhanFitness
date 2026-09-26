@@ -1,0 +1,26 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand": {
+          "type": "brand",
+          "settings": {
+            "text": "Pakistan's home for premium fitness, gym & sports equipment. Train hard, live strong.",
+            "address": "Johar Town, Lahore, Pakistan",
+            "phone": "+92 300 1234567",
+            "email": "support@subhanfitness.pk"
+          }
+        },
+        "shop": { "type": "menu", "settings": { "heading": "Shop", "default_set": "shop" } },
+        "help": { "type": "menu", "settings": { "heading": "Customer Service", "default_set": "help" } },
+        "company": { "type": "menu", "settings": { "heading": "Company", "default_set": "company" } }
+      },
+      "block_order": ["brand", "shop", "help", "company"],
+      "settings": { "copyright_text": "All rights reserved.", "show_payment_icons": true }
+    }
+  },
+  "order": ["footer"]
+}

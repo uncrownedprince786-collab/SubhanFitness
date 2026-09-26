@@ -1,0 +1,28 @@
+{%- comment -%} Popup notification shown after add-to-cart when cart_type = notification {%- endcomment -%}
+<div id="CartNotification" class="cart-notification">
+  <div class="cart-notification__inner">
+    {%- assign last_item = cart.items | last -%}
+    {%- if last_item -%}
+      <div class="cart-notification__header">
+        {% render 'icon', icon: 'check' %} <span>{{ 'products.product.added_to_cart' | t }}</span>
+        <button type="button" class="drawer__close" onclick="document.getElementById('CartNotification').classList.remove('active')" aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', icon: 'close' %}</button>
+      </div>
+      <div class="cart-item" style="border:0;padding:1rem 0;">
+        <div class="cart-item__image">{%- if last_item.image -%}<img src="{{ last_item.image | image_url: width: 120 }}" alt="" width="60" height="60">{%- endif -%}</div>
+        <div class="cart-item__details">
+          <p class="cart-item__title">{{ last_item.product.title }}</p>
+          {%- unless last_item.variant.title contains 'Default' -%}<p class="cart-item__variant">{{ last_item.variant.title }}</p>{%- endunless -%}
+        </div>
+      </div>
+      <a href="{{ routes.cart_url }}" class="button button--full">{{ 'sections.cart.title' | t }} ({{ cart.item_count }})</a>
+      <form action="{{ routes.cart_url }}" method="post"><button name="checkout" class="button button--secondary button--full mt-2">{{ 'sections.cart.checkout' | t }}</button></form>
+    {%- endif -%}
+  </div>
+</div>
+<style>
+  .cart-notification { position: fixed; top: 2rem; right: 2rem; width: 360px; max-width: calc(100vw - 4rem); background: #fff; border-radius: var(--radius); box-shadow: 0 20px 50px rgba(0,0,0,.2); z-index: 70; padding: 1.6rem; transform: translateY(-20px); opacity: 0; visibility: hidden; transition: .3s; }
+  .cart-notification.active { transform: translateY(0); opacity: 1; visibility: visible; }
+  .cart-notification__header { display: flex; align-items: center; gap: .6rem; font-weight: 700; margin-bottom: .8rem; }
+  .cart-notification__header .icon-check { color: #33a852; }
+  .cart-notification__header .drawer__close { margin-left: auto; width: 3rem; height: 3rem; }
+</style>
