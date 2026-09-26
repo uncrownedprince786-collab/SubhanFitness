@@ -48,7 +48,15 @@
     "social_instagram": "https://www.instagram.com/subhanfitness",
     "social_tiktok": "https://www.tiktok.com/@subhanfitness",
     "social_youtube": "",
-    "social_whatsapp": "923001234567"
+    "social_whatsapp": "923001234567",
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Subhan Fitness": {}
