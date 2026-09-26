@@ -50,7 +50,7 @@
       "type": "header",
       "settings": {
         "logo": "shopify://shop_images/715453BF-A302-4C10-9487-CF4A68970CB4.png",
-        "logo_width": 160,
+        "logo_width": 80,
         "menu_source": "theme",
         "menu": "main-menu",
         "sticky": true,
