@@ -16,6 +16,18 @@
       },
       "block_order": ["slide1", "slide2"]
     },
+    "promo_marquee": {
+      "type": "promo-marquee",
+      "settings": { "background": "#ff4d04", "text_color": "#ffffff", "speed": 30, "direction": "left" },
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "Free delivery over Rs.15,000", "icon": "truck" } },
+        "m2": { "type": "item", "settings": { "text": "Cash on delivery nationwide", "icon": "check" } },
+        "m3": { "type": "item", "settings": { "text": "7-day easy exchange", "icon": "refresh" } },
+        "m4": { "type": "item", "settings": { "text": "New arrivals every week", "icon": "tag" } },
+        "m5": { "type": "item", "settings": { "text": "Premium fitness & sports gear", "icon": "dumbbell" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5"]
+    },
     "trust": {
       "type": "multicolumn",
       "settings": { "style": "trust", "background": "#f4f5f6" },
@@ -98,6 +110,7 @@
   },
   "order": [
     "hero",
+    "promo_marquee",
     "trust",
     "categories",
     "best_sellers",

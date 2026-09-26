@@ -1,0 +1,76 @@
+{%- liquid
+  assign bg = section.settings.background
+  assign fg = section.settings.text_color
+-%}
+<div class="marquee {% if section.settings.direction == 'right' %}marquee--reverse{% endif %}"
+     style="--marquee-bg:{{ bg }};--marquee-color:{{ fg }};--marquee-speed:{{ section.settings.speed }}s;">
+  <div class="marquee__track" aria-hidden="true">
+    {%- for dup in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span class="marquee__item" {% if forloop.parentloop.first %}{{ block.shopify_attributes }}{% endif %}>
+          <span class="marquee__sep">{% render 'icon', icon: 'star' %}</span>
+          {%- if block.settings.icon != 'none' -%}{% render 'icon', icon: block.settings.icon %}{%- endif -%}
+          <span>{{ block.settings.text }}</span>
+        </span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% style %}
+  .marquee { overflow: hidden; background: var(--marquee-bg, #ff4d04); color: var(--marquee-color, #fff); }
+  .marquee__track { display: flex; width: max-content; animation: marquee-scroll var(--marquee-speed, 30s) linear infinite; }
+  .marquee--reverse .marquee__track { animation-direction: reverse; }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  .marquee__item { display: inline-flex; align-items: center; gap: 1.2rem; padding: 1.1rem 1.8rem; font-family: var(--font-heading-family); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 1.4rem; white-space: nowrap; }
+  .marquee__item .icon { width: 1.9rem; height: 1.9rem; }
+  .marquee__sep { display: inline-flex; }
+  .marquee__sep .icon { width: 1.2rem; height: 1.2rem; opacity: .65; }
+  @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; width: 100%; justify-content: center; flex-wrap: wrap; }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Promo marquee",
+  "tag": "section",
+  "class": "section-marquee",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#ff4d04" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#ffffff" },
+    { "type": "range", "id": "speed", "min": 10, "max": 60, "step": 5, "unit": "s", "label": "Scroll duration", "default": 30 },
+    { "type": "select", "id": "direction", "label": "Direction",
+      "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ], "default": "left" }
+  ],
+  "blocks": [
+    {
+      "type": "item", "name": "Promo item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free delivery over Rs.15,000" },
+        { "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "truck", "label": "Truck" }, { "value": "refresh", "label": "Refresh" },
+            { "value": "shield", "label": "Shield" }, { "value": "headset", "label": "Support" },
+            { "value": "dumbbell", "label": "Dumbbell" }, { "value": "tag", "label": "Tag" }, { "value": "check", "label": "Check" }
+          ], "default": "none" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Promo marquee",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Free delivery over Rs.15,000", "icon": "truck" } },
+        { "type": "item", "settings": { "text": "Cash on delivery nationwide", "icon": "check" } },
+        { "type": "item", "settings": { "text": "7-day easy exchange", "icon": "refresh" } },
+        { "type": "item", "settings": { "text": "New arrivals every week", "icon": "tag" } },
+        { "type": "item", "settings": { "text": "Premium fitness & sports gear", "icon": "dumbbell" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
