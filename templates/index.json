@@ -382,7 +382,7 @@
     "promo_banner_2": {
       "type": "image-with-text",
       "settings": {
-        "image": "shopify://shop_images/images.jpg",
+        "image": "shopify://shop_images/various-massage-guns-laid-out-for-comparison.webp",
         "layout": "image_right",
         "subheading": "Feel-Good Recovery",
         "heading": "Massage & recovery, made easy",
