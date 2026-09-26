@@ -2,12 +2,13 @@
   <div class="slideshow__track">
     {%- for block in section.blocks -%}
       <div class="slideshow__slide" {{ block.shopify_attributes }}>
-        <div class="slide__media ratio-{{ section.settings.height }}{% if block.settings.asset_image != blank %} slide__media--full{% endif %}">
+        <div class="slide__media ratio-{{ section.settings.height }}">
           {%- if block.settings.asset_image != blank -%}
-            {%- comment -%} Full-bleed branding image from theme assets, shown uncropped at its own ratio. {%- endcomment -%}
+            {%- comment -%} Branding image (background). Live text is rendered on top; a scrim hides the baked-in text. {%- endcomment -%}
             <img src="{{ block.settings.asset_image | asset_url }}"
-                 sizes="100vw" alt="{{ block.settings.heading | default: shop.name | escape }}"
+                 sizes="100vw" alt="{{ block.settings.heading | default: shop.name | strip_html | escape }}"
                  width="2000" height="1117" {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+            <div class="slide__scrim"></div>
           {%- elsif block.settings.image != blank -%}
             <img src="{{ block.settings.image | image_url: width: 2000 }}"
                  srcset="{{ block.settings.image | image_url: width: 800 }} 800w, {{ block.settings.image | image_url: width: 1500 }} 1500w, {{ block.settings.image | image_url: width: 2000 }} 2000w"

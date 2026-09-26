@@ -497,15 +497,14 @@ p { margin: 0 0 1em; }
 .slideshow__slide { position: relative; min-width: 100%; }
 .slide__media { position: relative; }
 .slide__media img { width: 100%; height: 100%; object-fit: cover; }
-/* All hero slides share ONE height (matches the branding image's 16:9),
-   so the layout never shifts as slides rotate and the branding stays uncropped. */
-.slide__media.ratio-wide { aspect-ratio: 2000 / 1117; }
+.slide__media.ratio-wide { aspect-ratio: 16 / 6; }
 .slide__media.ratio-medium { aspect-ratio: 16 / 8; }
-.slide__media.slide__media--full { aspect-ratio: 2000 / 1117; }
-@media (max-width: 749px) {
-  .slide__media.ratio-wide, .slide__media.slide__media--full { aspect-ratio: 2000 / 1117; }
-  .slide__media.ratio-medium { aspect-ratio: 4 / 5; }
-}
+@media (max-width: 749px) { .slide__media.ratio-wide, .slide__media.ratio-medium { aspect-ratio: 4 / 5; } }
+/* Branding slide: dark gradient panel hides the (low-res) baked-in text on the
+   left so we can render crisp live text over it; the photo shows on the right. */
+.slide__scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,8,7,.97) 0%, rgba(12,8,7,.96) 33%, rgba(12,8,7,.82) 48%, rgba(12,8,7,.35) 64%, rgba(12,8,7,0) 82%); }
+@media (max-width: 749px) { .slide__scrim { background: linear-gradient(180deg, rgba(12,8,7,.45) 0%, rgba(12,8,7,.55) 45%, rgba(12,8,7,.8) 100%); } }
+.slide__heading .accent { color: var(--color-accent); }
 .slide__content {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; justify-content: center;
