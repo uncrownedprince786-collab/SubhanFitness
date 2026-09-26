@@ -342,3 +342,26 @@ id and block type checked against the section schemas.
 Merchant: create a Page, pick the matching template (see `PAGE_CONTENT.md` table for the
 suggested handles the footer links already point at), then edit the copy. Placeholder text
 uses [bracketed] fields and the Rs.2,000 free-delivery threshold.
+
+## 16. Final audit — favicon, SEO, responsiveness — 2026-09-27
+
+- **Recovered `config/settings_schema.json`** (a Shopify sync had reset it to `[]`, wiping all
+  global Theme Settings). Restored from the initial commit — Brand/Colors/Typography/Cart/
+  Social/Favicon settings are back; saved values in settings_data.json unaffected.
+- **Favicon:** added `assets/favicon.png` (SF logo, auto-cropped square 512px). `theme.liquid`
+  now serves it (plus apple-touch-icon) as a fallback, overridden by Theme settings > Brand >
+  Favicon if the merchant uploads one.
+- **SEO (`snippets/meta-tags.liquid`):** fixed insecure `http:` og:image → `https:`, added an
+  og:image fallback, and added JSON-LD **Product** structured data on product pages (name,
+  image, brand, sku, price, availability) plus **Organization** + **WebSite/SearchAction** on
+  the homepage. Existing: canonical, per-page title with shop name, meta description, OG/Twitter.
+- **Homepage H1:** added a visually-hidden `<h1>` (shop name + description) since all visible
+  homepage sections use H2 — one H1 per page now.
+- **Audit results:** all `<img>` have alt text; no insecure links; every template has exactly
+  one H1; responsive verified at 390px (cards → 2 cols, nav → drawer <989px, grids stack).
+- **Dynamic/extensible (verified):** homepage is a modular JSON section template; collections
+  and product rows read live objects; mega menu supports Shopify Navigation (`menu_source:
+  navigation`) with the built-in default as fallback. To add categories/subcategories freely
+  with zero code, switch Header → Menu source to **Navigation** and build it in Online Store >
+  Navigation (the code already renders 3-level nav as a mega menu). `footer-default-links.liquid`
+  has a few static collection links used ONLY as a fallback until footer menus are set.

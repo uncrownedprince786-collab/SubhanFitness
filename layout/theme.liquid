@@ -8,6 +8,12 @@
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+      <link rel="icon" type="image/png" sizes="192x192" href="{{ settings.favicon | image_url: width: 192, height: 192 }}">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+    {%- else -%}
+      {%- comment -%} Falls back to the bundled SF logo favicon; upload one in Theme settings > Brand to override. {%- endcomment -%}
+      <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+      <link rel="apple-touch-icon" href="{{ 'favicon.png' | asset_url }}">
     {%- endif -%}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,6 +91,10 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout" role="main" tabindex="-1">
+      {%- comment -%} Ensure the homepage has exactly one H1 for SEO (visible sections use H2). {%- endcomment -%}
+      {%- if request.page_type == 'index' -%}
+        <h1 class="visually-hidden">{{ shop.name }}{% if shop.description != blank %} {{ shop.description }}{% endif %}</h1>
+      {%- endif -%}
       {{ content_for_layout }}
     </main>
 
