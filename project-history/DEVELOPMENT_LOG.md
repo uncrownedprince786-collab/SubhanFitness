@@ -286,3 +286,11 @@ Three changes made this session:
    `sections/` with a `{% schema %}` + preset (auto-appears in Customize → Add section), or
    wire it into `templates/index.json` (`sections` + `order`). Reuse `.section`/`.page-width`/
    `.section-header`/`.scroll-carousel`/`card-product` to match the theme.
+
+4. **Fuller homepage (tango-style density).** Added 6 more rows to `templates/index.json`
+   (config only — reuses existing `featured-collection` + `image-with-text` sections, no new
+   code): `fitness_showcase` (fitness-accessories), `recovery_showcase` (recovery-wellness,
+   grey), `promo_banner_2` (image-with-text, image_right → recovery), `sports_showcase`
+   (sports-team), `bags_showcase` (bags-gear, grey), `body_support_showcase` (body-support).
+   Homepage now has 18 rows. Empty collections show demo placeholder products until real
+   products are tagged. Owner can reorder/hide any of these in Customize with no code.

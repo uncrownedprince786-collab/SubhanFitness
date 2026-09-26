@@ -95,6 +95,50 @@
         "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true, "background": "#f4f5f6"
       }
     },
+    "fitness_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Train Anywhere", "heading": "Fitness Accessories", "collection": "fitness-accessories",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+      }
+    },
+    "recovery_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Recover Faster", "heading": "Recovery & Wellness", "collection": "recovery-wellness",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true, "background": "#f4f5f6"
+      }
+    },
+    "promo_banner_2": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "image_right", "subheading": "Feel-Good Recovery",
+        "heading": "Massage & recovery, made easy",
+        "text": "<p>Massage guns, foam rollers, vibration plates and more — bounce back faster after every session.</p>",
+        "button_label": "Shop Recovery", "button_link": "shopify://collections/recovery-wellness"
+      }
+    },
+    "sports_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Game On", "heading": "Sports & Team", "collection": "sports-team",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+      }
+    },
+    "bags_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Carry It All", "heading": "Bags & Gear", "collection": "bags-gear",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true, "background": "#f4f5f6"
+      }
+    },
+    "body_support_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Stay Protected", "heading": "Body Support & Braces", "collection": "body-support",
+        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+      }
+    },
     "sale_showcase": {
       "type": "featured-collection",
       "settings": {
@@ -125,6 +169,12 @@
     "cardio_showcase",
     "spotlight",
     "strength_showcase",
+    "fitness_showcase",
+    "recovery_showcase",
+    "promo_banner_2",
+    "sports_showcase",
+    "bags_showcase",
+    "body_support_showcase",
     "sale_showcase",
     "brand_story",
     "newsletter"
