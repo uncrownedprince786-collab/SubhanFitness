@@ -502,8 +502,8 @@ p { margin: 0 0 1em; }
 @media (max-width: 749px) { .slide__media.ratio-wide, .slide__media.ratio-medium { aspect-ratio: 4 / 5; } }
 /* Branding slide: dark gradient panel hides the (low-res) baked-in text on the
    left so we can render crisp live text over it; the photo shows on the right. */
-.slide__scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,8,7,.97) 0%, rgba(12,8,7,.96) 33%, rgba(12,8,7,.82) 48%, rgba(12,8,7,.35) 64%, rgba(12,8,7,0) 82%); }
-@media (max-width: 749px) { .slide__scrim { background: linear-gradient(180deg, rgba(12,8,7,.45) 0%, rgba(12,8,7,.55) 45%, rgba(12,8,7,.8) 100%); } }
+.slide__scrim { position: absolute; inset: 0; background: linear-gradient(90deg, #0c0807 0%, #0c0807 44%, rgba(12,8,7,.9) 52%, rgba(12,8,7,.45) 66%, rgba(12,8,7,0) 84%); }
+@media (max-width: 749px) { .slide__scrim { background: linear-gradient(180deg, rgba(12,8,7,.35) 0%, rgba(12,8,7,.55) 50%, rgba(12,8,7,.88) 100%); } }
 .slide__heading .accent { color: var(--color-accent); }
 .slide__content {
   position: absolute; inset: 0;
