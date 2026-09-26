@@ -253,7 +253,7 @@ p { margin: 0 0 1em; }
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 2rem;
-  padding: 1.6rem 2rem;
+  padding: 1rem 2rem;
   max-width: var(--page-width);
   margin: 0 auto;
 }
@@ -299,7 +299,7 @@ p { margin: 0 0 1em; }
 .search-field { position: relative; display: flex; width: 100%; }
 .search-field input[type="search"] {
   width: 100%;
-  padding: 1.2rem 4.4rem 1.2rem 1.6rem;
+  padding: .95rem 4.4rem .95rem 1.6rem;
   border: 2px solid var(--color-border);
   border-radius: var(--radius);
   font-size: 1.4rem;
