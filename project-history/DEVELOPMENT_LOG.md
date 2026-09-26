@@ -359,6 +359,21 @@ uses [bracketed] fields and the Rs.2,000 free-delivery threshold.
   homepage sections use H2 — one H1 per page now.
 - **Audit results:** all `<img>` have alt text; no insecure links; every template has exactly
   one H1; responsive verified at 390px (cards → 2 cols, nav → drawer <989px, grids stack).
+## 17. Header upgrades — overflow "…" nav + "View catalog" dropdown — 2026-09-27
+
+Both read the live Navigation menu, so they auto-update as categories are added (only render
+when Menu source = Shopify Navigation; built-in default path unchanged).
+- **Priority-nav overflow:** `.header-nav__list` is now single-line; `global.js`
+  `layoutNavOverflow()` moves top-level items that don't fit into a `[data-nav-more]` "•••"
+  bucket that reveals them on hover (their mega menus fly out to the left). Recomputes on
+  resize/load/section-load. `.no-js` falls back to wrapping.
+- **"View catalog" dropdown** (`snippets/catalog-menu.liquid`) sits beside the search: an accent
+  button opening a panel of all top categories, each with a fly-out of its subcategory columns.
+  Toggled by `setupCatalogMenu()` (click to open, outside-click / Esc to close). Desktop only
+  (hidden ≤989px; the mobile drawer already lists everything).
+- CSS added to base.css (`.catalog-menu*`, `.header-nav__more*`, `.header__search-row`).
+- Verified in a headless browser render (overflow bucket appears; catalog panel + flyouts).
+
 - **Dynamic/extensible (verified):** homepage is a modular JSON section template; collections
   and product rows read live objects; mega menu supports Shopify Navigation (`menu_source:
   navigation`) with the built-in default as fallback. To add categories/subcategories freely

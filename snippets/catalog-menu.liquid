@@ -1,0 +1,43 @@
+{%- comment -%}
+  "View catalog" dropdown — lists all top categories with fly-out subcategories.
+  Fully dynamic from the Shopify Navigation menu. Param: menu (a linklist)
+{%- endcomment -%}
+{%- if menu.links.size > 0 -%}
+  <catalog-menu class="catalog-menu" data-catalog>
+    <button type="button" class="catalog-menu__toggle" data-catalog-toggle aria-expanded="false" aria-haspopup="true">
+      {% render 'icon', icon: 'menu' %}
+      <span>View catalog</span>
+      {% render 'icon', icon: 'caret' %}
+    </button>
+    <div class="catalog-menu__panel" data-catalog-panel>
+      <ul class="catalog-menu__list">
+        {%- for link in menu.links -%}
+          <li class="catalog-menu__item{% if link.links.size > 0 %} has-children{% endif %}">
+            <a href="{{ link.url }}" class="catalog-menu__link">
+              <span>{{ link.title }}</span>
+              {%- if link.links.size > 0 -%}{% render 'icon', icon: 'chevron-right' %}{%- endif -%}
+            </a>
+            {%- if link.links.size > 0 -%}
+              <div class="catalog-menu__flyout">
+                <div class="catalog-menu__flyout-grid">
+                  {%- for child in link.links -%}
+                    <div class="catalog-menu__col">
+                      <a href="{{ child.url }}" class="catalog-menu__col-title">{{ child.title }}</a>
+                      {%- if child.links.size > 0 -%}
+                        <ul class="catalog-menu__sublist">
+                          {%- for gc in child.links -%}
+                            <li><a href="{{ gc.url }}" class="catalog-menu__sublink">{{ gc.title }}</a></li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </catalog-menu>
+{%- endif -%}

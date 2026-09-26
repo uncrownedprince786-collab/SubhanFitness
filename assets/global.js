@@ -680,4 +680,65 @@
   else document.addEventListener('DOMContentLoaded', () => setupMegaMenuEdges());
   document.addEventListener('shopify:section:load', (e) => setupMegaMenuEdges(e.target));
 
+  /* -------------------------------------------------------------------------
+     "View catalog" dropdown toggle
+     ------------------------------------------------------------------------- */
+  function setupCatalogMenu(scope) {
+    (scope || document).querySelectorAll('[data-catalog]').forEach((cat) => {
+      if (cat.dataset.catalogReady) return;
+      cat.dataset.catalogReady = '1';
+      const btn = cat.querySelector('[data-catalog-toggle]');
+      if (!btn) return;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = cat.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', (e) => {
+        if (!cat.contains(e.target)) { cat.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { cat.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
+      });
+    });
+  }
+  if (document.readyState !== 'loading') setupCatalogMenu();
+  else document.addEventListener('DOMContentLoaded', () => setupCatalogMenu());
+  document.addEventListener('shopify:section:load', (e) => setupCatalogMenu(e.target));
+
+  /* -------------------------------------------------------------------------
+     Priority nav — move overflowing categories into a "…" bucket that
+     reveals them on hover. Recomputes on resize, so adding categories in
+     Navigation never breaks the header layout.
+     ------------------------------------------------------------------------- */
+  function layoutNavOverflow(nav) {
+    const list = nav.querySelector('.header-nav__list');
+    const more = nav.querySelector('[data-nav-more]');
+    const moreList = nav.querySelector('[data-nav-more-list]');
+    if (!list || !more || !moreList) return;
+    // Restore any previously moved items back into the main list (before `more`).
+    while (moreList.firstChild) list.insertBefore(moreList.firstChild, more);
+    more.hidden = true;
+    if (list.scrollWidth <= list.clientWidth + 1) return; // fits on one line
+    more.hidden = false;
+    let guard = 0;
+    const movable = () => Array.prototype.filter.call(list.children, function (li) {
+      return li !== more && li.classList.contains('header-nav__item');
+    });
+    while (list.scrollWidth > list.clientWidth + 1 && guard < 60) {
+      const items = movable();
+      if (items.length <= 1) break;
+      moreList.insertBefore(items[items.length - 1], moreList.firstChild);
+      guard++;
+    }
+  }
+  let navRaf;
+  function layoutAllNavs() { document.querySelectorAll('[data-nav-overflow]').forEach(layoutNavOverflow); }
+  function scheduleNavLayout() { cancelAnimationFrame(navRaf); navRaf = requestAnimationFrame(layoutAllNavs); }
+  if (document.readyState !== 'loading') layoutAllNavs();
+  else document.addEventListener('DOMContentLoaded', layoutAllNavs);
+  window.addEventListener('resize', scheduleNavLayout);
+  window.addEventListener('load', scheduleNavLayout);
+  document.addEventListener('shopify:section:load', scheduleNavLayout);
+
 })();

@@ -1,3 +1,6 @@
+{%- assign menu = linklists[section.settings.menu] -%}
+{%- assign use_nav = false -%}
+{%- if section.settings.menu_source == 'navigation' and menu.links.size > 0 -%}{%- assign use_nav = true -%}{%- endif -%}
 <div class="section-header-wrapper" {% if section.settings.sticky %}data-sticky-header style="position:sticky;top:0;"{% endif %}>
   <header class="header">
     <div class="header__inner">
@@ -22,6 +25,8 @@
       <!-- Search (desktop) -->
       {%- if section.settings.show_search -%}
         <div class="header__search">
+          <div class="header__search-row">
+          {%- if use_nav -%}{% render 'catalog-menu', menu: menu %}{%- endif -%}
           <predictive-search>
             <form action="{{ routes.search_url }}" method="get" role="search" class="search-field">
               <input type="search" name="q" value="{{ search.terms | escape }}"
@@ -36,6 +41,7 @@
               <div data-predictive-inner></div>
             </div>
           </predictive-search>
+          </div>
         </div>
       {%- endif -%}
 
@@ -58,9 +64,8 @@
   </header>
 
   <!-- Main navigation + mega menu -->
-  {%- assign menu = linklists[section.settings.menu] -%}
-  {%- if section.settings.menu_source == 'navigation' and menu.links.size > 0 -%}
-    <nav class="header-nav" aria-label="Primary">
+  {%- if use_nav -%}
+    <nav class="header-nav" aria-label="Primary" data-nav-overflow>
       <ul class="header-nav__list">
         {%- for link in menu.links -%}
           {%- assign is_sale = false -%}
@@ -75,6 +80,13 @@
             {%- endif -%}
           </li>
         {%- endfor -%}
+        {%- comment -%} Overflow bucket — JS moves categories that don't fit into here. {%- endcomment -%}
+        <li class="header-nav__item header-nav__more" data-nav-more hidden>
+          <button type="button" class="header-nav__link header-nav__more-btn" aria-label="More categories" aria-expanded="false">
+            <span class="header-nav__more-dots" aria-hidden="true">•••</span>
+          </button>
+          <ul class="header-nav__more-list" data-nav-more-list></ul>
+        </li>
       </ul>
     </nav>
   {%- else -%}
