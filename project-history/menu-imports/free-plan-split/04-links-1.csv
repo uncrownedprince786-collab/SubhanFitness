@@ -1,0 +1,11 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Dumbbells,Collection,dumbbells,Free Weights,1
+main-menu,,,MERGE,Adjustable Dumbbells,Collection,adjustable-dumbbells,Free Weights,2
+main-menu,,,MERGE,Kettlebells,Collection,kettlebells,Free Weights,3
+main-menu,,,MERGE,Barbells & Plates,Collection,barbells-plates,Free Weights,4
+main-menu,,,MERGE,Weight Sets,Collection,weight-sets,Free Weights,5
+main-menu,,,MERGE,Weight Benches,Collection,weight-benches,Benches & Racks,1
+main-menu,,,MERGE,Power Racks,Collection,power-racks,Benches & Racks,2
+main-menu,,,MERGE,Multi-Gym Stations,Collection,multi-gym-stations,Benches & Racks,3
+main-menu,,,MERGE,Smith Machines,Collection,smith-machines,Benches & Racks,4
+main-menu,,,MERGE,Weightlifting Belts,Collection,weightlifting-belts,Lifting Accessories,1

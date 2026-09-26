@@ -1,0 +1,9 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,REPLACE,MERGE,Strength & Weights,Collection,strength-weights,,1
+main-menu,,,MERGE,Cardio Machines,Collection,cardio-machines,,2
+main-menu,,,MERGE,Fitness Accessories,Collection,fitness-accessories,,3
+main-menu,,,MERGE,Recovery & Wellness,Collection,recovery-wellness,,4
+main-menu,,,MERGE,Body Support & Braces,Collection,body-support,,5
+main-menu,,,MERGE,Sports & Team,Collection,sports-team,,6
+main-menu,,,MERGE,Bags & Gear,Collection,bags-gear,,7
+main-menu,,,MERGE,Sale,Collection,sale,,8

@@ -1,0 +1,8 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Boxing & MMA,Collection,boxing-mma,Team & Combat,4
+main-menu,,,MERGE,Duffel Bags,Collection,duffel-bags,All Bags & Gear,1
+main-menu,,,MERGE,Gym Backpacks,Collection,backpacks,All Bags & Gear,2
+main-menu,,,MERGE,Cross-Body Bags,Collection,cross-body-bags,All Bags & Gear,3
+main-menu,,,MERGE,Water Bottles & Shakers,Collection,bottles-shakers,All Bags & Gear,4
+main-menu,,,MERGE,Gym Gloves,Collection,gym-gloves,All Bags & Gear,5
+main-menu,,,MERGE,Gym Towels,Collection,gym-towels,All Bags & Gear,6

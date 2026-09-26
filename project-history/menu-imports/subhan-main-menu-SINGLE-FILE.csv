@@ -1,0 +1,80 @@
+﻿Handle,Title,Command,Menu Item: ID,Menu Item: Title,Menu Item: URL,Menu Item: Parent ID,Menu Item: Position
+main-menu,Main menu,REPLACE,1,Strength & Weights,/collections/strength-weights,,1
+main-menu,,,2,Free Weights,/collections/dumbbells,1,1
+main-menu,,,3,Dumbbells,/collections/dumbbells,2,1
+main-menu,,,4,Adjustable Dumbbells,/collections/adjustable-dumbbells,2,2
+main-menu,,,5,Kettlebells,/collections/kettlebells,2,3
+main-menu,,,6,Barbells & Plates,/collections/barbells-plates,2,4
+main-menu,,,7,Weight Sets,/collections/weight-sets,2,5
+main-menu,,,8,Benches & Racks,/collections/weight-benches,1,2
+main-menu,,,9,Weight Benches,/collections/weight-benches,8,1
+main-menu,,,10,Power Racks,/collections/power-racks,8,2
+main-menu,,,11,Multi-Gym Stations,/collections/multi-gym-stations,8,3
+main-menu,,,12,Smith Machines,/collections/smith-machines,8,4
+main-menu,,,13,Lifting Accessories,/collections/weightlifting-belts,1,3
+main-menu,,,14,Weightlifting Belts,/collections/weightlifting-belts,13,1
+main-menu,,,15,Lifting Straps & Grips,/collections/lifting-straps,13,2
+main-menu,,,16,Ankle & Wrist Weights,/collections/ankle-wrist-weights,13,3
+main-menu,,,17,Cardio Machines,/collections/cardio-machines,,2
+main-menu,,,18,Running & Walking,/collections/treadmills,17,1
+main-menu,,,19,Treadmills,/collections/treadmills,18,1
+main-menu,,,20,Walking Pads,/collections/walking-pads,18,2
+main-menu,,,21,Cycling,/collections/exercise-bikes,17,2
+main-menu,,,22,Exercise Bikes,/collections/exercise-bikes,21,1
+main-menu,,,23,Spin Bikes,/collections/spin-bikes,21,2
+main-menu,,,24,Upright Bikes,/collections/upright-bikes,21,3
+main-menu,,,25,Recumbent Bikes,/collections/recumbent-bikes,21,4
+main-menu,,,26,Other Cardio,/collections/elliptical-trainers,17,3
+main-menu,,,27,Elliptical Trainers,/collections/elliptical-trainers,26,1
+main-menu,,,28,Rowing Machines,/collections/rowing-machines,26,2
+main-menu,,,29,Steppers & Aerobic,/collections/steppers-aerobic,26,3
+main-menu,,,30,Fitness Accessories,/collections/fitness-accessories,,3
+main-menu,,,31,Training,/collections/resistance-bands,30,1
+main-menu,,,32,Resistance Bands,/collections/resistance-bands,31,1
+main-menu,,,33,Jump Ropes,/collections/jump-ropes,31,2
+main-menu,,,34,Hand Grippers,/collections/hand-grippers,31,3
+main-menu,,,35,Ab & Core,/collections/ab-core,31,4
+main-menu,,,36,Tummy Trimmers,/collections/tummy-trimmers,31,5
+main-menu,,,37,Yoga & Pilates,/collections/yoga-mats,30,2
+main-menu,,,38,Yoga Mats,/collections/yoga-mats,37,1
+main-menu,,,39,Yoga Accessories,/collections/yoga-accessories,37,2
+main-menu,,,40,Pilates & Push-up Boards,/collections/pilates-boards,37,3
+main-menu,,,41,Foam Rollers,/collections/foam-rollers,37,4
+main-menu,,,42,Recovery & Wellness,/collections/recovery-wellness,,4
+main-menu,,,43,Massage,/collections/massage-guns,42,1
+main-menu,,,44,Massage Guns,/collections/massage-guns,43,1
+main-menu,,,45,Body Massagers,/collections/body-massagers,43,2
+main-menu,,,46,Foot & Leg Massagers,/collections/foot-leg-massagers,43,3
+main-menu,,,47,Massage Chairs,/collections/massage-chairs,43,4
+main-menu,,,48,Therapy,/collections/vibration-plates,42,2
+main-menu,,,49,Vibration Plates,/collections/vibration-plates,48,1
+main-menu,,,50,Cupping & Hijama,/collections/cupping-hijama,48,2
+main-menu,,,51,Heat Therapy,/collections/heat-therapy,48,3
+main-menu,,,52,Body Support & Braces,/collections/body-support,,5
+main-menu,,,53,Supports & Braces,/collections/knee-supports,52,1
+main-menu,,,54,Knee Supports,/collections/knee-supports,53,1
+main-menu,,,55,Ankle Supports,/collections/ankle-supports,53,2
+main-menu,,,56,Wrist Supports,/collections/wrist-supports,53,3
+main-menu,,,57,Back Supports,/collections/back-supports,53,4
+main-menu,,,58,Elbow Supports,/collections/elbow-supports,53,5
+main-menu,,,59,Kinesiology Tape,/collections/kinesiology-tape,53,6
+main-menu,,,60,Sports & Team,/collections/sports-team,,6
+main-menu,,,61,Racket & Table,/collections/table-tennis,60,1
+main-menu,,,62,Table Tennis,/collections/table-tennis,61,1
+main-menu,,,63,Badminton,/collections/badminton,61,2
+main-menu,,,64,Snooker & Billiards,/collections/snooker-billiards,61,3
+main-menu,,,65,Snooker Cues,/collections/snooker-cues,61,4
+main-menu,,,66,Team & Combat,/collections/cricket,60,2
+main-menu,,,67,Cricket,/collections/cricket,66,1
+main-menu,,,68,Football,/collections/football,66,2
+main-menu,,,69,Basketball,/collections/basketball,66,3
+main-menu,,,70,Boxing & MMA,/collections/boxing-mma,66,4
+main-menu,,,71,Bags & Gear,/collections/bags-gear,,7
+main-menu,,,72,All Bags & Gear,/collections/duffel-bags,71,1
+main-menu,,,73,Duffel Bags,/collections/duffel-bags,72,1
+main-menu,,,74,Gym Backpacks,/collections/backpacks,72,2
+main-menu,,,75,Cross-Body Bags,/collections/cross-body-bags,72,3
+main-menu,,,76,Water Bottles & Shakers,/collections/bottles-shakers,72,4
+main-menu,,,77,Gym Gloves,/collections/gym-gloves,72,5
+main-menu,,,78,Gym Towels,/collections/gym-towels,72,6
+main-menu,,,79,Sale,/collections/sale,,8

@@ -1,0 +1,11 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Free Weights,Collection,dumbbells,Strength & Weights,1
+main-menu,,,MERGE,Benches & Racks,Collection,weight-benches,Strength & Weights,2
+main-menu,,,MERGE,Lifting Accessories,Collection,weightlifting-belts,Strength & Weights,3
+main-menu,,,MERGE,Running & Walking,Collection,treadmills,Cardio Machines,1
+main-menu,,,MERGE,Cycling,Collection,exercise-bikes,Cardio Machines,2
+main-menu,,,MERGE,Other Cardio,Collection,elliptical-trainers,Cardio Machines,3
+main-menu,,,MERGE,Training,Collection,resistance-bands,Fitness Accessories,1
+main-menu,,,MERGE,Yoga & Pilates,Collection,yoga-mats,Fitness Accessories,2
+main-menu,,,MERGE,Massage,Collection,massage-guns,Recovery & Wellness,1
+main-menu,,,MERGE,Therapy,Collection,vibration-plates,Recovery & Wellness,2

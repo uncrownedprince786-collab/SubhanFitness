@@ -1,0 +1,11 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Back Supports,Collection,back-supports,Supports & Braces,4
+main-menu,,,MERGE,Elbow Supports,Collection,elbow-supports,Supports & Braces,5
+main-menu,,,MERGE,Kinesiology Tape,Collection,kinesiology-tape,Supports & Braces,6
+main-menu,,,MERGE,Table Tennis,Collection,table-tennis,Racket & Table,1
+main-menu,,,MERGE,Badminton,Collection,badminton,Racket & Table,2
+main-menu,,,MERGE,Snooker & Billiards,Collection,snooker-billiards,Racket & Table,3
+main-menu,,,MERGE,Snooker Cues,Collection,snooker-cues,Racket & Table,4
+main-menu,,,MERGE,Cricket,Collection,cricket,Team & Combat,1
+main-menu,,,MERGE,Football,Collection,football,Team & Combat,2
+main-menu,,,MERGE,Basketball,Collection,basketball,Team & Combat,3

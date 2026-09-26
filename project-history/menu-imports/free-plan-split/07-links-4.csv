@@ -1,0 +1,11 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Massage Guns,Collection,massage-guns,Massage,1
+main-menu,,,MERGE,Body Massagers,Collection,body-massagers,Massage,2
+main-menu,,,MERGE,Foot & Leg Massagers,Collection,foot-leg-massagers,Massage,3
+main-menu,,,MERGE,Massage Chairs,Collection,massage-chairs,Massage,4
+main-menu,,,MERGE,Vibration Plates,Collection,vibration-plates,Therapy,1
+main-menu,,,MERGE,Cupping & Hijama,Collection,cupping-hijama,Therapy,2
+main-menu,,,MERGE,Heat Therapy,Collection,heat-therapy,Therapy,3
+main-menu,,,MERGE,Knee Supports,Collection,knee-supports,Supports & Braces,1
+main-menu,,,MERGE,Ankle Supports,Collection,ankle-supports,Supports & Braces,2
+main-menu,,,MERGE,Wrist Supports,Collection,wrist-supports,Supports & Braces,3

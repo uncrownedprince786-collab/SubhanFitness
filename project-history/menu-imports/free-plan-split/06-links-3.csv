@@ -1,0 +1,11 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Steppers & Aerobic,Collection,steppers-aerobic,Other Cardio,3
+main-menu,,,MERGE,Resistance Bands,Collection,resistance-bands,Training,1
+main-menu,,,MERGE,Jump Ropes,Collection,jump-ropes,Training,2
+main-menu,,,MERGE,Hand Grippers,Collection,hand-grippers,Training,3
+main-menu,,,MERGE,Ab & Core,Collection,ab-core,Training,4
+main-menu,,,MERGE,Tummy Trimmers,Collection,tummy-trimmers,Training,5
+main-menu,,,MERGE,Yoga Mats,Collection,yoga-mats,Yoga & Pilates,1
+main-menu,,,MERGE,Yoga Accessories,Collection,yoga-accessories,Yoga & Pilates,2
+main-menu,,,MERGE,Pilates & Push-up Boards,Collection,pilates-boards,Yoga & Pilates,3
+main-menu,,,MERGE,Foam Rollers,Collection,foam-rollers,Yoga & Pilates,4

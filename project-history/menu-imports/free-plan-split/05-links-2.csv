@@ -1,0 +1,11 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Lifting Straps & Grips,Collection,lifting-straps,Lifting Accessories,2
+main-menu,,,MERGE,Ankle & Wrist Weights,Collection,ankle-wrist-weights,Lifting Accessories,3
+main-menu,,,MERGE,Treadmills,Collection,treadmills,Running & Walking,1
+main-menu,,,MERGE,Walking Pads,Collection,walking-pads,Running & Walking,2
+main-menu,,,MERGE,Exercise Bikes,Collection,exercise-bikes,Cycling,1
+main-menu,,,MERGE,Spin Bikes,Collection,spin-bikes,Cycling,2
+main-menu,,,MERGE,Upright Bikes,Collection,upright-bikes,Cycling,3
+main-menu,,,MERGE,Recumbent Bikes,Collection,recumbent-bikes,Cycling,4
+main-menu,,,MERGE,Elliptical Trainers,Collection,elliptical-trainers,Other Cardio,1
+main-menu,,,MERGE,Rowing Machines,Collection,rowing-machines,Other Cardio,2

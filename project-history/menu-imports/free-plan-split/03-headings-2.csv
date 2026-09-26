@@ -1,0 +1,5 @@
+﻿Handle,Title,Command,Menu Item: Command,Menu Item: Title,Menu Item: Resource Type,Menu Item: Resource Handle,Menu Item: Parent Title,Menu Item: Position
+main-menu,Main menu,MERGE,MERGE,Supports & Braces,Collection,knee-supports,Body Support & Braces,1
+main-menu,,,MERGE,Racket & Table,Collection,table-tennis,Sports & Team,1
+main-menu,,,MERGE,Team & Combat,Collection,cricket,Sports & Team,2
+main-menu,,,MERGE,All Bags & Gear,Collection,duffel-bags,Bags & Gear,1
