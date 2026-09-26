@@ -1,0 +1,32 @@
+{%- comment -%} Renders the page body content in a readable column (no H1 — pair with Page hero). {%- endcomment -%}
+<section class="section">
+  <div class="page-width page-width--narrow">
+    <div class="rte page-body">
+      {%- if page.content != blank -%}
+        {{ page.content }}
+      {%- else -%}
+        {{ section.settings.fallback }}
+      {%- endif -%}
+    </div>
+    {%- if section.settings.show_updated -%}
+      <p class="count" style="margin-top:2.4rem;">Last updated: {{ page.published_at | default: 'now' | date: '%d %B %Y' }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% style %}
+  .page-body { font-size: 1.6rem; line-height: 1.75; }
+  .page-body h2 { margin-top: 2.4rem; }
+  .page-body h3 { margin-top: 1.8rem; }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Page content",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_updated", "label": "Show 'last updated' date", "default": true },
+    { "type": "richtext", "id": "fallback", "label": "Fallback text (shown if page body is empty)", "default": "<p>Add your content in the page editor.</p>" }
+  ]
+}
+{% endschema %}

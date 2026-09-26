@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": { "subheading": "Subhan Fitness" }
+    },
+    "body": {
+      "type": "page-body",
+      "settings": { "show_updated": true }
+    }
+  },
+  "order": ["hero", "body"]
+}

@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "subheading": "Our Story",
+        "heading": "About Subhan Fitness",
+        "intro": "Pakistan's home for premium fitness, gym and sports equipment — helping people train smarter and live stronger."
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "image_left",
+        "subheading": "Who We Are",
+        "heading": "Built by people who love training",
+        "text": "<p>Subhan Fitness started with a simple goal: make quality fitness equipment accessible across Pakistan. From home-gym essentials to commercial-grade machines, we hand-pick every product for durability, performance and value.</p><p>Whether you're setting up your first home gym or upgrading a studio, our team is here to help you choose the right gear for your goals and your space.</p>",
+        "button_label": "Shop Best Sellers",
+        "button_link": "shopify://collections/best-sellers"
+      }
+    },
+    "values": {
+      "type": "multicolumn",
+      "settings": { "style": "columns", "columns": 3, "background": "#f3ebe0", "heading": "What We Stand For" },
+      "blocks": {
+        "v1": { "type": "column", "settings": { "icon": "shield", "title": "Quality First", "text": "Durable, tested equipment from trusted brands — built to last." } },
+        "v2": { "type": "column", "settings": { "icon": "truck", "title": "Nationwide Delivery", "text": "Fast, careful delivery across Pakistan with cash on delivery available." } },
+        "v3": { "type": "column", "settings": { "icon": "headset", "title": "Real Support", "text": "Friendly, expert help before and after your purchase." } }
+      },
+      "block_order": ["v1", "v2", "v3"]
+    },
+    "mission": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "Our Mission",
+        "heading": "Train Hard. Live Strong.",
+        "text": "<p>We believe fitness should be within everyone's reach. Our mission is to equip every athlete — beginner to pro — with reliable gear and honest advice, so nothing stands between you and your goals.</p>",
+        "button_label": "Browse Categories",
+        "button_link": "shopify://collections"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": { "heading": "Join the Subhan Fitness community", "text": "Get early access to new arrivals, training tips, and exclusive offers.", "background": "#0c0807" }
+    }
+  },
+  "order": ["hero", "story", "values", "mission", "newsletter"]
+}

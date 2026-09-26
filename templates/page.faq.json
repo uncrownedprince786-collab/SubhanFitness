@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "subheading": "Help Centre",
+        "heading": "Frequently Asked Questions",
+        "intro": "Answers to the questions we hear most about ordering, delivery, payment, returns and warranties at Subhan Fitness."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "subheading": "", "heading": "", "open_first": true, "show_contact_cta": true },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "How long does delivery take?", "answer": "<p>Orders are delivered within 2–5 working days across Pakistan. Orders placed before 2pm are usually dispatched the same day, and you'll receive tracking as soon as your order ships.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "Do you offer cash on delivery (COD)?", "answer": "<p>Yes — cash on delivery is available nationwide. You can also pay securely online by card at checkout.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "What is your return and exchange policy?", "answer": "<p>We offer a 7-day easy exchange on unused items in original packaging. See our Returns &amp; Exchange page for full details.</p>" } },
+        "q4": { "type": "qa", "settings": { "question": "Is there a warranty on gym equipment?", "answer": "<p>Selected machines carry a manufacturer warranty; the period is shown on the product page where applicable.</p>" } },
+        "q5": { "type": "qa", "settings": { "question": "How do I choose the right equipment?", "answer": "<p>Browse by category, or message us on WhatsApp and our team will recommend the best gear for your goals and space.</p>" } },
+        "q6": { "type": "qa", "settings": { "question": "Do you deliver heavy items like treadmills?", "answer": "<p>Yes. Large items are shipped with care via our courier partners; timelines for oversized items may vary by city.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
+    }
+  },
+  "order": ["hero", "faq"]
+}
