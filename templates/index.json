@@ -12,10 +12,26 @@
     "hero": {
       "type": "hero-slideshow",
       "blocks": {
+        "slide3": {
+          "type": "slide",
+          "settings": {
+            "asset_image": "hero-subhan-branding.jpg",
+            "show_overlay": false,
+            "subheading": "",
+            "heading": "SUBHAN <span class=\"accent\">FITNESS</span>",
+            "text": "Your Premium Source for Home & Pro Gym Equipment",
+            "text_align": "left",
+            "button_label": "",
+            "button_link": "",
+            "button_label_2": "",
+            "button_link_2": ""
+          }
+        },
         "slide1": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/e80894a5-dd49-4c10-ba10-6a6a8f922cce.jpg",
+            "asset_image": "",
             "show_overlay": true,
             "subheading": "New Season Gear",
             "heading": "Gear Up For Greatness",
@@ -31,6 +47,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/37e114e4-a52f-4492-a698-d3e1f14ec234.jpg",
+            "asset_image": "",
             "show_overlay": true,
             "subheading": "Home Gym Sale",
             "heading": "Build Your Home Gym",
@@ -38,21 +55,6 @@
             "text_align": "center",
             "button_label": "Shop the Sale",
             "button_link": "shopify://collections/sale",
-            "button_label_2": "",
-            "button_link_2": ""
-          }
-        },
-        "slide3": {
-          "type": "slide",
-          "settings": {
-            "asset_image": "hero-subhan-branding.jpg",
-            "show_overlay": false,
-            "subheading": "",
-            "heading": "SUBHAN <span class=\"accent\">FITNESS</span>",
-            "text": "Your Premium Source for Home & Pro Gym Equipment",
-            "text_align": "left",
-            "button_label": "",
-            "button_link": "",
             "button_label_2": "",
             "button_link_2": ""
           }
@@ -219,7 +221,7 @@
           "settings": {
             "collection": "body-support",
             "icon": "brace",
-            "image": "shopify://shop_images/excercise-fitness-natural-1.jpg",
+            "image": "shopify://shop_images/images_ac2e9155-1cbb-4690-b3db-ef8783366e5a.jpg",
             "custom_title": "Body Support & Braces",
             "show_count": true
           }
@@ -239,7 +241,7 @@
           "settings": {
             "collection": "bags-gear",
             "icon": "gym-bag",
-            "image": "shopify://shop_images/IMG_9740.jpg",
+            "image": "shopify://shop_images/image.avif",
             "custom_title": "Bags & Gear",
             "show_count": true
           }
