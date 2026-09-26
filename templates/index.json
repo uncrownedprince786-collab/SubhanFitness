@@ -11,161 +11,448 @@
   "sections": {
     "hero": {
       "type": "hero-slideshow",
-      "settings": { "height": "wide", "autoplay": true, "speed": 6 },
       "blocks": {
-        "slide1": { "type": "slide", "settings": {
-          "show_overlay": true, "subheading": "New Season Gear",
-          "heading": "Gear Up For Greatness", "text": "Premium fitness & sports equipment, delivered across Pakistan.",
-          "text_align": "left", "button_label": "Shop Best Sellers", "button_link": "shopify://collections/best-sellers",
-          "button_label_2": "Explore Categories", "button_link_2": "shopify://collections" } },
-        "slide2": { "type": "slide", "settings": {
-          "show_overlay": true, "subheading": "Home Gym Sale",
-          "heading": "Build Your Home Gym", "text": "Treadmills, dumbbells, benches & more — up to 40% off.",
-          "text_align": "center", "button_label": "Shop the Sale", "button_link": "shopify://collections/sale" } }
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/e80894a5-dd49-4c10-ba10-6a6a8f922cce.jpg",
+            "show_overlay": true,
+            "subheading": "New Season Gear",
+            "heading": "Gear Up For Greatness",
+            "text": "Premium fitness & sports equipment, delivered across Pakistan.",
+            "text_align": "left",
+            "button_label": "Shop Best Sellers",
+            "button_link": "shopify://collections/best-sellers",
+            "button_label_2": "Explore Categories",
+            "button_link_2": "shopify://collections"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/37e114e4-a52f-4492-a698-d3e1f14ec234.jpg",
+            "show_overlay": true,
+            "subheading": "Home Gym Sale",
+            "heading": "Build Your Home Gym",
+            "text": "Treadmills, dumbbells, benches & more — up to 40% off.",
+            "text_align": "center",
+            "button_label": "Shop the Sale",
+            "button_link": "shopify://collections/sale",
+            "button_label_2": "",
+            "button_link_2": ""
+          }
+        }
       },
-      "block_order": ["slide1", "slide2"]
+      "block_order": [
+        "slide1",
+        "slide2"
+      ],
+      "settings": {
+        "height": "wide",
+        "autoplay": true,
+        "speed": 6
+      }
     },
     "promo_marquee": {
       "type": "promo-marquee",
-      "settings": { "background": "#ff4d04", "text_color": "#ffffff", "speed": 30, "direction": "left" },
       "blocks": {
-        "m1": { "type": "item", "settings": { "text": "Free delivery over Rs.15,000", "icon": "truck" } },
-        "m2": { "type": "item", "settings": { "text": "Cash on delivery nationwide", "icon": "check" } },
-        "m3": { "type": "item", "settings": { "text": "7-day easy exchange", "icon": "refresh" } },
-        "m4": { "type": "item", "settings": { "text": "New arrivals every week", "icon": "tag" } },
-        "m5": { "type": "item", "settings": { "text": "Premium fitness & sports gear", "icon": "dumbbell" } }
+        "m1": {
+          "type": "item",
+          "settings": {
+            "text": "Free delivery over Rs.15,000",
+            "icon": "truck"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "text": "Cash on delivery nationwide",
+            "icon": "check"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "text": "7-day easy exchange",
+            "icon": "refresh"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "text": "New arrivals every week",
+            "icon": "tag"
+          }
+        },
+        "m5": {
+          "type": "item",
+          "settings": {
+            "text": "Premium fitness & sports gear",
+            "icon": "dumbbell"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5"]
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5"
+      ],
+      "settings": {
+        "background": "#ff4d04",
+        "text_color": "#ffffff",
+        "speed": 30,
+        "direction": "left"
+      }
     },
     "trust": {
       "type": "multicolumn",
-      "settings": { "style": "trust", "background": "#f4f5f6" },
       "blocks": {
-        "t1": { "type": "column", "settings": { "icon": "truck", "title": "Nationwide Delivery", "text": "Delivered in 2–5 days" } },
-        "t2": { "type": "column", "settings": { "icon": "refresh", "title": "Easy Exchange", "text": "7-day hassle-free returns" } },
-        "t3": { "type": "column", "settings": { "icon": "shield", "title": "Secure Checkout", "text": "Safe & encrypted payments" } },
-        "t4": { "type": "column", "settings": { "icon": "headset", "title": "Expert Support", "text": "Real people, real help" } }
+        "t1": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "title": "Nationwide Delivery",
+            "text": "Delivered in 2–5 days"
+          }
+        },
+        "t2": {
+          "type": "column",
+          "settings": {
+            "icon": "refresh",
+            "title": "Easy Exchange",
+            "text": "7-day hassle-free returns"
+          }
+        },
+        "t3": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "title": "Secure Checkout",
+            "text": "Safe & encrypted payments"
+          }
+        },
+        "t4": {
+          "type": "column",
+          "settings": {
+            "icon": "headset",
+            "title": "Expert Support",
+            "text": "Real people, real help"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4"]
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "heading": "",
+        "style": "trust",
+        "columns": 3,
+        "background": "#f4f5f6"
+      }
     },
     "categories": {
       "type": "collection-list",
-      "settings": { "subheading": "Find Your Gear", "heading": "Shop By Category", "center_heading": true, "columns": 4, "show_count": true },
       "blocks": {
-        "c1": { "type": "collection_item", "settings": { "collection": "strength-weights", "custom_title": "Strength & Weights", "icon": "dumbbell" } },
-        "c2": { "type": "collection_item", "settings": { "collection": "cardio-machines", "custom_title": "Cardio Machines", "icon": "treadmill" } },
-        "c3": { "type": "collection_item", "settings": { "collection": "fitness-accessories", "custom_title": "Fitness Accessories", "icon": "yoga" } },
-        "c4": { "type": "collection_item", "settings": { "collection": "recovery-wellness", "custom_title": "Recovery & Wellness", "icon": "massage" } },
-        "c5": { "type": "collection_item", "settings": { "collection": "body-support", "custom_title": "Body Support & Braces", "icon": "brace" } },
-        "c6": { "type": "collection_item", "settings": { "collection": "sports-team", "custom_title": "Sports & Team", "icon": "ball" } },
-        "c7": { "type": "collection_item", "settings": { "collection": "bags-gear", "custom_title": "Bags & Gear", "icon": "gym-bag" } },
-        "c8": { "type": "collection_item", "settings": { "collection": "sale", "custom_title": "Sale", "icon": "tag" } }
+        "c1": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "strength-weights",
+            "icon": "dumbbell",
+            "image": "shopify://shop_images/IMG_9752.jpg",
+            "custom_title": "Strength & Weights",
+            "show_count": true
+          }
+        },
+        "c2": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "cardio-machines",
+            "icon": "treadmill",
+            "image": "shopify://shop_images/image_2026-09-26_162041700.png",
+            "custom_title": "Cardio Machines",
+            "show_count": true
+          }
+        },
+        "c3": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "fitness-accessories",
+            "icon": "yoga",
+            "custom_title": "Fitness Accessories",
+            "show_count": true
+          }
+        },
+        "c4": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "recovery-wellness",
+            "icon": "massage",
+            "custom_title": "Recovery & Wellness",
+            "show_count": true
+          }
+        },
+        "c5": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "body-support",
+            "icon": "brace",
+            "custom_title": "Body Support & Braces",
+            "show_count": true
+          }
+        },
+        "c6": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "sports-team",
+            "icon": "ball",
+            "custom_title": "Sports & Team",
+            "show_count": true
+          }
+        },
+        "c7": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bags-gear",
+            "icon": "gym-bag",
+            "custom_title": "Bags & Gear",
+            "show_count": true
+          }
+        },
+        "c8": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "sale",
+            "icon": "tag",
+            "custom_title": "Sale",
+            "show_count": true
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"]
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "settings": {
+        "subheading": "Find Your Gear",
+        "heading": "Shop By Category",
+        "center_heading": true,
+        "columns": 4,
+        "show_count": true
+      }
     },
     "best_sellers": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Most Popular", "heading": "Best Sellers", "collection": "best-sellers",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+        "subheading": "Most Popular",
+        "heading": "Best Sellers",
+        "collection": "best-sellers",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
       }
     },
     "promo_banner": {
       "type": "image-with-text",
       "settings": {
-        "layout": "image_left", "subheading": "Home Gym Essentials",
+        "layout": "image_left",
+        "subheading": "Home Gym Essentials",
         "heading": "Everything you need to train at home",
         "text": "<p>Save on complete home-gym setups — cardio, strength, and recovery in one order. Free delivery over Rs.15,000.</p>",
-        "button_label": "Shop Home Gym", "button_link": "shopify://collections/cardio-machines"
+        "button_label": "Shop Home Gym",
+        "button_link": "shopify://collections/cardio-machines",
+        "background": ""
       }
     },
     "cardio_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Move More", "heading": "Cardio Machines", "collection": "cardio-machines",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+        "subheading": "Move More",
+        "heading": "Cardio Machines",
+        "collection": "cardio-machines",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
       }
     },
     "spotlight": {
       "type": "featured-products",
-      "settings": { "subheading": "Editor's Picks", "heading": "Featured Products", "layout": "carousel" },
       "blocks": {
-        "p1": { "type": "product", "settings": {} },
-        "p2": { "type": "product", "settings": {} },
-        "p3": { "type": "product", "settings": {} },
-        "p4": { "type": "product", "settings": {} }
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {
+        "subheading": "Editor's Picks",
+        "heading": "Featured Products",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "show_view_all": false,
+        "view_all_link": "",
+        "background": ""
+      }
     },
     "strength_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Get Stronger", "heading": "Strength & Weights", "collection": "strength-weights",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true, "background": "#f4f5f6"
+        "subheading": "Get Stronger",
+        "heading": "Strength & Weights",
+        "collection": "strength-weights",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": "#f4f5f6"
       }
     },
     "fitness_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Train Anywhere", "heading": "Fitness Accessories", "collection": "fitness-accessories",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+        "subheading": "Train Anywhere",
+        "heading": "Fitness Accessories",
+        "collection": "fitness-accessories",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
       }
     },
     "recovery_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Recover Faster", "heading": "Recovery & Wellness", "collection": "recovery-wellness",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true, "background": "#f4f5f6"
+        "subheading": "Recover Faster",
+        "heading": "Recovery & Wellness",
+        "collection": "recovery-wellness",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": "#f4f5f6"
       }
     },
     "promo_banner_2": {
       "type": "image-with-text",
       "settings": {
-        "layout": "image_right", "subheading": "Feel-Good Recovery",
+        "layout": "image_right",
+        "subheading": "Feel-Good Recovery",
         "heading": "Massage & recovery, made easy",
         "text": "<p>Massage guns, foam rollers, vibration plates and more — bounce back faster after every session.</p>",
-        "button_label": "Shop Recovery", "button_link": "shopify://collections/recovery-wellness"
+        "button_label": "Shop Recovery",
+        "button_link": "shopify://collections/recovery-wellness",
+        "background": ""
       }
     },
     "sports_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Game On", "heading": "Sports & Team", "collection": "sports-team",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+        "subheading": "Game On",
+        "heading": "Sports & Team",
+        "collection": "sports-team",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
       }
     },
     "bags_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Carry It All", "heading": "Bags & Gear", "collection": "bags-gear",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true, "background": "#f4f5f6"
+        "subheading": "Carry It All",
+        "heading": "Bags & Gear",
+        "collection": "bags-gear",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": "#f4f5f6"
       }
     },
     "body_support_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Stay Protected", "heading": "Body Support & Braces", "collection": "body-support",
-        "layout": "carousel", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+        "subheading": "Stay Protected",
+        "heading": "Body Support & Braces",
+        "collection": "body-support",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
       }
     },
     "sale_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Limited Time", "heading": "On Sale Now", "collection": "sale",
-        "layout": "carousel", "products_to_show": 10, "products_per_row": 4, "show_view_all": true
+        "subheading": "Limited Time",
+        "heading": "On Sale Now",
+        "collection": "sale",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 10,
+        "show_view_all": true,
+        "background": ""
       }
     },
     "brand_story": {
       "type": "rich-text",
       "settings": {
-        "subheading": "Our Promise", "heading": "Train Hard. Live Strong.",
+        "subheading": "Our Promise",
+        "heading": "Train Hard. Live Strong.",
         "text": "<p>Subhan Fitness brings you carefully selected home and commercial gym equipment, strength gear, cardio machines, sports goods, and recovery tools — everything you need under one roof, backed by real support.</p>",
-        "button_label": "About Us", "button_link": "shopify://pages/about-us"
+        "button_label": "About Us",
+        "button_link": "shopify://pages/about-us"
       }
     },
     "newsletter": {
       "type": "newsletter",
-      "settings": { "heading": "Join the Subhan Fitness community", "text": "Get early access to new arrivals, training tips, and exclusive offers.", "background": "#0c0f12" }
+      "settings": {
+        "heading": "Join the Subhan Fitness community",
+        "text": "Get early access to new arrivals, training tips, and exclusive offers.",
+        "background": "#0c0f12"
+      }
     }
   },
   "order": [
