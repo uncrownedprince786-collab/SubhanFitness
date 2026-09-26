@@ -59,7 +59,7 @@
         "m1": {
           "type": "item",
           "settings": {
-            "text": "Free delivery over Rs.15,000",
+            "text": "Free delivery over Rs.2,000",
             "icon": "truck"
           }
         },
