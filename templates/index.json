@@ -338,13 +338,41 @@
           "settings": {
             "product": ""
           }
+        },
+        "p5": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "p6": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "p7": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "p8": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
         }
       },
       "block_order": [
         "p1",
         "p2",
         "p3",
-        "p4"
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
       ],
       "settings": {
         "subheading": "Editor's Picks",

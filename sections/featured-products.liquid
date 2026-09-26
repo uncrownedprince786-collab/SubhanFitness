@@ -39,7 +39,7 @@
       </div>
     {%- else -%}
       {%- comment -%} Placeholder shown until you add product blocks in the theme editor. {%- endcomment -%}
-      {%- if section.settings.layout == 'carousel' %}{% assign demo_count = 4 %}{% else %}{% assign demo_count = section.settings.products_per_row %}{% endif -%}
+      {%- if section.settings.layout == 'carousel' %}{% assign demo_count = 8 %}{% else %}{% assign demo_count = section.settings.products_per_row %}{% endif -%}
       <div class="{% if section.settings.layout == 'carousel' %}scroll-carousel{% else %}product-grid grid--{{ section.settings.products_per_row }}{% endif %}">
         {%- for i in (1..demo_count) -%}
           <div class="card">
