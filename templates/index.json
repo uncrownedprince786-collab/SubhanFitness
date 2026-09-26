@@ -92,7 +92,7 @@
       "type": "featured-collection",
       "settings": {
         "subheading": "Limited Time", "heading": "On Sale Now", "collection": "sale",
-        "layout": "grid", "products_to_show": 8, "products_per_row": 4, "show_view_all": true
+        "layout": "carousel", "products_to_show": 10, "products_per_row": 4, "show_view_all": true
       }
     },
     "brand_story": {

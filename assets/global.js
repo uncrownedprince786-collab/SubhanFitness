@@ -612,4 +612,53 @@
   // Re-run for sections added/edited in the theme editor
   document.addEventListener('shopify:section:load', (e) => setupReveal(e.target));
 
+  /* -------------------------------------------------------------------------
+     Horizontal carousels — inject prev/next arrows for each product row
+     ------------------------------------------------------------------------- */
+  const CHEVRON_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>';
+  const CHEVRON_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>';
+
+  function setupCarousels(scope) {
+    (scope || document).querySelectorAll('.scroll-carousel').forEach((car) => {
+      if (car.dataset.carouselReady) return;
+      car.dataset.carouselReady = '1';
+
+      const wrap = document.createElement('div');
+      wrap.className = 'carousel-wrap';
+      car.parentNode.insertBefore(wrap, car);
+      wrap.appendChild(car);
+
+      const prev = document.createElement('button');
+      prev.type = 'button';
+      prev.className = 'carousel-arrow carousel-arrow--prev';
+      prev.setAttribute('aria-label', 'Scroll left');
+      prev.innerHTML = CHEVRON_L;
+      const next = document.createElement('button');
+      next.type = 'button';
+      next.className = 'carousel-arrow carousel-arrow--next';
+      next.setAttribute('aria-label', 'Scroll right');
+      next.innerHTML = CHEVRON_R;
+      wrap.appendChild(prev);
+      wrap.appendChild(next);
+
+      const amount = () => Math.max(car.clientWidth * 0.85, 240);
+      prev.addEventListener('click', () => car.scrollBy({ left: -amount(), behavior: 'smooth' }));
+      next.addEventListener('click', () => car.scrollBy({ left: amount(), behavior: 'smooth' }));
+
+      const update = () => {
+        const overflow = car.scrollWidth > car.clientWidth + 4;
+        wrap.classList.toggle('has-overflow', overflow);
+        prev.classList.toggle('is-hidden', !overflow || car.scrollLeft <= 4);
+        next.classList.toggle('is-hidden', !overflow || car.scrollLeft + car.clientWidth >= car.scrollWidth - 4);
+      };
+      car.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  }
+
+  if (document.readyState !== 'loading') setupCarousels();
+  else document.addEventListener('DOMContentLoaded', () => setupCarousels());
+  document.addEventListener('shopify:section:load', (e) => setupCarousels(e.target));
+
 })();

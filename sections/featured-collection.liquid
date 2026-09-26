@@ -48,8 +48,9 @@
       {%- assign demo_titles = "Rubber Coated Dumbbells (Pack of 2)|Foldable Walking Pad|11-Piece Resistance Band Set|Handheld Massage Gun|Adjustable Kettlebell 2–16kg|Anti-Slip NBR Yoga Mat" | split: "|" -%}
       {%- assign demo_prices = "349900|8100000|149900|599900|1250000|389900" | split: "|" -%}
       {%- assign demo_compare = "480000|9500000|215000|0|0|535000" | split: "|" -%}
-      <div class="product-grid grid--{{ section.settings.products_per_row }}">
-        {%- for i in (1..section.settings.products_per_row) -%}
+      {%- if section.settings.layout == 'carousel' -%}{%- assign demo_count = section.settings.products_to_show -%}{%- else -%}{%- assign demo_count = section.settings.products_per_row -%}{%- endif -%}
+      <div class="{% if section.settings.layout == 'carousel' %}scroll-carousel{% else %}product-grid grid--{{ section.settings.products_per_row }}{% endif %}">
+        {%- for i in (1..demo_count) -%}
           {%- assign idx = forloop.index0 | modulo: 6 -%}
           {%- assign dprice = demo_prices[idx] | plus: 0 -%}
           {%- assign dcompare = demo_compare[idx] | plus: 0 -%}
