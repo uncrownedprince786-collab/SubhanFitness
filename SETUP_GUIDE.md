@@ -232,7 +232,7 @@ picks (they're already pointed at `best-sellers`, `cardio-machines`, `strength-w
 - **Brand**: upload your logo (falls back to a "SUBHAN**FITNESS**" wordmark), set favicon.
 - **Colors**: accent color drives buttons, badges, links (default energetic red `#f5361f`).
 - **Cart**: choose Drawer / Page / Notification; set the **free-shipping threshold**
-  (default Rs 15,000) and toggle the progress bar.
+  (default Rs 2,000) and toggle the progress bar.
 - **Social media**: add Facebook/Instagram/TikTok/YouTube + WhatsApp number (enables the
   WhatsApp buttons and footer icons).
 - **Product cards**: image ratio, ratings, hover image, quick add, discount badge.

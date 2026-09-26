@@ -43,7 +43,7 @@ nationwide. Orders placed before **2:00 PM** are usually dispatched the same day
 times for oversized items (treadmills, multi-gyms) may vary slightly by city.
 
 **Shipping charges**
-Enjoy **free delivery on orders over Rs. [15,000]**. A flat delivery fee of
+Enjoy **free delivery on orders over Rs. [2,000]**. A flat delivery fee of
 **Rs. [price]** applies to orders below this amount, calculated at checkout.
 
 **Cash on Delivery (COD)**

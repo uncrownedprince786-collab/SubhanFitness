@@ -5,7 +5,7 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "a1": { "type": "announcement", "settings": { "text": "Free delivery on orders over Rs.15,000 — nationwide", "link": "" } },
+        "a1": { "type": "announcement", "settings": { "text": "Free delivery on orders over Rs.2,000 — nationwide", "link": "" } },
         "a2": { "type": "announcement", "settings": { "text": "Cash on delivery available across Pakistan", "link": "" } },
         "a3": { "type": "announcement", "settings": { "text": "New arrivals every week — gear up for your goals", "link": "" } }
       },

@@ -59,7 +59,7 @@
         "m1": {
           "type": "item",
           "settings": {
-            "text": "Free delivery over Rs.15,000",
+            "text": "Free delivery over Rs.2,000",
             "icon": "truck"
           }
         },
@@ -277,7 +277,7 @@
         "layout": "image_left",
         "subheading": "Home Gym Essentials",
         "heading": "Everything you need to train at home",
-        "text": "<p>Save on complete home-gym setups — cardio, strength, and recovery in one order. Free delivery over Rs.2000</p>",
+        "text": "<p>Save on complete home-gym setups — cardio, strength, and recovery in one order. Free delivery over Rs.2,000.</p>",
         "button_label": "Shop Home Gym",
         "button_link": "shopify://collections/cardio-machines",
         "background": ""

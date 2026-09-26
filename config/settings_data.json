@@ -33,7 +33,7 @@
     "cart_type": "drawer",
     "cart_show_note": true,
     "cart_show_free_shipping_bar": true,
-    "cart_free_shipping_threshold": 15000,
+    "cart_free_shipping_threshold": 2000,
     "button_style": "solid",
     "social_facebook": "https://www.facebook.com/subhanfitness",
     "social_instagram": "https://www.instagram.com/subhanfitness",
