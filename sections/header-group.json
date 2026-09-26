@@ -14,19 +14,44 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "a1": { "type": "announcement", "settings": { "text": "Free delivery on orders over Rs.2,000 — nationwide", "link": "" } },
-        "a2": { "type": "announcement", "settings": { "text": "Cash on delivery available across Pakistan", "link": "" } },
-        "a3": { "type": "announcement", "settings": { "text": "New arrivals every week — gear up for your goals", "link": "" } }
+        "a1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free delivery on orders over Rs.2,000 — nationwide",
+            "link": ""
+          }
+        },
+        "a2": {
+          "type": "announcement",
+          "settings": {
+            "text": "Cash on delivery available across Pakistan",
+            "link": ""
+          }
+        },
+        "a3": {
+          "type": "announcement",
+          "settings": {
+            "text": "New arrivals every week — gear up for your goals",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["a1", "a2", "a3"],
+      "block_order": [
+        "a1",
+        "a2",
+        "a3"
+      ],
       "settings": {
-        "show_social": true,
-        "rotate": true
+        "rotate": true,
+        "show_social": true
       }
     },
     "header": {
       "type": "header",
       "settings": {
+        "logo": "shopify://shop_images/715453BF-A302-4C10-9487-CF4A68970CB4.png",
+        "logo_width": 160,
+        "menu_source": "theme",
         "menu": "main-menu",
         "sticky": true,
         "show_search": true,
@@ -34,5 +59,8 @@
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }
