@@ -41,11 +41,26 @@
             "button_label_2": "",
             "button_link_2": ""
           }
+        },
+        "slide3": {
+          "type": "slide",
+          "settings": {
+            "show_overlay": false,
+            "subheading": "",
+            "heading": "",
+            "text": "",
+            "text_align": "left",
+            "button_label": "",
+            "button_link": "",
+            "button_label_2": "",
+            "button_link_2": ""
+          }
         }
       },
       "block_order": [
         "slide1",
-        "slide2"
+        "slide2",
+        "slide3"
       ],
       "settings": {
         "height": "wide",
