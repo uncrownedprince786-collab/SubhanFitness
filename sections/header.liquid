@@ -7,9 +7,13 @@
       </button>
 
       <!-- Logo -->
+      {%- liquid
+        assign logo_image = section.settings.logo | default: settings.logo
+        assign logo_w = section.settings.logo_width | default: settings.logo_width | default: 160
+      -%}
       <a href="{{ routes.root_url }}" class="header__logo">
-        {%- if settings.logo != blank -%}
-          <img src="{{ settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}" width="200" height="60" style="--logo-width: {{ settings.logo_width }}px;">
+        {%- if logo_image != blank -%}
+          <img src="{{ logo_image | image_url: width: 600 }}" alt="{{ shop.name }}" style="--logo-width: {{ logo_w }}px;">
         {%- else -%}
           <span class="header__logo-text">SUBHAN&nbsp;<span>FITNESS</span></span>
         {%- endif -%}
@@ -100,7 +104,8 @@
   "name": "Header",
   "settings": [
     { "type": "header", "content": "Logo" },
-    { "type": "paragraph", "content": "Upload your logo in Theme settings → Brand. If no logo is uploaded, a SUBHAN FITNESS wordmark is shown." },
+    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Upload your Subhan Fitness logo here. If empty, a SUBHAN FITNESS text wordmark is shown. (You can also set a logo globally in Theme settings → Brand.)" },
+    { "type": "range", "id": "logo_width", "min": 80, "max": 320, "step": 10, "unit": "px", "label": "Logo width", "default": 160 },
     { "type": "header", "content": "Navigation" },
     { "type": "select", "id": "menu_source", "label": "Menu source", "default": "theme",
       "options": [
