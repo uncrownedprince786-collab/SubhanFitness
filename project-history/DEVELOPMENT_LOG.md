@@ -294,3 +294,35 @@ Three changes made this session:
    (sports-team), `bags_showcase` (bags-gear, grey), `body_support_showcase` (body-support).
    Homepage now has 18 rows. Empty collections show demo placeholder products until real
    products are tagged. Owner can reorder/hide any of these in Customize with no code.
+5. **Featured Products = real slider.** Bumped the `featured-products` section from 4 to 8
+   product slots + 8 placeholder cards so the row overflows and the prev/next arrows show.
+6. **Free-delivery threshold → Rs.2,000 everywhere** (cart free-shipping setting, announcement
+   bar, promo marquee, promo banner, docs).
+7. **Hero branding slide reworked** (see `hero-slideshow.liquid` + `.slide__scrim` in base.css):
+   all slides share one short 16:6 height (no layout jump); the branding slide shows the gym
+   photo with a left gradient scrim hiding the low-res baked-in text, and renders crisp LIVE
+   text ("SUBHAN <span class=accent>FITNESS</span>" + tagline from the slide Heading/Text
+   fields) so nothing pixelates. Image asset: `assets/hero-subhan-branding.jpg`.
+
+## 14. Premium polish pass — 2026-09-27 (CSS + micro-interactions only)
+
+Pure visual/UX polish in `assets/base.css` (+ the `.product__icon-row` scoped style in
+`sections/main-product.liquid`). **No structural, Liquid-logic, mega-menu, collection, or
+product-system changes; nothing hardcoded; everything still Theme-Editor driven.**
+- Added elevation/motion tokens: `--shadow-sm/md/lg`, `--ease`, `--accent-soft`, `--accent-ring`.
+- **Cards:** bigger hover lift + `--shadow-lg` + 1.08 image zoom, title turns accent on hover,
+  badge shadow + gradient sale badge, clearer price hierarchy, larger stars, and **quick-add
+  reveals on hover (desktop, `hover:hover`)** while staying always-visible on touch.
+- **Buttons:** consistent hover lift + accent-ring shadow; new `.button--ghost-accent`; secondary
+  now white. **View-all** CTAs unified across all product sections (top + bottom).
+- **Section headers:** more spacing, gradient accent bar, tighter letter-spacing.
+- **Mega menu:** softer shadow, roomier padding, underlined column headings, hover-pill links,
+  invisible hover bridge (`::before`) so the panel doesn't drop on cursor travel.
+- **Header nav:** animated accent underline on hover/focus.
+- **Product page:** smoother gallery (image scale + swap fade hook `.is-swapping`), nicer active/
+  hover thumbnails, cleaner variant swatches, stronger Add-to-cart/Buy-now, trust `icon_row`
+  restyled as a divided card.
+- **Category cards, footer links, mobile drawer:** hover states + accent consistency.
+- **Mobile:** larger tap targets (buttons, header icons, drawer rows, quantity). Reduced-motion
+  media query disables the added transforms. Section spacing 56→64px, grid gap 20→22px.
+- Verified with a headless browser render of the real base.css before pushing.
