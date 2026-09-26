@@ -1,7 +1,6 @@
 {%- liquid
   assign product = section.settings.product
 -%}
-{%- if product != blank or request.design_mode -%}
 <section class="section">
   <div class="page-width">
     {%- if product != blank -%}
@@ -32,11 +31,26 @@
         </div>
       </div>
     {%- else -%}
-      <div class="section-title-center"><h2 class="h2">{{ section.settings.heading }}</h2><p class="count">Select a product for this spotlight in the theme editor. This message is only visible in the editor.</p></div>
+      {%- comment -%} Skeleton placeholder shown until a product is selected {%- endcomment -%}
+      {%- if section.settings.subheading != blank -%}<span class="section-eyebrow">{{ section.settings.subheading }}</span>{%- endif -%}
+      <div class="product" aria-hidden="true">
+        <div class="product__media-wrapper">
+          <div class="product__media-main skeleton" style="aspect-ratio:1/1;"></div>
+        </div>
+        <div class="product__info">
+          <span class="skeleton skeleton-line" style="width:60%;height:2.6rem;"></span>
+          <span class="skeleton skeleton-line" style="width:35%;height:2rem;"></span>
+          <span class="skeleton skeleton-line" style="width:90%"></span>
+          <span class="skeleton skeleton-line" style="width:80%"></span>
+          <span class="skeleton skeleton-line" style="width:50%;height:4.4rem;margin-top:1rem;"></span>
+        </div>
+      </div>
+      {%- if request.design_mode -%}
+        <p class="text-center count" style="margin-top:1.4rem;color:#9298a0;">Select a product for this spotlight in the theme editor. This hint is only visible in the editor.</p>
+      {%- endif -%}
     {%- endif -%}
   </div>
 </section>
-{%- endif -%}
 
 {% schema %}
 {

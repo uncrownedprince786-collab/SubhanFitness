@@ -836,6 +836,25 @@ p { margin: 0 0 1em; }
 .spinner { width: 2rem; height: 2rem; border: 3px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* Skeleton placeholders (empty product sections before catalog is added) */
+.card--skeleton { pointer-events: none; }
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-muted-bg);
+  border-radius: calc(var(--radius) / 1.5);
+}
+.skeleton::after {
+  content: "";
+  position: absolute; inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  animation: skeleton-shimmer 1.6s infinite;
+}
+.skeleton-line { display: block; height: 1.4rem; margin-bottom: .8rem; }
+@keyframes skeleton-shimmer { 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .skeleton::after { animation: none; } }
+
 .scroll-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 1fr); gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 1rem; }
 .scroll-carousel > * { scroll-snap-align: start; }
 .scroll-carousel::-webkit-scrollbar { height: 6px; }

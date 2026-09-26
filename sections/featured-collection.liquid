@@ -6,8 +6,7 @@
     assign has_products = true
   endif
 -%}
-{%- comment -%} On the live storefront a section with no products is hidden entirely. In the theme editor (design mode) a preview + hint is shown so the merchant knows to assign a collection. {%- endcomment -%}
-{%- if has_products or request.design_mode -%}
+{%- comment -%} The section always renders. When it has no products yet, a clean skeleton placeholder is shown (no fake prices/text on the live site); the editor additionally shows a hint. {%- endcomment -%}
 <section class="section" style="{% if section.settings.background %}background:{{ section.settings.background }};padding:var(--section-spacing) 0;{% endif %}">
   <div class="page-width">
     <div class="section-header">
@@ -45,23 +44,24 @@
         </div>
       {%- endif -%}
     {%- else -%}
-      {%- comment -%} Editor-only preview {%- endcomment -%}
+      {%- comment -%} Skeleton placeholder shown until products are added {%- endcomment -%}
       <div class="product-grid grid--{{ section.settings.products_per_row }}">
         {%- for i in (1..section.settings.products_per_row) -%}
-          <div class="card">
-            <div class="card__media ratio-square">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div>
+          <div class="card card--skeleton" aria-hidden="true">
+            <div class="card__media ratio-square skeleton"></div>
             <div class="card__content">
-              <h3 class="card__title">Example product</h3>
-              <div class="card__price"><span class="price"><span class="price__regular">{{ 1000 | money }}</span></span></div>
+              <span class="skeleton skeleton-line" style="width:85%"></span>
+              <span class="skeleton skeleton-line" style="width:45%"></span>
             </div>
           </div>
         {%- endfor -%}
       </div>
-      <p class="text-center count" style="margin-top:1.4rem;color:#9298a0;">Assign a collection to this section (and add products to it) to show items here. This message is only visible in the editor.</p>
+      {%- if request.design_mode -%}
+        <p class="text-center count" style="margin-top:1.4rem;color:#9298a0;">Assign a collection to this section (and add products to it) to show items here. This hint is only visible in the editor.</p>
+      {%- endif -%}
     {%- endif -%}
   </div>
 </section>
-{%- endif -%}
 
 {% schema %}
 {
