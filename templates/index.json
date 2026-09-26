@@ -45,7 +45,7 @@
         "slide3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/1433435c-5e17-433d-98f3-cdeccf61eb90.jpg",
+            "asset_image": "hero-subhan-branding.jpg",
             "show_overlay": false,
             "subheading": "",
             "heading": "",
@@ -59,9 +59,9 @@
         }
       },
       "block_order": [
+        "slide3",
         "slide1",
-        "slide2",
-        "slide3"
+        "slide2"
       ],
       "settings": {
         "height": "wide",

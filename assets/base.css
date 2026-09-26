@@ -500,6 +500,9 @@ p { margin: 0 0 1em; }
 .slide__media.ratio-wide { aspect-ratio: 16 / 6; }
 .slide__media.ratio-medium { aspect-ratio: 16 / 8; }
 @media (max-width: 749px) { .slide__media.ratio-wide, .slide__media.ratio-medium { aspect-ratio: 4 / 5; } }
+/* Branding slide: show the full image uncropped at its own ratio on every screen */
+.slide__media.slide__media--full { aspect-ratio: 2000 / 1117; }
+@media (max-width: 749px) { .slide__media.slide__media--full { aspect-ratio: 2000 / 1117; } }
 .slide__content {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; justify-content: center;
