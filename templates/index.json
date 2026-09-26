@@ -45,6 +45,7 @@
         "slide3": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/338ec1e5-2957-4aa3-a7f0-aab9d27f4fc1.jpg",
             "show_overlay": false,
             "subheading": "",
             "heading": "",
