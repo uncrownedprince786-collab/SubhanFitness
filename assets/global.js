@@ -567,4 +567,49 @@
     note._t = setTimeout(() => note.classList.remove('active'), 5000);
   });
 
+  /* -------------------------------------------------------------------------
+     Scroll-reveal animations (progressive enhancement — safe if unsupported)
+     ------------------------------------------------------------------------- */
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function revealObserver() {
+    return new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }
+
+  function setupReveal(root) {
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+    const io = revealObserver();
+    const scope = root || document;
+
+    // Staggered children inside grids/rows
+    scope.querySelectorAll('.product-grid, .collection-list, .trust-bar, .multicolumn').forEach((group) => {
+      Array.from(group.children).forEach((child, i) => {
+        if (child.classList.contains('reveal')) return;
+        child.classList.add('reveal');
+        child.style.transitionDelay = Math.min(i * 55, 330) + 'ms';
+        io.observe(child);
+      });
+    });
+
+    // Standalone blocks
+    scope.querySelectorAll('.section-header, .section-title-center, .image-with-text__content, .image-with-text__media, .rich-text .rte, .newsletter__inner, .slideshow .slide__content, .featured-collection__viewall').forEach((el) => {
+      if (el.classList.contains('reveal')) return;
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  }
+
+  if (document.readyState !== 'loading') setupReveal();
+  else document.addEventListener('DOMContentLoaded', () => setupReveal());
+
+  // Re-run for sections added/edited in the theme editor
+  document.addEventListener('shopify:section:load', (e) => setupReveal(e.target));
+
 })();
