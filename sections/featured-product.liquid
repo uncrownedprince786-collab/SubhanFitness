@@ -31,23 +31,27 @@
         </div>
       </div>
     {%- else -%}
-      {%- comment -%} Skeleton placeholder shown until a product is selected {%- endcomment -%}
-      {%- if section.settings.subheading != blank -%}<span class="section-eyebrow">{{ section.settings.subheading }}</span>{%- endif -%}
-      <div class="product" aria-hidden="true">
+      {%- comment -%} Demo spotlight shown until you select a real product. {%- endcomment -%}
+      <div class="product">
         <div class="product__media-wrapper">
-          <div class="product__media-main skeleton" style="aspect-ratio:1/1;"></div>
+          <div class="product__media-gallery">
+            <div class="product__media-main">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div>
+          </div>
         </div>
         <div class="product__info">
-          <span class="skeleton skeleton-line" style="width:60%;height:2.6rem;"></span>
-          <span class="skeleton skeleton-line" style="width:35%;height:2rem;"></span>
-          <span class="skeleton skeleton-line" style="width:90%"></span>
-          <span class="skeleton skeleton-line" style="width:80%"></span>
-          <span class="skeleton skeleton-line" style="width:50%;height:4.4rem;margin-top:1rem;"></span>
+          {%- if section.settings.subheading != blank -%}<span class="product__vendor">{{ section.settings.subheading }}</span>{%- endif -%}
+          <h2 class="product__title">Featured Product Name</h2>
+          <div class="product__price"><span class="price price--on-sale"><span class="price__sale">{{ 1450000 | money }}</span> <s class="price__compare">{{ 1950000 | money }}</s></span></div>
+          <span class="product__availability in-stock"><span class="dot"></span><span>{{ 'products.product.in_stock' | t }}</span></span>
+          {%- if section.settings.show_description -%}<div class="rte"><p>This is a preview of the product spotlight. Assign a real product in the theme editor and its images, price, variants and Add to cart will appear here automatically.</p></div>{%- endif -%}
+          <div class="product__purchase">
+            <div class="purchase-row">
+              <div class="quantity-input"><button type="button">−</button><input type="number" value="1" min="1" aria-label="Quantity"><button type="button">+</button></div>
+              <a href="{{ routes.all_products_collection_url }}" class="button button--full"><span>{{ 'products.product.add_to_cart' | t }}</span></a>
+            </div>
+          </div>
         </div>
       </div>
-      {%- if request.design_mode -%}
-        <p class="text-center count" style="margin-top:1.4rem;color:#9298a0;">Select a product for this spotlight in the theme editor. This hint is only visible in the editor.</p>
-      {%- endif -%}
     {%- endif -%}
   </div>
 </section>
