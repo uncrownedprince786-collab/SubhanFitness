@@ -661,4 +661,23 @@
   else document.addEventListener('DOMContentLoaded', () => setupCarousels());
   document.addEventListener('shopify:section:load', (e) => setupCarousels(e.target));
 
+  /* -------------------------------------------------------------------------
+     Keep mega menus inside the viewport (flip right-edge tabs leftwards)
+     ------------------------------------------------------------------------- */
+  function setupMegaMenuEdges(scope) {
+    (scope || document).querySelectorAll('.header-nav__item').forEach((item) => {
+      const mega = item.querySelector('.mega-menu');
+      if (!mega || item.dataset.megaEdgeReady) return;
+      item.dataset.megaEdgeReady = '1';
+      item.addEventListener('mouseenter', () => {
+        item.classList.remove('mega-align-right');
+        const rect = mega.getBoundingClientRect();
+        if (rect.right > window.innerWidth - 12) item.classList.add('mega-align-right');
+      });
+    });
+  }
+  if (document.readyState !== 'loading') setupMegaMenuEdges();
+  else document.addEventListener('DOMContentLoaded', () => setupMegaMenuEdges());
+  document.addEventListener('shopify:section:load', (e) => setupMegaMenuEdges(e.target));
+
 })();
