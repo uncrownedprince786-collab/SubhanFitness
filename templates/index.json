@@ -298,8 +298,8 @@
         "c8"
       ],
       "settings": {
-        "subheading": "Find Your Gear",
-        "heading": "Shop By Category",
+        "subheading": "",
+        "heading": "Collection list",
         "show_all": true,
         "center_heading": false,
         "columns": 4,
