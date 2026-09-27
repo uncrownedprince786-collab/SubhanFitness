@@ -78,7 +78,7 @@
         "products_per_row": 4,
         "products_to_show": 8,
         "show_view_all": true,
-        "background": "#f4f5f6"
+        "background": ""
       }
     },
     "fitness_showcase": {
@@ -91,7 +91,7 @@
         "products_per_row": 4,
         "products_to_show": 8,
         "show_view_all": true,
-        "background": "#f4f5f6"
+        "background": ""
       }
     },
     "bags_showcase": {
@@ -202,7 +202,7 @@
         "products_per_row": 4,
         "products_to_show": 8,
         "show_view_all": true,
-        "background": "#f4f5f6"
+        "background": ""
       }
     },
     "categories": {

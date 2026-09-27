@@ -35,14 +35,6 @@
           {%- endfor -%}
         </div>
       {%- endif -%}
-
-      {%- if section.settings.show_view_all and coll != blank -%}
-        <div class="featured-collection__viewall text-center">
-          <a href="{{ coll.url }}" class="button button--secondary">
-            {{ 'sections.featured_collection.view_all' | t }}{% if coll.title != blank %} — {{ coll.title }}{% endif %} {% render 'icon', icon: 'arrow-right' %}
-          </a>
-        </div>
-      {%- endif -%}
     {%- else -%}
       {%- comment -%} Demo placeholder products shown until you assign a collection with real products. They are replaced automatically once the collection has products. {%- endcomment -%}
       {%- assign demo_titles = "Rubber Coated Dumbbells (Pack of 2)|Foldable Walking Pad|11-Piece Resistance Band Set|Handheld Massage Gun|Adjustable Kettlebell 2–16kg|Anti-Slip NBR Yoga Mat" | split: "|" -%}

@@ -495,3 +495,21 @@ Follow-up after comparing live against tango:
    gap = 30px desktop / 29px mobile, chevrons visible, no horizontal scroll.
 
 **Deploy:** push to `main` from `C:\sfrepo`.
+
+## 22. Product-section density pass (tighter, like Tango) — 2026-09-28
+
+Owner: homepage product sections looked much taller/sparser than tango. Scope chosen by owner:
+**tighter spacing only** (keep the card style, per-row count, and section headings as-is).
+- **Removed the bottom "VIEW ALL — <collection>" button** from `featured-collection.liquid`
+  (the `.featured-collection__viewall` block). Tango has only the top-right View all; the bottom
+  button added ~78px of empty space per section. Top-right View all kept.
+- **Tightened global rhythm:** `--section-spacing` 42px → **32px**, and `.section-header`
+  margin-bottom 2.8rem → **2rem**.
+- **Removed the light-grey section backgrounds** (`#f4f5f6`) from the three showcase rows in
+  `templates/index.json` (exercise cycles, fitness accessories, benches & rods). They created a
+  band whose inner padding stacked on the section margin (~64px gaps) and weren't tango-like;
+  tango uses one uniform background. Now every section shares the cream page background and the
+  gaps are uniform. The dark newsletter band (`#0c0f12`) was kept.
+- Verified in the render harness: hero→section 30px, section→section 32px, no horizontal scroll.
+
+**Deploy:** push to `main` from `C:\sfrepo`.

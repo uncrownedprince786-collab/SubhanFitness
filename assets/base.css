@@ -32,7 +32,7 @@
   --heading-transform: uppercase;
 
   --page-width: 1400px;
-  --section-spacing: 42px;
+  --section-spacing: 32px;
   --grid-gap: 22px;
   --radius: 12px;
 
@@ -127,7 +127,7 @@ p { margin: 0 0 1em; }
   align-items: flex-end;
   justify-content: space-between;
   gap: 1.6rem;
-  margin-bottom: 2.8rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 .section-header__title { margin: 0; }
