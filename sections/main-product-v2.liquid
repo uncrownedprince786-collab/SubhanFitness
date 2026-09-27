@@ -1,13 +1,11 @@
-<section class="section"><!-- MPV2-G -->
+<section class="section">
   <div class="page-width">
     {% render 'breadcrumbs' %}
     <div class="product" id="ProductSection-{{ section.id }}">
-      <!-- Media -->
       <div class="product__media-wrapper">
         {% render 'product-media-gallery', product: product %}
       </div>
 
-      <!-- Info -->
       <div class="product__info" id="ProductInfo">
         <variant-selects data-section="ProductInfo" data-form-id="product-form-{{ section.id }}">
           <script type="application/json" data-variant-json>
@@ -67,34 +65,14 @@
 
               {%- when 'icon_row' -%}
                 <div class="product__icon-row" {{ block.shopify_attributes }}>
-                  {%- if block.settings.show_delivery -%}
-                    <div class="product__icon-item">{% render 'icon', icon: 'truck' %} <span>{{ block.settings.delivery_text }}</span></div>
-                  {%- endif -%}
-                  {%- if block.settings.show_returns -%}
-                    <div class="product__icon-item">{% render 'icon', icon: 'refresh' %} <span>{{ block.settings.returns_text }}</span></div>
-                  {%- endif -%}
-                  {%- if block.settings.show_secure -%}
-                    <div class="product__icon-item">{% render 'icon', icon: 'shield' %} <span>{{ block.settings.secure_text }}</span></div>
-                  {%- endif -%}
+                  <div class="product__icon-item">{% render 'icon', icon: 'truck' %} <span>Delivery in 2-5 days</span></div>
+                  <div class="product__icon-item">{% render 'icon', icon: 'refresh' %} <span>7-day exchange</span></div>
+                  <div class="product__icon-item">{% render 'icon', icon: 'shield' %} <span>Secure checkout</span></div>
                 </div>
 
               {%- when 'description' -%}
                 <div class="product__description rte" {{ block.shopify_attributes }}>
                   {{ product.description }}
-                </div>
-
-              {%- when 'collapsible_tab' -%}
-                <div class="accordion" {{ block.shopify_attributes }}>
-                  <details class="accordion__item" {% if block.settings.collapse_open %}open{% endif %}>
-                    <summary class="accordion__summary">{{ block.settings.heading }} {% render 'icon', icon: 'plus' %}</summary>
-                    <div class="accordion__content rte">
-                      {%- if block.settings.metafield != blank and product.metafields.custom[block.settings.metafield] != blank -%}
-                        {{ product.metafields.custom[block.settings.metafield].value }}
-                      {%- else -%}
-                        {{ block.settings.content }}
-                      {%- endif -%}
-                    </div>
-                  </details>
                 </div>
 
               {%- when 'specifications' -%}
@@ -129,6 +107,28 @@
                 <div class="product__app-block" {{ block.shopify_attributes }}>{% render block %}</div>
             {%- endcase -%}
           {%- endfor -%}
+
+          {%- comment -%} Shipping & Returns as static accordions (no collapsible_tab block; that block's schema was rejected by Shopify in this section). {%- endcomment -%}
+          <div class="accordion">
+            <details class="accordion__item">
+              <summary class="accordion__summary">Shipping &amp; Delivery {% render 'icon', icon: 'plus' %}</summary>
+              <div class="accordion__content rte">
+                {%- if product.metafields.custom.shipping_info != blank -%}
+                  {{ product.metafields.custom.shipping_info.value }}
+                {%- else -%}
+                  <p>Nationwide delivery in 2-5 working days. Cash on delivery available across Pakistan. Orders placed before 2pm are dispatched same day.</p>
+                {%- endif -%}
+              </div>
+            </details>
+          </div>
+          <div class="accordion">
+            <details class="accordion__item">
+              <summary class="accordion__summary">Returns &amp; Warranty {% render 'icon', icon: 'plus' %}</summary>
+              <div class="accordion__content rte">
+                <p>7-day easy exchange on unused items in original packaging. Manufacturer warranty applies to equipment where stated.</p>
+              </div>
+            </details>
+          </div>
         </variant-selects>
       </div>
     </div>
@@ -167,29 +167,10 @@
         { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout (Buy it now)", "default": true }
       ]
     },
-    {
-      "type": "icon_row", "name": "Delivery & trust icons",
-      "settings": [
-        { "type": "checkbox", "id": "show_delivery", "label": "Show delivery", "default": true },
-        { "type": "text", "id": "delivery_text", "label": "Delivery text", "default": "Delivery in 2-5 days" },
-        { "type": "checkbox", "id": "show_returns", "label": "Show returns", "default": true },
-        { "type": "text", "id": "returns_text", "label": "Returns text", "default": "7-day exchange" },
-        { "type": "checkbox", "id": "show_secure", "label": "Show secure", "default": true },
-        { "type": "text", "id": "secure_text", "label": "Secure text", "default": "Secure checkout" }
-      ]
-    },
+    { "type": "icon_row", "name": "Delivery & trust icons", "limit": 1 },
     { "type": "description", "name": "Description", "limit": 1 },
     { "type": "specifications", "name": "Specifications (metafield)", "limit": 1,
       "settings": [ { "type": "checkbox", "id": "open_default", "label": "Open by default", "default": false } ] },
-    {
-      "type": "collapsible_tab", "name": "Collapsible row",
-      "settings": [
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Shipping & Delivery" },
-        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Nationwide delivery in 2-5 working days. Cash on delivery available.</p>" },
-        { "type": "text", "id": "metafield", "label": "Metafield key (custom namespace, optional)", "info": "e.g. shipping_info - overrides content if set on the product." },
-        { "type": "checkbox", "id": "collapse_open", "label": "Open by default", "default": false }
-      ]
-    },
     { "type": "share", "name": "Share", "limit": 1,
       "settings": [ { "type": "text", "id": "share_label", "label": "Label", "default": "Share this product" } ] },
     { "type": "@app" }
