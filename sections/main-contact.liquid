@@ -4,6 +4,21 @@
     <h1 class="h1">{{ page.title | default: 'Contact us' }}</h1>
     {%- if page.content != blank -%}<div class="rte">{{ page.content }}</div>{%- endif -%}
 
+    <ul class="contact-info">
+      <li>
+        <span class="contact-info__icon">{% render 'icon', icon: 'headset' %}</span>
+        <div><span class="contact-info__label">Call / WhatsApp</span><a href="tel:+923008151524">0300 8151524</a></div>
+      </li>
+      <li>
+        <span class="contact-info__icon">{% render 'icon', icon: 'account' %}</span>
+        <div><span class="contact-info__label">Email</span><a href="mailto:subhanfitness567@gmail.com">subhanfitness567@gmail.com</a></div>
+      </li>
+      <li>
+        <span class="contact-info__icon">{% render 'icon', icon: 'shield' %}</span>
+        <div><span class="contact-info__label">Visit us</span><span>Asad Center, Munir Chowk, Gujranwala</span></div>
+      </li>
+    </ul>
+
     {%- form 'contact', class: 'contact-form' -%}
       {%- if form.posted_successfully? -%}
         <p class="newsletter__success" style="color:#2b8a45;">{% render 'icon', icon: 'check' %} Thanks! We'll get back to you shortly.</p>
@@ -31,6 +46,13 @@
   .contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-accent); outline: none; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
   @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1.4rem; }
+  .contact-info li { display: flex; align-items: center; gap: 1.4rem; }
+  .contact-info__icon { display: inline-flex; align-items: center; justify-content: center; width: 4.4rem; height: 4.4rem; flex-shrink: 0; border-radius: 50%; background: color-mix(in srgb, var(--color-accent) 12%, #fff); color: var(--color-accent); }
+  .contact-info__icon svg { width: 2.2rem; height: 2.2rem; }
+  .contact-info__label { display: block; font-size: 1.2rem; text-transform: uppercase; letter-spacing: .06em; color: #8a8078; font-weight: 700; }
+  .contact-info a { color: var(--color-heading); font-weight: 600; }
+  .contact-info a:hover { color: var(--color-accent); }
 {% endstyle %}
 
 {% schema %}

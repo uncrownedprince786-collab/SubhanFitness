@@ -551,3 +551,22 @@ CSS-only spacing edits missed:
   desktop 4 / tablet 3 / mobile 2 whole cards, hero 16:9 at all sizes, no horizontal scroll.
 
 **Deploy:** push to `main` from `C:\sfrepo`.
+
+## 25. About-us icons, mobile hero buttons, real contact info, remove pages — 2026-09-28
+
+- **About "What We Stand For" giant icons fixed** (not removed). Root cause: `.multicolumn__item .icon`
+  had no size cap on the inner `<svg>`, so icons rendered ~full-column width. Restyled to a compact
+  circular badge (7rem circle, 3.4rem icon, soft-accent bg) in `base.css`. (Say the word if you'd
+  rather delete the whole section instead.)
+- **Mobile hero buttons** no longer overlap the "1 / 2" pager: on ≤749px the hero shows a single
+  CTA (secondary button hidden), text is centred with bottom padding reserved for the pager.
+- **Real contact details.** WhatsApp number was a placeholder (`923001234567`) → set to the real
+  `923008151524` in `settings_data.json` (used by the floating WhatsApp button and the contact-page
+  link). Added a contact-info block to `main-contact.liquid` showing the real phone (0300 8151524,
+  tel: link), email (subhanfitness567@gmail.com, mailto:) and address (Asad Center, Munir Chowk,
+  Gujranwala) — matching the footer.
+- **Removed Shipping / Returns / FAQs from the footer** (`footer-default-links.liquid` help column).
+  The page TEMPLATES were left in place so existing pages don't break; to fully remove the pages the
+  owner must delete them in Online Store → Pages (and remove any menu items in Navigation).
+
+**Deploy:** push to `main` from `C:\sfrepo`.

@@ -686,12 +686,16 @@ p { margin: 0 0 1em; }
 /* Boxed hero on phones: 16:9 is short, so tighten the overlaid text to fit cleanly */
 @media (max-width: 749px) {
   .hero-boxed { margin-top: 1.2rem; }
-  .slideshow--boxed .slide__content { gap: .8rem; padding: 0 2rem; }
+  /* Centre the text in the upper area and reserve room at the bottom for the pager
+     so the button never overlaps the "1 / 2" control. */
+  .slideshow--boxed .slide__content { gap: .7rem; padding: 0 2rem 5rem; justify-content: center; }
   .slideshow--boxed .slide__subheading { font-size: 1.1rem; letter-spacing: .14em; }
-  .slideshow--boxed .slide__heading { font-size: clamp(2rem, 7vw, 3rem); text-shadow: 0 2px 14px rgba(0,0,0,.45); }
+  .slideshow--boxed .slide__heading { font-size: clamp(1.9rem, 6.5vw, 2.8rem); text-shadow: 0 2px 14px rgba(0,0,0,.45); }
   .slideshow--boxed .slide__text { display: none; }
-  .slideshow--boxed .slide__buttons { gap: .8rem; }
-  .slideshow--boxed .slide__buttons .button { padding: .9rem 1.6rem; font-size: 1.3rem; }
+  .slideshow--boxed .slide__buttons { gap: .8rem; margin-top: .2rem; }
+  .slideshow--boxed .slide__buttons .button { padding: .8rem 1.5rem; font-size: 1.25rem; }
+  /* One clear CTA on the small hero (like tango) — hide the secondary button */
+  .slideshow--boxed .slide__buttons .button:nth-child(2) { display: none; }
   .slideshow--boxed .slideshow__controls { bottom: 1rem; }
 }
 
@@ -736,9 +740,15 @@ p { margin: 0 0 1em; }
 .trust-item__text { font-size: 1.25rem; color: #8a8078; margin: 0; }
 
 .multicolumn { display: grid; gap: var(--grid-gap); text-align: center; }
-.multicolumn__item .icon,
+/* Icon as a compact circular badge (the SVG had no size cap and was blowing up full-width) */
+.multicolumn__item .icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 7rem; height: 7rem; border-radius: 50%; margin: 0 auto 1.4rem;
+  background: color-mix(in srgb, var(--color-accent) 12%, #fff);
+  color: var(--color-accent);
+}
+.multicolumn__item .icon svg { width: 3.4rem; height: 3.4rem; }
 .multicolumn__item img { width: 6rem; height: 6rem; margin: 0 auto 1.2rem; object-fit: contain; }
-.multicolumn__item .icon { color: var(--color-accent); }
 
 /* ==========================================================================
    Product page

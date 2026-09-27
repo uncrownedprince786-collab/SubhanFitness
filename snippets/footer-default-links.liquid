@@ -16,9 +16,6 @@
     <li><a href="/collections">All Categories</a></li>
   {%- when 'help' -%}
     <li><a href="{{ pages.contact.url | default: '/pages/contact' }}">Contact Us</a></li>
-    <li><a href="{{ shop.shipping_policy.url | default: '/pages/shipping' }}">Shipping Policy</a></li>
-    <li><a href="{{ shop.refund_policy.url | default: '/pages/returns' }}">Returns &amp; Exchange</a></li>
-    <li><a href="{{ pages.faqs.url | default: '/pages/faqs' }}">FAQs</a></li>
     {%- if shop.customer_accounts_enabled -%}<li><a href="{{ routes.account_url }}">Track Order</a></li>{%- endif -%}
   {%- when 'company' -%}
     <li><a href="{{ pages['about-us'].url | default: '/pages/about-us' }}">About Us</a></li>
