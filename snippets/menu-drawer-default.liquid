@@ -1,4 +1,4 @@
-{%- comment -%} Mobile navigation drawer with the built-in default hierarchy. {%- endcomment -%}
+{%- comment -%} Mobile navigation drawer — Subhan Fitness top categories. {%- endcomment -%}
 {%- assign c = '/collections/' -%}
 <div id="MenuDrawer" class="drawer menu-drawer" data-overlay="#MenuOverlay" aria-hidden="true" role="dialog" aria-label="Menu">
   <div class="drawer__header">
@@ -8,7 +8,7 @@
   <div class="drawer__body">
     <nav class="menu-drawer__nav">
       <ul class="menu-drawer__list">
-        <li><details><summary>Strength &amp; Weights {% render 'icon', icon: 'caret' %}</summary>
+        <li><details><summary>Dumbbells &amp; Weights {% render 'icon', icon: 'caret' %}</summary>
           <div class="menu-drawer__sublist">
             <a href="{{ c }}dumbbells" class="menu-drawer__sublink">Dumbbells</a>
             <a href="{{ c }}adjustable-dumbbells" class="menu-drawer__sublink">Adjustable Dumbbells</a>
@@ -16,21 +16,47 @@
             <a href="{{ c }}barbells-plates" class="menu-drawer__sublink">Barbells &amp; Plates</a>
             <a href="{{ c }}weight-benches" class="menu-drawer__sublink">Weight Benches</a>
             <a href="{{ c }}power-racks" class="menu-drawer__sublink">Power Racks</a>
-            <a href="{{ c }}multi-gym-stations" class="menu-drawer__sublink">Multi-Gym Stations</a>
             <a href="{{ c }}weightlifting-belts" class="menu-drawer__sublink">Lifting Accessories</a>
             <a href="{{ c }}strength-weights" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
           </div>
         </details></li>
-        <li><details><summary>Cardio Machines {% render 'icon', icon: 'caret' %}</summary>
+        <li><details><summary>Treadmills {% render 'icon', icon: 'caret' %}</summary>
           <div class="menu-drawer__sublist">
             <a href="{{ c }}treadmills" class="menu-drawer__sublink">Treadmills</a>
             <a href="{{ c }}walking-pads" class="menu-drawer__sublink">Walking Pads</a>
-            <a href="{{ c }}exercise-bikes" class="menu-drawer__sublink">Exercise Bikes</a>
-            <a href="{{ c }}spin-bikes" class="menu-drawer__sublink">Spin Bikes</a>
             <a href="{{ c }}elliptical-trainers" class="menu-drawer__sublink">Elliptical Trainers</a>
             <a href="{{ c }}rowing-machines" class="menu-drawer__sublink">Rowing Machines</a>
             <a href="{{ c }}steppers-aerobic" class="menu-drawer__sublink">Steppers &amp; Aerobic</a>
-            <a href="{{ c }}cardio-machines" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
+            <a href="{{ c }}treadmills" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
+          </div>
+        </details></li>
+        <li><details><summary>Exercise Cycles {% render 'icon', icon: 'caret' %}</summary>
+          <div class="menu-drawer__sublist">
+            <a href="{{ c }}exercise-bikes" class="menu-drawer__sublink">Exercise Bikes</a>
+            <a href="{{ c }}spin-bikes" class="menu-drawer__sublink">Spin Bikes</a>
+            <a href="{{ c }}upright-bikes" class="menu-drawer__sublink">Upright Bikes</a>
+            <a href="{{ c }}recumbent-bikes" class="menu-drawer__sublink">Recumbent Bikes</a>
+            <a href="{{ c }}exercise-bikes" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
+          </div>
+        </details></li>
+        <li><details><summary>Body Massagers {% render 'icon', icon: 'caret' %}</summary>
+          <div class="menu-drawer__sublist">
+            <a href="{{ c }}massage-guns" class="menu-drawer__sublink">Massage Guns</a>
+            <a href="{{ c }}body-massagers" class="menu-drawer__sublink">Body Massagers</a>
+            <a href="{{ c }}foot-leg-massagers" class="menu-drawer__sublink">Foot &amp; Leg Massagers</a>
+            <a href="{{ c }}massage-chairs" class="menu-drawer__sublink">Massage Chairs</a>
+            <a href="{{ c }}vibration-plates" class="menu-drawer__sublink">Vibration Plates</a>
+            <a href="{{ c }}body-massagers" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
+          </div>
+        </details></li>
+        <li><a href="{{ c }}trampolines" class="menu-drawer__link">Trampolines</a></li>
+        <li><details><summary>Yoga &amp; Pilates {% render 'icon', icon: 'caret' %}</summary>
+          <div class="menu-drawer__sublist">
+            <a href="{{ c }}yoga-mats" class="menu-drawer__sublink">Yoga Mats</a>
+            <a href="{{ c }}yoga-accessories" class="menu-drawer__sublink">Yoga Accessories</a>
+            <a href="{{ c }}pilates-boards" class="menu-drawer__sublink">Pilates &amp; Push-up Boards</a>
+            <a href="{{ c }}foam-rollers" class="menu-drawer__sublink">Foam Rollers</a>
+            <a href="{{ c }}yoga-pilates" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
           </div>
         </details></li>
         <li><details><summary>Fitness Accessories {% render 'icon', icon: 'caret' %}</summary>
@@ -39,52 +65,8 @@
             <a href="{{ c }}jump-ropes" class="menu-drawer__sublink">Jump Ropes</a>
             <a href="{{ c }}hand-grippers" class="menu-drawer__sublink">Hand Grippers</a>
             <a href="{{ c }}ab-core" class="menu-drawer__sublink">Ab &amp; Core Trainers</a>
-            <a href="{{ c }}yoga-mats" class="menu-drawer__sublink">Yoga Mats</a>
-            <a href="{{ c }}yoga-accessories" class="menu-drawer__sublink">Yoga Accessories</a>
-            <a href="{{ c }}pilates-boards" class="menu-drawer__sublink">Pilates &amp; Push-up Boards</a>
+            <a href="{{ c }}tummy-trimmers" class="menu-drawer__sublink">Tummy Trimmers</a>
             <a href="{{ c }}fitness-accessories" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
-          </div>
-        </details></li>
-        <li><details><summary>Recovery &amp; Wellness {% render 'icon', icon: 'caret' %}</summary>
-          <div class="menu-drawer__sublist">
-            <a href="{{ c }}massage-guns" class="menu-drawer__sublink">Massage Guns</a>
-            <a href="{{ c }}body-massagers" class="menu-drawer__sublink">Body Massagers</a>
-            <a href="{{ c }}foot-leg-massagers" class="menu-drawer__sublink">Foot &amp; Leg Massagers</a>
-            <a href="{{ c }}vibration-plates" class="menu-drawer__sublink">Vibration Plates</a>
-            <a href="{{ c }}cupping-hijama" class="menu-drawer__sublink">Cupping &amp; Hijama</a>
-            <a href="{{ c }}recovery-wellness" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
-          </div>
-        </details></li>
-        <li><details><summary>Body Support {% render 'icon', icon: 'caret' %}</summary>
-          <div class="menu-drawer__sublist">
-            <a href="{{ c }}knee-supports" class="menu-drawer__sublink">Knee Supports</a>
-            <a href="{{ c }}ankle-supports" class="menu-drawer__sublink">Ankle Supports</a>
-            <a href="{{ c }}elbow-supports" class="menu-drawer__sublink">Elbow Supports</a>
-            <a href="{{ c }}wrist-supports" class="menu-drawer__sublink">Wrist &amp; Palm Supports</a>
-            <a href="{{ c }}back-supports" class="menu-drawer__sublink">Back Supports</a>
-            <a href="{{ c }}kinesiology-tape" class="menu-drawer__sublink">Kinesiology Tape</a>
-            <a href="{{ c }}body-support" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
-          </div>
-        </details></li>
-        <li><details><summary>Sports &amp; Team {% render 'icon', icon: 'caret' %}</summary>
-          <div class="menu-drawer__sublist">
-            <a href="{{ c }}cricket" class="menu-drawer__sublink">Cricket</a>
-            <a href="{{ c }}football" class="menu-drawer__sublink">Football</a>
-            <a href="{{ c }}basketball" class="menu-drawer__sublink">Basketball</a>
-            <a href="{{ c }}boxing-mma" class="menu-drawer__sublink">Boxing &amp; MMA</a>
-            <a href="{{ c }}table-tennis" class="menu-drawer__sublink">Table Tennis</a>
-            <a href="{{ c }}snooker-billiards" class="menu-drawer__sublink">Snooker &amp; Billiards</a>
-            <a href="{{ c }}sports-team" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
-          </div>
-        </details></li>
-        <li><details><summary>Bags &amp; Gear {% render 'icon', icon: 'caret' %}</summary>
-          <div class="menu-drawer__sublist">
-            <a href="{{ c }}duffel-bags" class="menu-drawer__sublink">Duffel Bags</a>
-            <a href="{{ c }}backpacks" class="menu-drawer__sublink">Gym Backpacks</a>
-            <a href="{{ c }}cross-body-bags" class="menu-drawer__sublink">Cross-Body Bags</a>
-            <a href="{{ c }}bottles-shakers" class="menu-drawer__sublink">Bottles &amp; Shakers</a>
-            <a href="{{ c }}gym-gloves" class="menu-drawer__sublink">Gym Gloves</a>
-            <a href="{{ c }}bags-gear" class="menu-drawer__sublink" style="color:var(--color-accent);font-weight:600;">Shop all →</a>
           </div>
         </details></li>
       </ul>

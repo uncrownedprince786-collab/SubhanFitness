@@ -1,0 +1,5 @@
+Handle,Command,Title,Published,Collection Type,Must Match,Rule: Product Column,Rule: Relation,Rule: Condition
+strength-weights,MERGE,Dumbbells & Weights,TRUE,,,,,
+exercise-bikes,MERGE,Exercise Cycles,TRUE,,,,,
+trampolines,MERGE,Trampolines,TRUE,Smart,any condition,Tag,Equals,trampolines
+yoga-pilates,MERGE,Yoga & Pilates,TRUE,Smart,any condition,Tag,Equals,yoga-pilates

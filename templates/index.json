@@ -212,9 +212,8 @@
           "type": "collection_item",
           "settings": {
             "collection": "strength-weights",
-            "icon": "dumbbell",
-            "image": "shopify://shop_images/IMG_9752.jpg",
-            "custom_title": "Strength & Weights",
+            "icon": "none",
+            "custom_title": "Dumbbells & Weights",
             "show_count": true
           }
         },
@@ -222,8 +221,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "treadmills",
-            "icon": "treadmill",
-            "image": "shopify://shop_images/image_2026-09-26_162041700.png",
+            "icon": "none",
             "custom_title": "Treadmills",
             "show_count": true
           }
@@ -241,8 +239,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "body-massagers",
-            "icon": "massage",
-            "image": "shopify://shop_images/image_2026-09-26_163446204.png",
+            "icon": "none",
             "custom_title": "Body Massagers",
             "show_count": true
           }
@@ -250,39 +247,27 @@
         "c5": {
           "type": "collection_item",
           "settings": {
-            "collection": "weight-benches",
+            "collection": "trampolines",
             "icon": "none",
-            "custom_title": "Benches & Rods",
+            "custom_title": "Trampolines",
             "show_count": true
           }
         },
         "c6": {
           "type": "collection_item",
           "settings": {
-            "collection": "fitness-accessories",
-            "icon": "yoga",
-            "image": "shopify://shop_images/IMG_9741.jpg",
-            "custom_title": "Fitness Accessories",
+            "collection": "yoga-pilates",
+            "icon": "none",
+            "custom_title": "Yoga & Pilates",
             "show_count": true
           }
         },
         "c7": {
           "type": "collection_item",
           "settings": {
-            "collection": "bags-gear",
-            "icon": "gym-bag",
-            "image": "shopify://shop_images/image.avif",
-            "custom_title": "Bags & Shaker",
-            "show_count": true
-          }
-        },
-        "c8": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "sale",
-            "icon": "tag",
-            "image": "shopify://shop_images/99EABBDE-25DF-4633-BBE6-E261E443E698.png",
-            "custom_title": "Sale",
+            "collection": "fitness-accessories",
+            "icon": "none",
+            "custom_title": "Fitness Accessories",
             "show_count": true
           }
         }
@@ -294,13 +279,12 @@
         "c4",
         "c5",
         "c6",
-        "c7",
-        "c8"
+        "c7"
       ],
       "settings": {
         "subheading": "",
         "heading": "Collection list",
-        "show_all": true,
+        "show_all": false,
         "center_heading": false,
         "columns": 4,
         "show_count": true
