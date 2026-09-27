@@ -60,8 +60,9 @@
                 </div>
 
               {%- when 'buy_buttons' -%}
+                {%- assign product_form_id = 'product-form-' | append: section.id -%}
                 <div {{ block.shopify_attributes }}>
-                  {% render 'buy-buttons', product: product, form_id: 'product-form-' | append: section.id, show_dynamic_checkout: block.settings.show_dynamic_checkout %}
+                  {% render 'buy-buttons', product: product, form_id: product_form_id, show_dynamic_checkout: block.settings.show_dynamic_checkout %}
                 </div>
 
               {%- when 'icon_row' -%}
