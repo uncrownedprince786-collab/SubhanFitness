@@ -621,13 +621,17 @@ p { margin: 0 0 1em; }
    Slideshow / Hero
    ========================================================================== */
 .slideshow { position: relative; overflow: hidden; }
+/* Boxed hero (Tango-style): constrained to page-width, centered, rounded */
+.hero-boxed { margin-top: 1.6rem; }
+.slideshow--boxed { border-radius: var(--radius); box-shadow: var(--shadow-sm); }
 .slideshow__track { display: flex; transition: transform .6s cubic-bezier(.4,0,.2,1); }
 .slideshow__slide { position: relative; min-width: 100%; }
 .slide__media { position: relative; }
 .slide__media img { width: 100%; height: 100%; object-fit: cover; }
-.slide__media.ratio-wide { aspect-ratio: 16 / 6; }
+/* 16:9 at all breakpoints — matches Tango's hero exactly */
+.slide__media.ratio-wide { aspect-ratio: 16 / 9; }
 .slide__media.ratio-medium { aspect-ratio: 16 / 8; }
-@media (max-width: 749px) { .slide__media.ratio-wide, .slide__media.ratio-medium { aspect-ratio: 4 / 5; } }
+@media (max-width: 749px) { .slide__media.ratio-wide, .slide__media.ratio-medium { aspect-ratio: 16 / 9; } }
 /* Branding slide: dark gradient panel hides the (low-res) baked-in text on the
    left so we can render crisp live text over it; the photo shows on the right. */
 .slide__scrim { position: absolute; inset: 0; background: linear-gradient(90deg, #0c0807 0%, #0c0807 44%, rgba(12,8,7,.9) 52%, rgba(12,8,7,.45) 66%, rgba(12,8,7,0) 84%); }
@@ -648,7 +652,16 @@ p { margin: 0 0 1em; }
 .slide__heading { font-size: clamp(3.2rem, 6vw, 6rem); color: #fff; margin: 0; text-shadow: 0 2px 24px rgba(0,0,0,.3); }
 .slide__text { font-size: 1.7rem; max-width: 46rem; }
 .slide__buttons { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-.slideshow__controls { position: absolute; bottom: 2rem; left: 0; right: 0; display: flex; justify-content: center; gap: .8rem; z-index: 3; }
+.slideshow__controls { position: absolute; bottom: 1.6rem; left: 0; right: 0; display: flex; justify-content: center; gap: .8rem; z-index: 3; }
+/* Tango-style fraction pager (e.g. "1 / 2") */
+.slideshow__fraction {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--font-heading-family); font-weight: 700; font-size: 1.3rem;
+  letter-spacing: .06em; color: #fff;
+  padding: .5rem 1.2rem; border-radius: 100px;
+  background: rgba(12,8,7,.42); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.slideshow__frac-current { color: var(--color-accent); }
 .slideshow__dot { width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid #fff; background: transparent; padding: 0; }
 .slideshow__dot.active { background: #fff; }
 .slideshow__arrow {
@@ -660,6 +673,17 @@ p { margin: 0 0 1em; }
 .slideshow__arrow--prev { left: 2rem; }
 .slideshow__arrow--next { right: 2rem; }
 @media (max-width: 749px) { .slideshow__arrow { display: none; } }
+/* Boxed hero on phones: 16:9 is short, so tighten the overlaid text to fit cleanly */
+@media (max-width: 749px) {
+  .hero-boxed { margin-top: 1.2rem; }
+  .slideshow--boxed .slide__content { gap: .8rem; padding: 0 2rem; }
+  .slideshow--boxed .slide__subheading { font-size: 1.1rem; letter-spacing: .14em; }
+  .slideshow--boxed .slide__heading { font-size: clamp(2rem, 7vw, 3rem); text-shadow: 0 2px 14px rgba(0,0,0,.45); }
+  .slideshow--boxed .slide__text { display: none; }
+  .slideshow--boxed .slide__buttons { gap: .8rem; }
+  .slideshow--boxed .slide__buttons .button { padding: .9rem 1.6rem; font-size: 1.3rem; }
+  .slideshow--boxed .slideshow__controls { bottom: 1rem; }
+}
 
 /* ==========================================================================
    Collection list (categories)

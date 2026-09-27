@@ -8,7 +8,7 @@
     </div>
 
     {%- if section.blocks.size > 0 -%}
-      <div class="collection-list grid--{{ section.settings.columns }}">
+      <div class="collection-list--tango scroll-carousel">
         {%- for block in section.blocks -%}
           {%- assign block_coll = block.settings.collection -%}
           {%- assign img = block.settings.image | default: block_coll.image -%}
@@ -17,16 +17,18 @@
           {%- assign title = block.settings.custom_title | default: block_coll.title | default: 'Category' -%}
 
           {%- if use_icon -%}
-            <a href="{{ block_coll.url | default: '#' }}" class="category-tile" {{ block.shopify_attributes }}>
-              <span class="category-tile__icon">{% render 'icon', icon: block.settings.icon %}</span>
-              <span class="category-tile__title">{{ title }}</span>
-              {%- if block.settings.show_count and block_coll.all_products_count > 0 -%}
-                <span class="category-tile__count">{{ block_coll.all_products_count }} products</span>
-              {%- endif -%}
+            <a href="{{ block_coll.url | default: '#' }}" class="collection-card collection-card--icon" {{ block.shopify_attributes }}>
+              <span class="collection-card__media collection-card__media--icon">
+                <span class="category-tile__icon">{% render 'icon', icon: block.settings.icon %}</span>
+              </span>
+              <span class="collection-card__caption">
+                <span class="collection-card__title">{{ title }}</span>
+                {% render 'icon', icon: 'chevron-right' %}
+              </span>
             </a>
           {%- else -%}
             <a href="{{ block_coll.url | default: '#' }}" class="collection-card" {{ block.shopify_attributes }}>
-              <div class="collection-card__media">
+              <span class="collection-card__media">
                 {%- if img != blank -%}
                   <img src="{{ img | image_url: width: 600 }}" alt="{{ title | escape }}" loading="lazy" width="400" height="400">
                 {%- elsif block_coll.products.first.featured_media -%}
@@ -34,15 +36,11 @@
                 {%- else -%}
                   {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
                 {%- endif -%}
-              </div>
-              <div class="collection-card__overlay">
-                <div>
-                  <h3 class="collection-card__title">{{ title }}</h3>
-                  {%- if block.settings.show_count and block_coll.all_products_count > 0 -%}
-                    <span class="collection-card__count">{{ block_coll.all_products_count }} products</span>
-                  {%- endif -%}
-                </div>
-              </div>
+              </span>
+              <span class="collection-card__caption">
+                <span class="collection-card__title">{{ title }}</span>
+                {% render 'icon', icon: 'chevron-right' %}
+              </span>
             </a>
           {%- endif -%}
         {%- endfor -%}
@@ -52,28 +50,60 @@
 </section>
 
 {% style %}
-  .category-tile {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: .8rem; text-align: center; padding: 2.6rem 1.4rem;
-    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
-    aspect-ratio: 1 / 1; transition: transform .2s, box-shadow .2s, border-color .2s;
+  /* Tango-style collection slider: square image tile with the label + chevron below.
+     Scoped to .collection-list--tango so the /collections page (main-list-collections)
+     keeps its original overlay card design. */
+  .collection-list--tango { padding-bottom: .4rem; }
+  .collection-list--tango.scroll-carousel { gap: 1.6rem; grid-auto-columns: 42%; }
+  @media (min-width: 750px) { .collection-list--tango.scroll-carousel { grid-auto-columns: 22%; } }
+  @media (min-width: 990px) { .collection-list--tango.scroll-carousel { grid-auto-columns: 12.5%; } }
+
+  .collection-list--tango .collection-card {
+    display: flex; flex-direction: column; gap: 1rem;
+    aspect-ratio: auto; overflow: visible; background: transparent; border-radius: 0;
+    box-shadow: none;
   }
-  .category-tile:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(12,8,7,.10); border-color: var(--color-accent); }
-  .category-tile__icon {
+  .collection-list--tango .collection-card:hover { transform: none; box-shadow: none; }
+  .collection-list--tango .collection-card__media {
+    display: block; width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
+    border-radius: var(--radius); background: var(--color-muted-bg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm); transition: box-shadow .28s var(--ease), transform .28s var(--ease);
+  }
+  .collection-list--tango .collection-card:hover .collection-card__media { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+  .collection-list--tango .collection-card__media img,
+  .collection-list--tango .collection-card__media svg { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .collection-list--tango .collection-card:hover .collection-card__media img { transform: scale(1.06); }
+
+  .collection-list--tango .collection-card__media--icon { display: flex; align-items: center; justify-content: center; }
+  .collection-list--tango .category-tile__icon {
     display: flex; align-items: center; justify-content: center;
-    width: 8rem; height: 8rem; border-radius: 50%;
-    background: #ffe9df;
+    width: 46%; height: 46%; border-radius: 50%;
     background: color-mix(in srgb, var(--color-accent) 12%, #fff);
-    color: var(--color-accent); margin-bottom: .4rem; transition: background .2s, color .2s;
+    color: var(--color-accent); transition: background .2s, color .2s;
   }
-  .category-tile:hover .category-tile__icon { background: var(--color-accent); color: #fff; }
-  .category-tile__icon .icon { width: 4rem; height: 4rem; }
-  .category-tile__title { font-family: var(--font-heading-family); font-weight: 700; text-transform: uppercase; font-size: 1.45rem; color: var(--color-heading); line-height: 1.2; }
-  .category-tile__count { font-size: 1.2rem; color: #8a8078; }
+  .collection-list--tango .collection-card:hover .category-tile__icon { background: var(--color-accent); color: #fff; }
+  .collection-list--tango .category-tile__icon .icon { display: inline-flex; width: 50%; height: 50%; }
+  .collection-list--tango .category-tile__icon .icon svg { width: 100%; height: 100%; }
+
+  .collection-list--tango .collection-card__caption {
+    display: flex; align-items: center; justify-content: center; gap: .4rem;
+    text-align: center; padding: 0 .4rem;
+  }
+  .collection-list--tango .collection-card__title {
+    color: var(--color-heading); font-family: var(--font-heading-family); font-weight: 700;
+    text-transform: uppercase; font-size: 1.3rem; letter-spacing: .02em; line-height: 1.2; margin: 0;
+    transition: color .2s;
+  }
+  .collection-list--tango .collection-card:hover .collection-card__title { color: var(--color-accent); }
+  .collection-list--tango .collection-card__caption .icon {
+    display: inline-flex; width: 1.3rem; height: 1.3rem; color: var(--color-accent); flex: none;
+    transition: transform .2s var(--ease);
+  }
+  .collection-list--tango .collection-card__caption .icon svg { width: 100%; height: 100%; }
+  .collection-list--tango .collection-card:hover .collection-card__caption .icon { transform: translateX(3px); }
   @media (max-width: 749px) {
-    .category-tile { padding: 1.8rem 1rem; }
-    .category-tile__icon { width: 6rem; height: 6rem; }
-    .category-tile__icon .icon { width: 3rem; height: 3rem; }
+    .collection-list--tango .collection-card__title { font-size: 1.2rem; }
   }
 {% endstyle %}
 

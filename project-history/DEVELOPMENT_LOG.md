@@ -436,3 +436,44 @@ Per owner request ("remove unnecessary pages"): removed **Blog** and **Warranty*
   restored later. To take the blog off the site entirely the owner should also remove any
   "Blog"/"News" item from Online Store → Navigation and hide/delete the blog in admin.
 - All other pages (About, Contact, Shipping, Returns, Privacy, Terms, FAQ, Track Order) kept.
+
+## 20. Hero + Collection list matched to Tango — 2026-09-28
+
+Owner request: make the **hero banner the exact size/feel as tango-sports.com** and the
+**Collection list like tango**, keeping SF theme colours; nothing else changed. Measured the
+live tango site to get the real specs, and verified the result in a local render harness at
+desktop (1440) + mobile (375), in both OS light and dark colour schemes.
+
+**Tango specs measured (for reference):** hero is a *boxed* slider (constrained to page-width,
+centred with side gutters, ~4px radius), **16:9 at every breakpoint** (1280×720 desktop,
+343×193 mobile), with a **fraction pager ("1 / 2")** + arrows. Collection list is a
+**horizontal slider of square tiles** (~146px desktop showing ~8, ~170px/2.2-visible mobile)
+with the **label + chevron below** each tile.
+
+1. **Hero — 16:9, boxed, fraction pager** (`sections/hero-slideshow.liquid`, `assets/base.css`,
+   `assets/global.js`):
+   - Wrapped the slideshow in `<div class="page-width hero-boxed">` and added
+     `.slideshow--boxed` (rounded `var(--radius)` = 12px + soft shadow) → boxed/centred like tango
+     instead of full-bleed.
+   - `.slide__media.ratio-wide` changed **16/6 → 16/9**, and the ≤749px override 4/5 → **16/9**,
+     so the hero is 16:9 at all widths (matches tango exactly). Schema label updated to
+     "Wide (16:9, like Tango)". `height:"wide"` in `index.json` already selected, so no data change.
+   - Replaced the dot indicators with a **fraction counter** (`.slideshow__fraction`, current
+     number in accent orange); `global.js go()` now updates `.slideshow__frac-current`.
+   - Mobile text tuned so it fits the shorter 16:9 box (smaller heading, hide `.slide__text`,
+     tighter gaps/buttons). Verified: no content overflow, no horizontal page scroll at 375px.
+
+2. **Collection list — tango square-tile slider** (`sections/collection-list.liquid`):
+   - Wrapper is now `collection-list--tango scroll-carousel` (reuses the theme's carousel
+     arrow/scroll JS; dropped the base `.collection-list` class so scroll-reveal doesn't hide
+     off-screen tiles). Card markup rebuilt to **square media on top + caption (title + chevron)
+     below** (was an overlay title on a square image).
+   - All new styles are **scoped under `.collection-list--tango`** so the `/collections` page
+     (`main-list-collections.liquid`, which shares `.collection-card`) keeps its original overlay
+     design — nothing else changed. Tile counts: `grid-auto-columns` 42% (<750) / 22% (≥750) /
+     12.5% (≥990) → ~2.3 on mobile, ~8 on desktop, matching tango.
+
+**Not changed:** header, footer, product carousels, other sections, colours, content/menus.
+**Deploy note:** changes are in the working copy only — not yet committed/pushed. To deploy,
+push to `main` from a git checkout in a SHORT path (the `$GIT_DIR too big` long-path bug still
+applies; the zip-download used to read the repo is not a git checkout).

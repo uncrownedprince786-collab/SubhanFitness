@@ -531,6 +531,8 @@
       this.index = (i + this.slides.length) % this.slides.length;
       this.track.style.transform = `translateX(-${this.index * 100}%)`;
       this.dots.forEach((d, di) => d.classList.toggle('active', di === this.index));
+      const frac = this.querySelector('.slideshow__frac-current');
+      if (frac) frac.textContent = this.index + 1;
     }
     start() { this.stop(); this.timer = setInterval(() => this.go(this.index + 1), this.interval); }
     stop() { clearInterval(this.timer); }

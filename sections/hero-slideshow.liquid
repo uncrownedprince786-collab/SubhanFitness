@@ -1,4 +1,5 @@
-<slide-show class="slideshow" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.speed }}">
+<div class="page-width hero-boxed">
+<slide-show class="slideshow slideshow--boxed" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.speed }}">
   <div class="slideshow__track">
     {%- for block in section.blocks -%}
       <div class="slideshow__slide" {{ block.shopify_attributes }}>
@@ -40,12 +41,11 @@
     <button type="button" class="slideshow__arrow slideshow__arrow--prev" aria-label="{{ 'general.accessibility.previous' | t }}">{% render 'icon', icon: 'chevron-left' %}</button>
     <button type="button" class="slideshow__arrow slideshow__arrow--next" aria-label="{{ 'general.accessibility.next' | t }}">{% render 'icon', icon: 'chevron-right' %}</button>
     <div class="slideshow__controls">
-      {%- for block in section.blocks -%}
-        <button type="button" class="slideshow__dot {% if forloop.first %}active{% endif %}" aria-label="Slide {{ forloop.index }}"></button>
-      {%- endfor -%}
+      <span class="slideshow__fraction" aria-hidden="true"><span class="slideshow__frac-current">1</span> / <span class="slideshow__frac-total">{{ section.blocks.size }}</span></span>
     </div>
   {%- endif -%}
 </slide-show>
+</div>
 
 {% schema %}
 {
@@ -53,7 +53,7 @@
   "tag": "section",
   "settings": [
     { "type": "select", "id": "height", "label": "Height",
-      "options": [ { "value": "wide", "label": "Wide (16:6)" }, { "value": "medium", "label": "Medium (16:8)" } ], "default": "wide" },
+      "options": [ { "value": "wide", "label": "Wide (16:9, like Tango)" }, { "value": "medium", "label": "Medium (16:8)" } ], "default": "wide" },
     { "type": "checkbox", "id": "autoplay", "label": "Auto-rotate slides", "default": true },
     { "type": "range", "id": "speed", "min": 3, "max": 10, "step": 1, "unit": "s", "label": "Change slides every", "default": 6 }
   ],
