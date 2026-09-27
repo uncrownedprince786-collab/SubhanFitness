@@ -668,7 +668,9 @@ p { margin: 0 0 1em; }
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 4.8rem; height: 4.8rem; border-radius: 50%;
   background: rgba(255,255,255,.9); border: 0; z-index: 3;
-  display: flex; align-items: center; justify-content: center; color: #14181c;
+  /* Hidden: the plain circles looked out of place on the boxed hero.
+     Slides auto-rotate and the "1 / 2" fraction pager shows position. */
+  display: none; align-items: center; justify-content: center; color: #14181c;
 }
 .slideshow__arrow--prev { left: 2rem; }
 .slideshow__arrow--next { right: 2rem; }
