@@ -68,19 +68,6 @@
         "background": ""
       }
     },
-    "bags_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Carry It All",
-        "heading": "Bags & Shaker",
-        "collection": "bags-gear",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
     "fitness_showcase": {
       "type": "featured-collection",
       "settings": {
@@ -92,6 +79,19 @@
         "products_to_show": 8,
         "show_view_all": true,
         "background": "#f4f5f6"
+      }
+    },
+    "bags_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Carry It All",
+        "heading": "Bags & Shaker",
+        "collection": "bags-gear",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
       }
     },
     "exercise_cycles": {
@@ -317,9 +317,9 @@
   "order": [
     "hero",
     "cardio_showcase",
-    "bags_showcase",
     "fitness_showcase",
     "exercise_cycles",
+    "bags_showcase",
     "recovery_showcase",
     "spotlight",
     "body_support_showcase",
