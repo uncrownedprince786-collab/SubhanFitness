@@ -218,7 +218,11 @@
       });
       return options;
     }
-    onChange() {
+    onChange(e) {
+      // Ignore change events that don't originate from a variant option input.
+      // The quantity field is nested inside <variant-selects>, so its change bubbles here;
+      // running variant matching for it would wrongly mark single-variant products "Unavailable".
+      if (e && e.target && !e.target.closest('[data-option-index]')) return;
       const selected = this.getSelectedOptions();
       const variant = this.variants.find((v) =>
         v.options.every((opt, i) => opt === selected[i])
