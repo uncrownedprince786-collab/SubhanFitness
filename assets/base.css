@@ -660,7 +660,8 @@ p { margin: 0 0 1em; }
 .slide__text { font-size: 1.7rem; max-width: 46rem; }
 .slide__buttons { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 /* Tango-style control cluster: prev chevron · "1 / 2" · next chevron, bottom-centre */
-.slideshow__controls { position: absolute; bottom: 1.6rem; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 1rem; z-index: 3; }
+/* Hero pager/arrows removed per request — slides auto-rotate (crossfade) with no controls */
+.slideshow__controls { display: none; }
 .slideshow__fraction {
   display: inline-flex; align-items: center; gap: .4rem;
   font-family: var(--font-heading-family); font-weight: 700; font-size: 1.3rem;
@@ -688,7 +689,7 @@ p { margin: 0 0 1em; }
   .hero-boxed { margin-top: 1.2rem; }
   /* Centre the text in the upper area and reserve room at the bottom for the pager
      so the button never overlaps the "1 / 2" control. */
-  .slideshow--boxed .slide__content { gap: .7rem; padding: 0 2rem 5rem; justify-content: center; }
+  .slideshow--boxed .slide__content { gap: .7rem; padding: 0 2rem; justify-content: center; }
   .slideshow--boxed .slide__subheading { font-size: 1.1rem; letter-spacing: .14em; }
   .slideshow--boxed .slide__heading { font-size: clamp(1.9rem, 6.5vw, 2.8rem); text-shadow: 0 2px 14px rgba(0,0,0,.45); }
   .slideshow--boxed .slide__text { display: none; }
