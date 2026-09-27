@@ -7,7 +7,29 @@
       </div>
     </div>
 
-    {%- if section.blocks.size > 0 -%}
+    {%- if section.settings.show_all -%}
+      {%- comment -%} Auto mode: list every collection in the store (like Tango) {%- endcomment -%}
+      <div class="collection-list--tango scroll-carousel">
+        {%- for collection in collections -%}
+          {%- if collection.handle == 'frontpage' -%}{%- continue -%}{%- endif -%}
+          <a href="{{ collection.url }}" class="collection-card">
+            <span class="collection-card__media">
+              {%- if collection.image != blank -%}
+                <img src="{{ collection.image | image_url: width: 600 }}" alt="{{ collection.title | escape }}" loading="lazy" width="400" height="400">
+              {%- elsif collection.products.first.featured_media -%}
+                <img src="{{ collection.products.first.featured_media | image_url: width: 600 }}" alt="{{ collection.title | escape }}" loading="lazy" width="400" height="400">
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
+              {%- endif -%}
+            </span>
+            <span class="collection-card__caption">
+              <span class="collection-card__title">{{ collection.title }}</span>
+              {% render 'icon', icon: 'chevron-right' %}
+            </span>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- elsif section.blocks.size > 0 -%}
       <div class="collection-list--tango scroll-carousel">
         {%- for block in section.blocks -%}
           {%- assign block_coll = block.settings.collection -%}
@@ -54,9 +76,10 @@
      Scoped to .collection-list--tango so the /collections page (main-list-collections)
      keeps its original overlay card design. */
   .collection-list--tango { padding-bottom: .4rem; }
-  .collection-list--tango.scroll-carousel { gap: 1.6rem; grid-auto-columns: 42%; }
-  @media (min-width: 750px) { .collection-list--tango.scroll-carousel { grid-auto-columns: 22%; } }
-  @media (min-width: 990px) { .collection-list--tango.scroll-carousel { grid-auto-columns: 12.5%; } }
+  /* Whole tiles only, no peek (paged by the arrows) — small tango-style tiles */
+  .collection-list--tango.scroll-carousel { gap: 1.6rem; grid-auto-columns: calc((100% - 2 * 1.6rem) / 3); }
+  @media (min-width: 750px) { .collection-list--tango.scroll-carousel { grid-auto-columns: calc((100% - 4 * 1.6rem) / 5); } }
+  @media (min-width: 990px) { .collection-list--tango.scroll-carousel { grid-auto-columns: calc((100% - 7 * 1.6rem) / 8); } }
 
   .collection-list--tango .collection-card {
     display: flex; flex-direction: column; gap: 1rem;
@@ -114,6 +137,7 @@
   "settings": [
     { "type": "text", "id": "subheading", "label": "Subheading" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
+    { "type": "checkbox", "id": "show_all", "label": "Show all store collections automatically", "info": "When on, every collection is listed (like Tango) and the blocks below are ignored.", "default": false },
     { "type": "checkbox", "id": "center_heading", "label": "Center heading", "default": true },
     { "type": "range", "id": "columns", "min": 2, "max": 6, "step": 1, "label": "Columns", "default": 4 },
     { "type": "checkbox", "id": "show_count", "label": "Show product count", "default": true }

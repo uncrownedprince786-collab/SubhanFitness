@@ -570,3 +570,19 @@ CSS-only spacing edits missed:
   owner must delete them in Online Store → Pages (and remove any menu items in Navigation).
 
 **Deploy:** push to `main` from `C:\sfrepo`.
+
+## 26. Collection list = Tango (all collections, no peek) — 2026-09-28
+
+- **Lists every collection automatically.** Added a `show_all` setting to `collection-list.liquid`
+  (on in `index.json`): when on it loops `for collection in collections` (skipping `frontpage`),
+  rendering each store collection as a tile (its own image / first product image / placeholder),
+  instead of the 8 hand-picked blocks. Blocks still work when `show_all` is off.
+- **Whole tiles, no peek.** `.collection-list--tango` grid changed from fixed % (which left a
+  cropped peek) to exact-fit `calc((100% - n*gap)/N)` — 3 tiles on mobile, 5 on tablet, **8 on
+  desktop** (small tango-style tiles); the arrows page to the next full set.
+- Heading kept consistent with the other sections (left eyebrow + accent bar).
+- Verified in harness: desktop 8 / tablet 5 / mobile 3 whole tiles, no peek, no horizontal scroll.
+- Note for owner: with `show_all` on, tiles use each collection's **admin image/title**, so set a
+  square image on each collection (Products → Collections) for the cleanest look.
+
+**Deploy:** push to `main` from `C:\sfrepo`.
