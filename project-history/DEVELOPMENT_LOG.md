@@ -380,3 +380,47 @@ when Menu source = Shopify Navigation; built-in default path unchanged).
   with zero code, switch Header → Menu source to **Navigation** and build it in Online Store >
   Navigation (the code already renders 3-level nav as a mega menu). `footer-default-links.liquid`
   has a few static collection links used ONLY as a fallback until footer menus are set.
+
+## 18. Tango-style homepage + mobile responsiveness pass — 2026-09-27
+
+Reference again: tango-sports.com. Goals this session: match tango's homepage section
+order, fix bad mobile responsiveness (was breaking on Samsung A36 etc.), add real social
+links, add location, and relabel/repoint categories. Header, footer and the rest of the
+store left as-is.
+
+1. **Homepage re-laid-out to mirror tango exactly** (`templates/index.json`). New order:
+   Hero → Bags & Shaker → Fitness Accessories → Treadmills → Exercise Cycles →
+   Body Massagers → Featured Products → Benches & Rods → Shop By Category (collection list)
+   → Newsletter. The previous extra rows (promo marquee, trust bar, best sellers, promo
+   banners, strength, sports, sale, brand story) were removed from the template to match
+   tango's density. Their section types still exist in `sections/`, so any can be re-added
+   from Customize → Add section.
+2. **Categories relabelled + repointed** to existing sub-collections (real products show):
+   - Cardio Machines → **Treadmills** (collection `treadmills`)
+   - **Exercise Cycles** added (collection `exercise-bikes`)
+   - Recovery & Wellness → **Body Massagers** (collection `body-massagers`)
+   - Body Support & Braces → **Benches & Rods** (collection `weight-benches`)
+   - Bags & Gear → **Bags & Shaker** (collection `bags-gear`)
+   Applied to the homepage product rows, the Shop-By-Category tiles, and
+   `footer-default-links.liquid` (the shop column). NOTE: the header nav + mobile drawer read
+   Shopify Navigation (store data), so the owner must rename those menu items in Online Store
+   → Navigation, and rename the actual Collections in admin if the collection titles should
+   change too. Tiles for Exercise Cycles / Benches & Rods use no manual image (icon 'none') so
+   they fall back to the collection image / placeholder and stay visually consistent.
+3. **Mobile responsiveness fixed** (`assets/base.css`) — root cause of the "breaking" look was
+   horizontal scroll: only `body` had `overflow-x:hidden`, and the header row overflowed.
+   - Added `overflow-x:hidden; max-width:100%` to `html` (stops the page scrolling sideways).
+   - Rebuilt the ≤989px header grid to `auto 1fr auto` (hamburger left, logo centred and
+     width-capped at 44vw, icons pinned right, tighter gaps) so it never overflows with either
+     the image logo or the text wordmark.
+   - Product carousels now show ~2 cards with a peek on phones (was one 80%-wide card):
+     `.scroll-carousel` grid-auto-columns 46% (<600px), 30% (≥600px), 23% (≥990px) — matches
+     tango's mobile rows. Verified at 393px (A36 width) with a headless render of the real
+     base.css: page scrollWidth == viewport width (no horizontal scroll), header clean,
+     carousels show 2 cards, category tiles 2-up.
+4. **Social links** set for real (`config/settings_data.json`, shown in announcement bar +
+   footer automatically): Facebook `facebook.com/profile.php?id=61594236452333`, Instagram
+   `instagram.com/thesubhanfitness` (used the clean profile handle; the QR share `stkn`/`utm`
+   params from the pasted link are omitted as they aren't needed for a public profile link).
+5. **Location**: footer address updated to "Asad Center, Munir Chowk, Gujranwala, Pakistan"
+   (`sections/footer-group.json`).

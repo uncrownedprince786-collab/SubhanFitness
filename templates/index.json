@@ -55,216 +55,12 @@
         "speed": 6
       }
     },
-    "promo_marquee": {
-      "type": "promo-marquee",
-      "blocks": {
-        "m1": {
-          "type": "item",
-          "settings": {
-            "text": "Free delivery over Rs.2,000",
-            "icon": "truck"
-          }
-        },
-        "m2": {
-          "type": "item",
-          "settings": {
-            "text": "Cash on delivery nationwide",
-            "icon": "check"
-          }
-        },
-        "m3": {
-          "type": "item",
-          "settings": {
-            "text": "7-day easy exchange",
-            "icon": "refresh"
-          }
-        },
-        "m4": {
-          "type": "item",
-          "settings": {
-            "text": "New arrivals every week",
-            "icon": "tag"
-          }
-        },
-        "m5": {
-          "type": "item",
-          "settings": {
-            "text": "Premium fitness & sports gear",
-            "icon": "dumbbell"
-          }
-        }
-      },
-      "block_order": [
-        "m1",
-        "m2",
-        "m3",
-        "m4",
-        "m5"
-      ],
-      "settings": {
-        "background": "#ff4d04",
-        "text_color": "#ffffff",
-        "speed": 30,
-        "direction": "left"
-      }
-    },
-    "trust": {
-      "type": "multicolumn",
-      "blocks": {
-        "t1": {
-          "type": "column",
-          "settings": {
-            "icon": "truck",
-            "title": "Nationwide Delivery",
-            "text": "Delivered in 2–5 days"
-          }
-        },
-        "t2": {
-          "type": "column",
-          "settings": {
-            "icon": "refresh",
-            "title": "Easy Exchange",
-            "text": "7-day hassle-free returns"
-          }
-        },
-        "t3": {
-          "type": "column",
-          "settings": {
-            "icon": "shield",
-            "title": "Secure Checkout",
-            "text": "Safe & encrypted payments"
-          }
-        },
-        "t4": {
-          "type": "column",
-          "settings": {
-            "icon": "headset",
-            "title": "Expert Support",
-            "text": "Real people, real help"
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3",
-        "t4"
-      ],
-      "settings": {
-        "heading": "",
-        "style": "trust",
-        "columns": 3,
-        "background": "#f4f5f6"
-      }
-    },
-    "categories": {
-      "type": "collection-list",
-      "blocks": {
-        "c1": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "strength-weights",
-            "icon": "dumbbell",
-            "image": "shopify://shop_images/IMG_9752.jpg",
-            "custom_title": "Strength & Weights",
-            "show_count": true
-          }
-        },
-        "c2": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "cardio-machines",
-            "icon": "treadmill",
-            "image": "shopify://shop_images/image_2026-09-26_162041700.png",
-            "custom_title": "Cardio Machines",
-            "show_count": true
-          }
-        },
-        "c3": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "fitness-accessories",
-            "icon": "yoga",
-            "image": "shopify://shop_images/IMG_9741.jpg",
-            "custom_title": "Fitness Accessories",
-            "show_count": true
-          }
-        },
-        "c4": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "recovery-wellness",
-            "icon": "massage",
-            "image": "shopify://shop_images/image_2026-09-26_163446204.png",
-            "custom_title": "Recovery & Wellness",
-            "show_count": true
-          }
-        },
-        "c5": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "body-support",
-            "icon": "brace",
-            "image": "shopify://shop_images/images_ac2e9155-1cbb-4690-b3db-ef8783366e5a.jpg",
-            "custom_title": "Body Support & Braces",
-            "show_count": true
-          }
-        },
-        "c6": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "sports-team",
-            "icon": "ball",
-            "image": "shopify://shop_images/IMG_9742.jpg",
-            "custom_title": "Sports & Team",
-            "show_count": true
-          }
-        },
-        "c7": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "bags-gear",
-            "icon": "gym-bag",
-            "image": "shopify://shop_images/image.avif",
-            "custom_title": "Bags & Gear",
-            "show_count": true
-          }
-        },
-        "c8": {
-          "type": "collection_item",
-          "settings": {
-            "collection": "sale",
-            "icon": "tag",
-            "image": "shopify://shop_images/99EABBDE-25DF-4633-BBE6-E261E443E698.png",
-            "custom_title": "Sale",
-            "show_count": true
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3",
-        "c4",
-        "c5",
-        "c6",
-        "c7",
-        "c8"
-      ],
-      "settings": {
-        "subheading": "Find Your Gear",
-        "heading": "Shop By Category",
-        "center_heading": true,
-        "columns": 4,
-        "show_count": true
-      }
-    },
-    "best_sellers": {
+    "bags_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Most Popular",
-        "heading": "Best Sellers",
-        "collection": "best-sellers",
+        "subheading": "Carry It All",
+        "heading": "Bags & Shaker",
+        "collection": "bags-gear",
         "layout": "carousel",
         "products_per_row": 4,
         "products_to_show": 8,
@@ -272,25 +68,51 @@
         "background": ""
       }
     },
-    "promo_banner": {
-      "type": "image-with-text",
+    "fitness_showcase": {
+      "type": "featured-collection",
       "settings": {
-        "image": "shopify://shop_images/images.jpg",
-        "layout": "image_left",
-        "subheading": "Home Gym Essentials",
-        "heading": "Everything you need to train at home",
-        "text": "<p>Save on complete home-gym setups — cardio, strength, and recovery in one order. Free delivery over Rs.2,000.</p>",
-        "button_label": "Shop Home Gym",
-        "button_link": "shopify://collections/cardio-machines",
-        "background": ""
+        "subheading": "Train Anywhere",
+        "heading": "Fitness Accessories",
+        "collection": "fitness-accessories",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": "#f4f5f6"
       }
     },
     "cardio_showcase": {
       "type": "featured-collection",
       "settings": {
         "subheading": "Move More",
-        "heading": "Cardio Machines",
-        "collection": "cardio-machines",
+        "heading": "Treadmills",
+        "collection": "treadmills",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
+      }
+    },
+    "exercise_cycles": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Ride & Pedal",
+        "heading": "Exercise Cycles",
+        "collection": "exercise-bikes",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": "#f4f5f6"
+      }
+    },
+    "recovery_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Recover Faster",
+        "heading": "Body Massagers",
+        "collection": "body-massagers",
         "layout": "carousel",
         "products_per_row": 4,
         "products_to_show": 8,
@@ -370,118 +192,119 @@
         "background": ""
       }
     },
-    "strength_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Get Stronger",
-        "heading": "Strength & Weights",
-        "collection": "strength-weights",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": "#f4f5f6"
-      }
-    },
-    "fitness_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Train Anywhere",
-        "heading": "Fitness Accessories",
-        "collection": "fitness-accessories",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "recovery_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Recover Faster",
-        "heading": "Recovery & Wellness",
-        "collection": "recovery-wellness",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": "#f4f5f6"
-      }
-    },
-    "promo_banner_2": {
-      "type": "image-with-text",
-      "settings": {
-        "image": "shopify://shop_images/various-massage-guns-laid-out-for-comparison.webp",
-        "layout": "image_right",
-        "subheading": "Feel-Good Recovery",
-        "heading": "Massage & recovery, made easy",
-        "text": "<p>Massage guns, foam rollers, vibration plates and more — bounce back faster after every session.</p>",
-        "button_label": "Shop Recovery",
-        "button_link": "shopify://collections/recovery-wellness",
-        "background": ""
-      }
-    },
-    "sports_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Game On",
-        "heading": "Sports & Team",
-        "collection": "sports-team",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "bags_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Carry It All",
-        "heading": "Bags & Gear",
-        "collection": "bags-gear",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": "#f4f5f6"
-      }
-    },
     "body_support_showcase": {
       "type": "featured-collection",
       "settings": {
-        "subheading": "Stay Protected",
-        "heading": "Body Support & Braces",
-        "collection": "body-support",
+        "subheading": "Build Your Rack",
+        "heading": "Benches & Rods",
+        "collection": "weight-benches",
         "layout": "carousel",
         "products_per_row": 4,
         "products_to_show": 8,
         "show_view_all": true,
-        "background": ""
+        "background": "#f4f5f6"
       }
     },
-    "sale_showcase": {
-      "type": "featured-collection",
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "strength-weights",
+            "icon": "dumbbell",
+            "image": "shopify://shop_images/IMG_9752.jpg",
+            "custom_title": "Strength & Weights",
+            "show_count": true
+          }
+        },
+        "c2": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "treadmills",
+            "icon": "treadmill",
+            "image": "shopify://shop_images/image_2026-09-26_162041700.png",
+            "custom_title": "Treadmills",
+            "show_count": true
+          }
+        },
+        "c3": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "exercise-bikes",
+            "icon": "none",
+            "image": "",
+            "custom_title": "Exercise Cycles",
+            "show_count": true
+          }
+        },
+        "c4": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "body-massagers",
+            "icon": "massage",
+            "image": "shopify://shop_images/image_2026-09-26_163446204.png",
+            "custom_title": "Body Massagers",
+            "show_count": true
+          }
+        },
+        "c5": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "weight-benches",
+            "icon": "none",
+            "image": "",
+            "custom_title": "Benches & Rods",
+            "show_count": true
+          }
+        },
+        "c6": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "fitness-accessories",
+            "icon": "yoga",
+            "image": "shopify://shop_images/IMG_9741.jpg",
+            "custom_title": "Fitness Accessories",
+            "show_count": true
+          }
+        },
+        "c7": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bags-gear",
+            "icon": "gym-bag",
+            "image": "shopify://shop_images/image.avif",
+            "custom_title": "Bags & Shaker",
+            "show_count": true
+          }
+        },
+        "c8": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "sale",
+            "icon": "tag",
+            "image": "shopify://shop_images/99EABBDE-25DF-4633-BBE6-E261E443E698.png",
+            "custom_title": "Sale",
+            "show_count": true
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
       "settings": {
-        "subheading": "Limited Time",
-        "heading": "On Sale Now",
-        "collection": "sale",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 10,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "brand_story": {
-      "type": "rich-text",
-      "settings": {
-        "subheading": "Our Promise",
-        "heading": "Train Hard. Live Strong.",
-        "text": "<p>Subhan Fitness brings you carefully selected home and commercial gym equipment, strength gear, cardio machines, sports goods, and recovery tools — everything you need under one roof, backed by real support.</p>",
-        "button_label": "About Us",
-        "button_link": "shopify://pages/about-us"
+        "subheading": "Find Your Gear",
+        "heading": "Shop By Category",
+        "center_heading": true,
+        "columns": 4,
+        "show_count": true
       }
     },
     "newsletter": {
@@ -495,22 +318,14 @@
   },
   "order": [
     "hero",
-    "promo_marquee",
-    "trust",
-    "categories",
-    "best_sellers",
-    "promo_banner",
-    "cardio_showcase",
-    "spotlight",
-    "strength_showcase",
-    "fitness_showcase",
-    "recovery_showcase",
-    "promo_banner_2",
-    "sports_showcase",
     "bags_showcase",
+    "fitness_showcase",
+    "cardio_showcase",
+    "exercise_cycles",
+    "recovery_showcase",
+    "spotlight",
     "body_support_showcase",
-    "sale_showcase",
-    "brand_story",
+    "categories",
     "newsletter"
   ]
 }
