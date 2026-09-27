@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "rich-text",
+      "settings": { "heading": "RT-SECTION-OK" }
+    }
+  },
+  "order": ["main"]
+}
