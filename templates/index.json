@@ -300,7 +300,7 @@
       "settings": {
         "subheading": "Find Your Gear",
         "heading": "Shop By Category",
-        "center_heading": true,
+        "center_heading": false,
         "columns": 4,
         "show_count": true
       }

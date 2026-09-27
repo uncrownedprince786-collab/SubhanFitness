@@ -46,6 +46,8 @@
 }
 
 html { font-size: 62.5%; }
+/* Fixed light palette — opt out of automatic dark-mode inversion on phones/browsers */
+:root { color-scheme: light; }
 
 *,
 *::before,
