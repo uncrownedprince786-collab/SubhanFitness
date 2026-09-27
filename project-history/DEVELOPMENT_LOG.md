@@ -633,3 +633,17 @@ picker, quantity, add-to-cart, Buy-it-now, breadcrumbs, collapsible tabs and rel
 
 Lesson for future section schemas: do NOT use a `"type": "liquid"` setting / `custom_liquid` block
 in this store's sections; validate schema changes by opening a product page after deploy.
+
+## 29. Product page polish: quantity "Unavailable" bug, share icon, save price - 2026-09-28
+
+- **Quantity stuck "Unavailable"** (main bug): the quantity field sits inside <variant-selects>, so
+  changing it bubbled a `change` event that ran variant matching. Single-variant products matched no
+  variant -> button disabled as "Unavailable" and never recovered. Fixed: `variant-selects onChange`
+  now ignores change events whose target isn't inside a `[data-option-index]` option group
+  (assets/global.js).
+- **Oversized ">" on Share**: replaced the arrow-right with a proper `share` icon (added to
+  snippets/icon.liquid) and sized `.product__share-btn .icon` (main-product-info.liquid).
+- **"Rs.0.00" sale line**: `save` amount is now run through `money` before the translation
+  (`'products.product.save' | t: amount: save`) so it reads e.g. "Save Rs.200.00".
+Verified live on a real product: qty 1->3->1 keeps "Add to cart" enabled; share icon ~17px;
+save shows "Save Rs.200.00".
