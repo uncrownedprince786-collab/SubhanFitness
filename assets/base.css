@@ -330,6 +330,11 @@ p { margin: 0 0 1em; }
 }
 /* Before JS runs, allow wrapping so nothing is clipped; JS switches to overflow mode */
 .no-js .header-nav__list { flex-wrap: wrap; }
+/* Keep the tab bar hidden for the brief moment before the overflow layout runs,
+   so it never visibly jumps on load. Revealed by JS (.nav-ready) or when JS is off. */
+.header-nav[data-nav-overflow] .header-nav__list { visibility: hidden; }
+.header-nav[data-nav-overflow].nav-ready .header-nav__list,
+.no-js .header-nav[data-nav-overflow] .header-nav__list { visibility: visible; }
 .header-nav__item { position: relative; }
 .header-nav__item.header-nav__item--sale > .header-nav__link { color: var(--color-accent); }
 .header-nav__link {

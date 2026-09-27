@@ -749,12 +749,21 @@
     }
   }
   let navRaf;
-  function layoutAllNavs() { document.querySelectorAll('[data-nav-overflow]').forEach(layoutNavOverflow); }
+  function layoutAllNavs() {
+    document.querySelectorAll('[data-nav-overflow]').forEach(function (nav) {
+      layoutNavOverflow(nav);
+      nav.classList.add('nav-ready'); // reveal once laid out, so it never visibly jumps
+    });
+  }
   function scheduleNavLayout() { cancelAnimationFrame(navRaf); navRaf = requestAnimationFrame(layoutAllNavs); }
   if (document.readyState !== 'loading') layoutAllNavs();
   else document.addEventListener('DOMContentLoaded', layoutAllNavs);
   window.addEventListener('resize', scheduleNavLayout);
   window.addEventListener('load', scheduleNavLayout);
   document.addEventListener('shopify:section:load', scheduleNavLayout);
+  // Safety net: always reveal the nav even if layout is skipped for any reason.
+  setTimeout(function () {
+    document.querySelectorAll('[data-nav-overflow]').forEach(function (n) { n.classList.add('nav-ready'); });
+  }, 1500);
 
 })();
