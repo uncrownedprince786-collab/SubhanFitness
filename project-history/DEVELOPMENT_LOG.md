@@ -603,3 +603,33 @@ Cause is a Shopify store setting — most likely **Markets/catalog** (products n
 market's catalog) or a **stale Online Store publication** from the import. Owner fixes in admin:
 Settings → Markets (ensure products are in the active market's catalog), or bulk unpublish/republish
 the products to Online Store; if neither works, contact Shopify Support.
+
+## 28. FIXED: all product pages were 404 - invalid custom_liquid schema block - 2026-09-28
+
+Symptom: every /products/<handle> returned 404 while the store, product data, markets and
+publication were all valid (a fresh Horizon theme rendered the same products fine - confirmed by
+Shopify support). So it was the custom theme's product section.
+
+Root cause (found by controlled bisection against a raw known-good template): the `main-product`
+section's `{% schema %}` contained a `custom_liquid` block with a `"type": "liquid"` setting that
+Shopify's section-schema validator rejects. A rejected schema makes the whole section fail to load,
+so Shopify 404s the product page (the storefront never exposes the underlying error - it just
+serves the 404 page). Bisect proof: schema without custom_liquid -> 200; schema with it -> 404.
+Secondary: once a section filename has served a rejected schema, Shopify keeps it in a broken
+state that in-place edits don't clear, so the section had to be recreated under a new filename.
+
+Fix:
+- Rebuilt the product section as `sections/main-product-info.liquid` using only block types proven
+  to validate (no `custom_liquid`/`liquid` setting, no `collapsible_tab`).
+- Kept the full product UI; the earlier render-arg bug is fixed (form_id precomputed with assign,
+  not piped inside {% render %}).
+- Shipping & Returns are now STATIC accordions in the section body instead of collapsible_tab blocks
+  (Shipping content still reads product metafield custom.shipping_info if set).
+- `templates/product.json` points at `main-product-info`. Deleted the old broken sections and every
+  diagnostic template/marker.
+
+Verified live (commit 599cf82): two real products return HTTP 200 with title, price, media, variant
+picker, quantity, add-to-cart, Buy-it-now, breadcrumbs, collapsible tabs and related products.
+
+Lesson for future section schemas: do NOT use a `"type": "liquid"` setting / `custom_liquid` block
+in this store's sections; validate schema changes by opening a product page after deploy.
