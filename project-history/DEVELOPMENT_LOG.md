@@ -647,3 +647,12 @@ in this store's sections; validate schema changes by opening a product page afte
   (`'products.product.save' | t: amount: save`) so it reads e.g. "Save Rs.200.00".
 Verified live on a real product: qty 1->3->1 keeps "Add to cart" enabled; share icon ~17px;
 save shows "Save Rs.200.00".
+
+## 30. Product page layout: full-width details - 2026-09-28
+
+The long product description sat inside the right info column next to a sticky image, leaving a
+large empty band mid-scroll and an unbalanced two-column grid. Restructured `main-product-info`:
+the top row is now media (sticky, left) + purchase box (right), and the description, specifications
+and Shipping/Returns tabs render in a full-width `.product__details` block below (capped to ~78rem
+for readable line length; full width on mobile). Verified: desktop balanced, mobile stacks media ->
+info -> details with no horizontal scroll; add-to-cart still works.
