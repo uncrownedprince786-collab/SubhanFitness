@@ -1,4 +1,4 @@
-<section class="section"><!-- SCHEMA-B -->
+<section class="section"><!-- SCHEMA-C -->
   <div class="page-width">
     {% render 'breadcrumbs' %}
     <div class="product" id="ProductSection-{{ section.id }}">
@@ -162,44 +162,13 @@
       "limit": 1
     },
     {
-      "type": "buy_buttons",
-      "name": "Buy buttons",
-      "limit": 1,
+      "type": "custom_liquid",
+      "name": "Custom Liquid",
       "settings": [
         {
-          "type": "checkbox",
-          "id": "show_dynamic_checkout",
-          "label": "Show dynamic checkout",
-          "default": true
-        }
-      ]
-    },
-    {
-      "type": "collapsible_tab",
-      "name": "Collapsible row",
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Heading",
-          "default": "Shipping & Delivery"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-          "default": "<p>Nationwide delivery in 2-5 working days.</p>"
-        },
-        {
-          "type": "text",
-          "id": "metafield",
-          "label": "Metafield key"
-        },
-        {
-          "type": "checkbox",
-          "id": "open_default",
-          "label": "Open by default",
-          "default": false
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid"
         }
       ]
     },
