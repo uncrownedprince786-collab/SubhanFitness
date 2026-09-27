@@ -719,17 +719,33 @@
     // Restore any previously moved items back into the main list (before `more`).
     while (moreList.firstChild) list.insertBefore(moreList.firstChild, more);
     more.hidden = true;
-    if (list.scrollWidth <= list.clientWidth + 1) return; // fits on one line
-    more.hidden = false;
-    let guard = 0;
-    const movable = () => Array.prototype.filter.call(list.children, function (li) {
+
+    const cs = getComputedStyle(list);
+    const padL = parseFloat(cs.paddingLeft) || 0;
+    const padR = parseFloat(cs.paddingRight) || 0;
+    const gap = parseFloat(cs.columnGap || cs.gap) || 0;
+    const avail = list.clientWidth - padL - padR;
+
+    // Measure each tab's own width (offsetWidth ignores the absolutely-positioned
+    // mega menus, so the hidden panels never distort the calculation).
+    const items = Array.prototype.filter.call(list.children, function (li) {
       return li !== more && li.classList.contains('header-nav__item');
     });
-    while (list.scrollWidth > list.clientWidth + 1 && guard < 60) {
-      const items = movable();
-      if (items.length <= 1) break;
-      moreList.insertBefore(items[items.length - 1], moreList.firstChild);
-      guard++;
+    let total = 0;
+    items.forEach(function (li, i) { total += li.offsetWidth + (i > 0 ? gap : 0); });
+    if (total <= avail + 1) return; // everything fits on one line
+
+    // Reserve room for the "•••" button, then keep as many tabs as fit.
+    more.hidden = false;
+    const budget = avail - more.offsetWidth - gap;
+    let used = 0, keep = 0;
+    for (let i = 0; i < items.length; i++) {
+      const w = items[i].offsetWidth + (i > 0 ? gap : 0);
+      if (used + w <= budget) { used += w; keep++; } else break;
+    }
+    if (keep < 1) keep = 1; // always show at least one tab
+    for (let i = items.length - 1; i >= keep; i--) {
+      moreList.insertBefore(items[i], moreList.firstChild);
     }
   }
   let navRaf;
