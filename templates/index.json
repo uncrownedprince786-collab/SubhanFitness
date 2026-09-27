@@ -68,6 +68,19 @@
         "background": ""
       }
     },
+    "exercise_cycles": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Ride & Pedal",
+        "heading": "Exercise Cycles",
+        "collection": "exercise-bikes",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": "#f4f5f6"
+      }
+    },
     "fitness_showcase": {
       "type": "featured-collection",
       "settings": {
@@ -92,19 +105,6 @@
         "products_to_show": 8,
         "show_view_all": true,
         "background": ""
-      }
-    },
-    "exercise_cycles": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Ride & Pedal",
-        "heading": "Exercise Cycles",
-        "collection": "exercise-bikes",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": "#f4f5f6"
       }
     },
     "recovery_showcase": {
@@ -317,8 +317,8 @@
   "order": [
     "hero",
     "cardio_showcase",
-    "fitness_showcase",
     "exercise_cycles",
+    "fitness_showcase",
     "bags_showcase",
     "recovery_showcase",
     "spotlight",
