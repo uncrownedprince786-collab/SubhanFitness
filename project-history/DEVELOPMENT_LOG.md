@@ -536,3 +536,18 @@ CSS-only spacing edits missed:
 - Verified: spacing 30/32px uniform, no phantom padding, hero shows a single slide.
 
 **Deploy:** push to `main` from `C:\sfrepo`.
+## 24. Dark-mode color-scheme + collection heading alignment — 2026-09-28
+
+- **Phone dark-mode fix.** The store has a fixed light palette but declared no `color-scheme`,
+  so Chrome/Android "auto dark theme" was inverting the page on the owner's phone — which made
+  the (white-background) logo show as a bright box. Added `<meta name="color-scheme" content="light">`
+  in `theme.liquid` and `:root { color-scheme: light }` in `base.css` so the site always renders
+  in its intended light palette regardless of the device's dark mode. (If the owner still wants a
+  cleaner logo, upload a transparent-background PNG in Theme settings → Header/Brand.)
+- **Collection-list heading** set to left-aligned (`center_heading: false` in `index.json`) so it
+  matches the other section headings (eyebrow + orange bar) and tango's left-aligned headings,
+  instead of the centered underlined style.
+- Verified live: color-scheme light applied, heading left-aligned; responsiveness re-checked —
+  desktop 4 / tablet 3 / mobile 2 whole cards, hero 16:9 at all sizes, no horizontal scroll.
+
+**Deploy:** push to `main` from `C:\sfrepo`.
