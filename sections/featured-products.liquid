@@ -4,7 +4,7 @@
   carousel (with prev/next arrows) or a grid. If no blocks are added yet,
   a clean skeleton placeholder is shown so the section never looks broken.
 {%- endcomment -%}
-<section class="section" style="{% if section.settings.background %}background:{{ section.settings.background }};padding:var(--section-spacing) 0;{% endif %}">
+<section class="section" style="{% if section.settings.background != blank %}background:{{ section.settings.background }};padding:var(--section-spacing) 0;{% endif %}">
   <div class="page-width">
     <div class="section-header">
       <div class="section-header__text">

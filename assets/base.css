@@ -626,8 +626,11 @@ p { margin: 0 0 1em; }
 /* Boxed hero (Tango-style): constrained to page-width, centered, rounded */
 .hero-boxed { margin-top: 1.6rem; }
 .slideshow--boxed { border-radius: var(--radius); box-shadow: var(--shadow-sm); }
-.slideshow__track { display: flex; transition: transform .6s cubic-bezier(.4,0,.2,1); }
-.slideshow__slide { position: relative; min-width: 100%; }
+/* Crossfade: slides are stacked; only the active one is visible (one banner at a time) */
+.slideshow__track { position: relative; }
+.slideshow__slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .6s ease; }
+.slideshow__slide:first-child { position: relative; } /* keeps the track at one slide's height */
+.slideshow__slide.is-active { opacity: 1; pointer-events: auto; z-index: 1; }
 .slide__media { position: relative; }
 .slide__media img { width: 100%; height: 100%; object-fit: cover; }
 /* 16:9 at all breakpoints — matches Tango's hero exactly */

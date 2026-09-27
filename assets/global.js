@@ -529,7 +529,8 @@
     }
     go(i) {
       this.index = (i + this.slides.length) % this.slides.length;
-      this.track.style.transform = `translateX(-${this.index * 100}%)`;
+      // Crossfade: show only the active slide (one banner at a time)
+      this.slides.forEach((s, si) => s.classList.toggle('is-active', si === this.index));
       this.dots.forEach((d, di) => d.classList.toggle('active', di === this.index));
       const frac = this.querySelector('.slideshow__frac-current');
       if (frac) frac.textContent = this.index + 1;

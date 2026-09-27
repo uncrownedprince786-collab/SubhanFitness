@@ -209,7 +209,7 @@
         "step": 4,
         "unit": "px",
         "label": "Space between sections",
-        "default": 56
+        "default": 32
       },
       {
         "type": "range",

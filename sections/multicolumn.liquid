@@ -1,4 +1,4 @@
-<section class="section" style="{% if section.settings.background %}background:{{ section.settings.background }};padding:var(--section-spacing) 0;{% endif %}">
+<section class="section" style="{% if section.settings.background != blank %}background:{{ section.settings.background }};padding:var(--section-spacing) 0;{% endif %}">
   <div class="page-width">
     {%- if section.settings.heading != blank -%}
       <div class="section-title-center"><h2 class="h2">{{ section.settings.heading }}</h2></div>

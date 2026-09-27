@@ -2,7 +2,7 @@
 <slide-show class="slideshow slideshow--boxed" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.speed }}">
   <div class="slideshow__track">
     {%- for block in section.blocks -%}
-      <div class="slideshow__slide" {{ block.shopify_attributes }}>
+      <div class="slideshow__slide {% if forloop.first %}is-active{% endif %}" {{ block.shopify_attributes }}>
         <div class="slide__media ratio-{{ section.settings.height }}">
           {%- if block.settings.asset_image != blank -%}
             {%- comment -%} Branding image (background). Live text is rendered on top; a scrim hides the baked-in text. {%- endcomment -%}

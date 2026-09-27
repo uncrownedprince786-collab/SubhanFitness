@@ -513,3 +513,26 @@ Owner: homepage product sections looked much taller/sparser than tango. Scope ch
 - Verified in the render harness: hero→section 30px, section→section 32px, no horizontal scroll.
 
 **Deploy:** push to `main` from `C:\sfrepo`.
+
+## 23. Root-cause fixes: spacing setting, phantom padding, hero crossfade — 2026-09-28
+
+Inspected the LIVE site (thesubhanfitness.com) directly and found the real causes the earlier
+CSS-only spacing edits missed:
+1. **`--section-spacing` was driven by a theme setting, not base.css.** `layout/theme.liquid`
+   injects `--section-spacing: {{ settings.spacing_sections }}px` inline (was **56px**), which
+   overrode base.css. Set `spacing_sections` 56 → **32** in `settings_data.json`, the
+   `theme.liquid` default, and the `settings_schema.json` default (range step is 4, so 32 not 30).
+2. **Phantom section padding (Liquid empty-string is truthy).** `featured-collection`,
+   `featured-products` and `multicolumn` used `{% if section.settings.background %}` to add
+   `padding: var(--section-spacing) 0`. An empty string is truthy in Liquid, so the padding was
+   applied to EVERY section (56px) on top of the 56px margin → the huge gaps. Changed all three to
+   `{% if section.settings.background != blank %}`. Now empty-background sections get no padding.
+3. **Hero "one full + one half" = the horizontal slide animation.** Switched the hero from a
+   translateX slide to a **crossfade**: slides are stacked (absolute; first child stays relative to
+   hold the 16:9 height), only `.slideshow__slide.is-active` is opaque, `global.js go()` toggles
+   `is-active` instead of translating, and the first slide is marked `is-active` in the template.
+   Only one banner is ever shown. (Product slider "4 full, no cropped peek" from §22 confirmed
+   live: `grid-auto-columns: calc(25% - gap)`.)
+- Verified: spacing 30/32px uniform, no phantom padding, hero shows a single slide.
+
+**Deploy:** push to `main` from `C:\sfrepo`.
