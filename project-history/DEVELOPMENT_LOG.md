@@ -422,5 +422,17 @@ store left as-is.
    footer automatically): Facebook `facebook.com/profile.php?id=61594236452333`, Instagram
    `instagram.com/thesubhanfitness` (used the clean profile handle; the QR share `stkn`/`utm`
    params from the pasted link are omitted as they aren't needed for a public profile link).
-5. **Location**: footer address updated to "Asad Center, Munir Chowk, Gujranwala, Pakistan"
-   (`sections/footer-group.json`).
+5. **Location**: footer address updated (`sections/footer-group.json`). Owner then asked to
+   keep it as-is, so it reads exactly **"Asad Center Munir Chowk Gujranwala"** (no ", Pakistan").
+
+## 19. Remove unnecessary pages — 2026-09-27
+
+Per owner request ("remove unnecessary pages"): removed **Blog** and **Warranty**.
+- Deleted `templates/page.warranty.json` (the Warranty & After-Sales page template). The
+  informational warranty mentions in the FAQ and the product-page accordion were kept — they
+  are helpful copy, not a page.
+- Removed the **Blog** link from `snippets/footer-default-links.liquid` (Company column). Blog
+  templates (`blog.json`, `article.json`) were left in place so nothing errors and it can be
+  restored later. To take the blog off the site entirely the owner should also remove any
+  "Blog"/"News" item from Online Store → Navigation and hide/delete the blog in admin.
+- All other pages (About, Contact, Shipping, Returns, Privacy, Terms, FAQ, Track Order) kept.
