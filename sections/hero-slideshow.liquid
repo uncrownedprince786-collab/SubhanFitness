@@ -38,10 +38,10 @@
   </div>
 
   {%- if section.blocks.size > 1 -%}
-    <button type="button" class="slideshow__arrow slideshow__arrow--prev" aria-label="{{ 'general.accessibility.previous' | t }}">{% render 'icon', icon: 'chevron-left' %}</button>
-    <button type="button" class="slideshow__arrow slideshow__arrow--next" aria-label="{{ 'general.accessibility.next' | t }}">{% render 'icon', icon: 'chevron-right' %}</button>
     <div class="slideshow__controls">
+      <button type="button" class="slideshow__arrow slideshow__arrow--prev" aria-label="{{ 'general.accessibility.previous' | t }}">{% render 'icon', icon: 'chevron-left' %}</button>
       <span class="slideshow__fraction" aria-hidden="true"><span class="slideshow__frac-current">1</span> / <span class="slideshow__frac-total">{{ section.blocks.size }}</span></span>
+      <button type="button" class="slideshow__arrow slideshow__arrow--next" aria-label="{{ 'general.accessibility.next' | t }}">{% render 'icon', icon: 'chevron-right' %}</button>
     </div>
   {%- endif -%}
 </slide-show>

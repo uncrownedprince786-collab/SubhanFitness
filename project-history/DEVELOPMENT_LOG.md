@@ -474,6 +474,24 @@ with the **label + chevron below** each tile.
      12.5% (≥990) → ~2.3 on mobile, ~8 on desktop, matching tango.
 
 **Not changed:** header, footer, product carousels, other sections, colours, content/menus.
-**Deploy note:** changes are in the working copy only — not yet committed/pushed. To deploy,
-push to `main` from a git checkout in a SHORT path (the `$GIT_DIR too big` long-path bug still
-applies; the zip-download used to read the repo is not a git checkout).
+**Deploy note:** deployed by pushing to `main` from a git checkout at **`C:\sfrepo`** (short path;
+the long scratch path triggers `$GIT_DIR too big`). Shopify's GitHub integration auto-deploys.
+
+## 21. Hero controls + section spacing tuned to Tango — 2026-09-28
+
+Follow-up after comparing live against tango:
+1. **Hero nav = Tango control cluster.** The prev/next arrows were plain white circles at the
+   left/right edges with an invisible chevron (the icon `<svg>` was never sized). Rebuilt to
+   Tango's **`‹ 1 / 2 ›` cluster** centred at the bottom: the two arrows now sit inside
+   `.slideshow__controls` on either side of the fraction. Arrows are small (3.4rem desktop /
+   3rem mobile) translucent-dark circles that turn accent on hover, and the chevron SVG is now
+   explicitly sized (`.slideshow__arrow .icon { width:1.8rem } + .icon svg { width:100% }`) so it
+   actually shows. Markup change in `sections/hero-slideshow.liquid`; CSS in `assets/base.css`.
+2. **Section spacing tightened toward Tango.** Tango's rhythm is ~25px header→hero and ~30px
+   between sections; ours was 64px everywhere (big cream void under the hero). Changed
+   `--section-spacing` **64px → 42px** (whole page tighter, more Tango-like) and added a targeted
+   rule `.shopify-section:has(.hero-boxed) + .shopify-section .section { margin-top: 3rem }` so the
+   gap directly under the hero is ~30px like tango. Verified in the render harness: hero→section
+   gap = 30px desktop / 29px mobile, chevrons visible, no horizontal scroll.
+
+**Deploy:** push to `main` from `C:\sfrepo`.
