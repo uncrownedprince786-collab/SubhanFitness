@@ -55,6 +55,19 @@
         "speed": 6
       }
     },
+    "cardio_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Move More",
+        "heading": "Treadmills",
+        "collection": "treadmills",
+        "layout": "carousel",
+        "products_per_row": 4,
+        "products_to_show": 8,
+        "show_view_all": true,
+        "background": ""
+      }
+    },
     "bags_showcase": {
       "type": "featured-collection",
       "settings": {
@@ -79,19 +92,6 @@
         "products_to_show": 8,
         "show_view_all": true,
         "background": "#f4f5f6"
-      }
-    },
-    "cardio_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Move More",
-        "heading": "Treadmills",
-        "collection": "treadmills",
-        "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background": ""
       }
     },
     "exercise_cycles": {
@@ -233,7 +233,6 @@
           "settings": {
             "collection": "exercise-bikes",
             "icon": "none",
-            "image": "",
             "custom_title": "Exercise Cycles",
             "show_count": true
           }
@@ -253,7 +252,6 @@
           "settings": {
             "collection": "weight-benches",
             "icon": "none",
-            "image": "",
             "custom_title": "Benches & Rods",
             "show_count": true
           }
@@ -318,9 +316,9 @@
   },
   "order": [
     "hero",
+    "cardio_showcase",
     "bags_showcase",
     "fitness_showcase",
-    "cardio_showcase",
     "exercise_cycles",
     "recovery_showcase",
     "spotlight",
