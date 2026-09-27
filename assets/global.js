@@ -643,7 +643,8 @@
       wrap.appendChild(prev);
       wrap.appendChild(next);
 
-      const amount = () => Math.max(car.clientWidth * 0.85, 240);
+      // Page by the full visible width so the next set of whole cards snaps into view.
+      const amount = () => car.clientWidth;
       prev.addEventListener('click', () => car.scrollBy({ left: -amount(), behavior: 'smooth' }));
       next.addEventListener('click', () => car.scrollBy({ left: amount(), behavior: 'smooth' }));
 

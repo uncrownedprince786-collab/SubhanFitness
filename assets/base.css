@@ -1050,9 +1050,11 @@ p { margin: 0 0 1em; }
 .carousel-arrow.is-hidden { opacity: 0; pointer-events: none; }
 @media (max-width: 749px) { .carousel-arrow { display: none; } }
 
-.scroll-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: 46%; gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
-@media (min-width: 600px) { .scroll-carousel { grid-auto-columns: 30%; } }
-@media (min-width: 990px) { .scroll-carousel { grid-auto-columns: 23%; } }
+/* Product slider: show whole cards only (no cropped peek). 2 up on phones, 3 on
+   tablet, 4 on desktop; scrolling pages to the next full set (scroll-snap). */
+.scroll-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 1 * var(--grid-gap)) / 2); gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+@media (min-width: 600px) { .scroll-carousel { grid-auto-columns: calc((100% - 2 * var(--grid-gap)) / 3); } }
+@media (min-width: 990px) { .scroll-carousel { grid-auto-columns: calc((100% - 3 * var(--grid-gap)) / 4); } }
 .scroll-carousel > * { scroll-snap-align: start; }
 /* Scrollbar hidden — navigate with the prev/next arrows (touch swipe still works on mobile) */
 .scroll-carousel::-webkit-scrollbar { display: none; height: 0; width: 0; }
