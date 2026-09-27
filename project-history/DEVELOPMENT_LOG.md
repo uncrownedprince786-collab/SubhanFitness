@@ -586,3 +586,20 @@ CSS-only spacing edits missed:
   square image on each collection (Products → Collections) for the cleanest look.
 
 **Deploy:** push to `main` from `C:\sfrepo`.
+
+## 27. Full functional test — 2026-09-28
+
+Tested live (thesubhanfitness.com). Working: predictive search, search results, collection
+filters (price 5→2) + sort, cart add + drawer, cart/about/contact/privacy/terms/404 pages,
+no console errors. Removed pages (shipping/returns/faqs) correctly 404.
+
+**Open blocker (NOT theme): all product pages 404.** Products are Active, published to Online
+Store, template = "Default product", and appear in /products.json, collections, search and the
+sitemap — but /products/<handle> returns 404 on both the custom and myshopify domains. Proved it
+is not the theme: `collection?view=diag` → 200 (theme falls back fine) while `product?view=diag`
+and the base product URL both → 404, i.e. the product URL itself doesn't resolve. Theme product
+template is valid, all blocks defined, and fully deployed (verified other live changes).
+Cause is a Shopify store setting — most likely **Markets/catalog** (products not in the active
+market's catalog) or a **stale Online Store publication** from the import. Owner fixes in admin:
+Settings → Markets (ensure products are in the active market's catalog), or bulk unpublish/republish
+the products to Online Store; if neither works, contact Shopify Support.
