@@ -70,32 +70,6 @@
                   <div class="product__icon-item">{% render 'icon', icon: 'shield' %} <span>Secure checkout</span></div>
                 </div>
 
-              {%- when 'description' -%}
-                <div class="product__description rte" {{ block.shopify_attributes }}>
-                  {{ product.description }}
-                </div>
-
-              {%- when 'specifications' -%}
-                {%- assign specs = product.metafields.custom.specifications.value -%}
-                {%- if specs != blank -%}
-                  <div class="accordion" {{ block.shopify_attributes }}>
-                    <details class="accordion__item" {% if block.settings.open_default %}open{% endif %}>
-                      <summary class="accordion__summary">{{ 'products.product.specifications' | t }} {% render 'icon', icon: 'plus' %}</summary>
-                      <div class="accordion__content">
-                        {%- if specs.first -%}
-                          <table class="spec-table">
-                            {%- for row in specs -%}
-                              <tr><th>{{ row.label | default: row[0] }}</th><td>{{ row.value | default: row[1] }}</td></tr>
-                            {%- endfor -%}
-                          </table>
-                        {%- else -%}
-                          <div class="rte">{{ specs }}</div>
-                        {%- endif -%}
-                      </div>
-                    </details>
-                  </div>
-                {%- endif -%}
-
               {%- when 'share' -%}
                 <div class="product__share" {{ block.shopify_attributes }}>
                   <button type="button" class="product__share-btn" onclick="navigator.share ? navigator.share({title: '{{ product.title | escape }}', url: window.location.href}) : navigator.clipboard.writeText(window.location.href)">
@@ -107,29 +81,64 @@
                 <div class="product__app-block" {{ block.shopify_attributes }}>{% render block %}</div>
             {%- endcase -%}
           {%- endfor -%}
-
-          {%- comment -%} Shipping & Returns as static accordions (no collapsible_tab block; that block's schema was rejected by Shopify in this section). {%- endcomment -%}
-          <div class="accordion">
-            <details class="accordion__item">
-              <summary class="accordion__summary">Shipping &amp; Delivery {% render 'icon', icon: 'plus' %}</summary>
-              <div class="accordion__content rte">
-                {%- if product.metafields.custom.shipping_info != blank -%}
-                  {{ product.metafields.custom.shipping_info.value }}
-                {%- else -%}
-                  <p>Nationwide delivery in 2-5 working days. Cash on delivery available across Pakistan. Orders placed before 2pm are dispatched same day.</p>
-                {%- endif -%}
-              </div>
-            </details>
-          </div>
-          <div class="accordion">
-            <details class="accordion__item">
-              <summary class="accordion__summary">Returns &amp; Warranty {% render 'icon', icon: 'plus' %}</summary>
-              <div class="accordion__content rte">
-                <p>7-day easy exchange on unused items in original packaging. Manufacturer warranty applies to equipment where stated.</p>
-              </div>
-            </details>
-          </div>
         </variant-selects>
+      </div>
+    </div>
+
+    {%- comment -%} Description, specs and info tabs span full width below the buy area (keeps the top row balanced). {%- endcomment -%}
+    <div class="product__details">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'description' -%}
+            {%- if product.description != blank -%}
+              <div class="product__description rte" {{ block.shopify_attributes }}>
+                {{ product.description }}
+              </div>
+            {%- endif -%}
+
+          {%- when 'specifications' -%}
+            {%- assign specs = product.metafields.custom.specifications.value -%}
+            {%- if specs != blank -%}
+              <div class="accordion" {{ block.shopify_attributes }}>
+                <details class="accordion__item" {% if block.settings.open_default %}open{% endif %}>
+                  <summary class="accordion__summary">{{ 'products.product.specifications' | t }} {% render 'icon', icon: 'plus' %}</summary>
+                  <div class="accordion__content">
+                    {%- if specs.first -%}
+                      <table class="spec-table">
+                        {%- for row in specs -%}
+                          <tr><th>{{ row.label | default: row[0] }}</th><td>{{ row.value | default: row[1] }}</td></tr>
+                        {%- endfor -%}
+                      </table>
+                    {%- else -%}
+                      <div class="rte">{{ specs }}</div>
+                    {%- endif -%}
+                  </div>
+                </details>
+              </div>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+
+      {%- comment -%} Shipping & Returns as static accordions (collapsible_tab block schema is rejected by Shopify in this section). {%- endcomment -%}
+      <div class="accordion">
+        <details class="accordion__item">
+          <summary class="accordion__summary">Shipping &amp; Delivery {% render 'icon', icon: 'plus' %}</summary>
+          <div class="accordion__content rte">
+            {%- if product.metafields.custom.shipping_info != blank -%}
+              {{ product.metafields.custom.shipping_info.value }}
+            {%- else -%}
+              <p>Nationwide delivery in 2-5 working days. Cash on delivery available across Pakistan. Orders placed before 2pm are dispatched same day.</p>
+            {%- endif -%}
+          </div>
+        </details>
+      </div>
+      <div class="accordion">
+        <details class="accordion__item">
+          <summary class="accordion__summary">Returns &amp; Warranty {% render 'icon', icon: 'plus' %}</summary>
+          <div class="accordion__content rte">
+            <p>7-day easy exchange on unused items in original packaging. Manufacturer warranty applies to equipment where stated.</p>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -146,6 +155,10 @@
   .product__share-btn:hover { color: var(--color-accent); }
   .product__share-btn .icon { display: inline-flex; width: 1.8rem; height: 1.8rem; color: var(--color-accent); flex-shrink: 0; }
   .product__share-btn .icon svg { width: 100%; height: 100%; }
+  /* Full-width details below the buy area, capped to a comfortable reading width */
+  .product__details { max-width: 78rem; margin: 4rem 0 0; }
+  .product__details .product__description { margin-bottom: 2rem; }
+  @media (max-width: 989px) { .product__details { margin-top: 3.2rem; } }
 {% endstyle %}
 
 {% schema %}
@@ -153,119 +166,32 @@
   "name": "Product info v2",
   "tag": "section",
   "blocks": [
+    { "type": "vendor", "name": "Vendor", "limit": 1 },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "rating", "name": "Rating", "limit": 1 },
+    { "type": "price", "name": "Price", "limit": 1 },
+    { "type": "availability", "name": "Availability", "limit": 1 },
     {
-      "type": "vendor",
-      "name": "Vendor",
-      "limit": 1
-    },
-    {
-      "type": "title",
-      "name": "Title",
-      "limit": 1
-    },
-    {
-      "type": "rating",
-      "name": "Rating",
-      "limit": 1
-    },
-    {
-      "type": "price",
-      "name": "Price",
-      "limit": 1
-    },
-    {
-      "type": "availability",
-      "name": "Availability",
-      "limit": 1
-    },
-    {
-      "type": "variant_picker",
-      "name": "Variant picker",
-      "limit": 1,
+      "type": "variant_picker", "name": "Variant picker", "limit": 1,
       "settings": [
-        {
-          "type": "select",
-          "id": "picker_type",
-          "label": "Type",
-          "options": [
-            {
-              "value": "button",
-              "label": "Swatch buttons"
-            },
-            {
-              "value": "dropdown",
-              "label": "Dropdown"
-            }
-          ],
-          "default": "button"
-        }
+        { "type": "select", "id": "picker_type", "label": "Type",
+          "options": [ { "value": "button", "label": "Swatch buttons" }, { "value": "dropdown", "label": "Dropdown" } ],
+          "default": "button" }
       ]
     },
     {
-      "type": "buy_buttons",
-      "name": "Buy buttons",
-      "limit": 1,
+      "type": "buy_buttons", "name": "Buy buttons", "limit": 1,
       "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_dynamic_checkout",
-          "label": "Show dynamic checkout",
-          "default": true
-        }
+        { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout", "default": true }
       ]
     },
-    {
-      "type": "icon_row",
-      "name": "Delivery & trust icons",
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_delivery",
-          "label": "Show delivery",
-          "default": true
-        },
-        {
-          "type": "text",
-          "id": "delivery_text",
-          "label": "Delivery text",
-          "default": "Delivery in 2-5 days"
-        }
-      ]
-    },
-    {
-      "type": "description",
-      "name": "Description",
-      "limit": 1
-    },
-    {
-      "type": "specifications",
-      "name": "Specifications",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "open_default",
-          "label": "Open by default",
-          "default": false
-        }
-      ]
-    },
-    {
-      "type": "share",
-      "name": "Share",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "share_label",
-          "label": "Label",
-          "default": "Share this product"
-        }
-      ]
-    },
-    {
-      "type": "@app"
-    }
+    { "type": "icon_row", "name": "Delivery & trust icons", "limit": 1 },
+    { "type": "description", "name": "Description", "limit": 1 },
+    { "type": "specifications", "name": "Specifications", "limit": 1,
+      "settings": [ { "type": "checkbox", "id": "open_default", "label": "Open by default", "default": false } ] },
+    { "type": "share", "name": "Share", "limit": 1,
+      "settings": [ { "type": "text", "id": "share_label", "label": "Label", "default": "Share this product" } ] },
+    { "type": "@app" }
   ],
   "settings": []
 }
