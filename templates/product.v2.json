@@ -2,9 +2,44 @@
   "sections": {
     "main": {
       "type": "main-product-v2",
-      "blocks": {},
-      "block_order": []
+      "blocks": {
+        "vendor": { "type": "vendor" },
+        "title": { "type": "title" },
+        "rating": { "type": "rating" },
+        "price": { "type": "price" },
+        "availability": { "type": "availability" },
+        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button" } },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true } },
+        "icons": { "type": "icon_row", "settings": {} },
+        "description": { "type": "description" },
+        "specs": { "type": "specifications", "settings": { "open_default": false } },
+        "shipping": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Delivery",
+            "content": "<p>Nationwide delivery in 2–5 working days. Cash on delivery available across Pakistan. Orders placed before 2pm are dispatched same day.</p>",
+            "metafield": "shipping_info"
+          }
+        },
+        "returns": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Returns & Warranty",
+            "content": "<p>7-day easy exchange on unused items in original packaging. Manufacturer warranty applies to equipment where stated.</p>"
+          }
+        },
+        "share": { "type": "share", "settings": { "share_label": "Share this product" } }
+      },
+      "block_order": [
+        "vendor", "title", "rating", "price", "availability",
+        "variant_picker", "buy_buttons", "icons",
+        "description", "specs", "shipping", "returns", "share"
+      ]
+    },
+    "related": {
+      "type": "product-recommendations",
+      "settings": { "heading": "You may also like", "intent": "related", "products_to_show": 8 }
     }
   },
-  "order": ["main"]
+  "order": ["main", "related"]
 }
