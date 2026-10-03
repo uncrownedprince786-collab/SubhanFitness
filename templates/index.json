@@ -139,7 +139,7 @@
         "p1": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "aerobic-cardio-stepper-for-home-workout"
           }
         },
         "p2": {
@@ -201,7 +201,7 @@
         "layout": "carousel",
         "products_per_row": 5,
         "show_view_all": false,
-        "view_all_link": "shopify://collections",
+        "view_all_link": "shopify://products/ab-king-pro-6-packs-machine-heavy-duty",
         "background": ""
       }
     },
