@@ -1,30 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-product-info",
       "blocks": {
-        "vendor": { "type": "vendor" },
-        "title": { "type": "title" },
-        "rating": { "type": "rating" },
-        "price": { "type": "price" },
-        "availability": { "type": "availability" },
-        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button" } },
-        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true } },
-        "icons": { "type": "icon_row" },
-        "description": { "type": "description" },
-        "specs": { "type": "specifications", "settings": { "open_default": false } },
-        "share": { "type": "share", "settings": { "share_label": "Share this product" } }
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "availability": {
+          "type": "availability",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "icons": {
+          "type": "icon_row",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "specs": {
+          "type": "specifications",
+          "settings": {
+            "open_default": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share this product"
+          }
+        }
       },
       "block_order": [
-        "vendor", "title", "rating", "price", "availability",
-        "variant_picker", "buy_buttons", "icons",
-        "description", "specs", "share"
-      ]
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "availability",
+        "variant_picker",
+        "buy_buttons",
+        "icons",
+        "description",
+        "specs",
+        "share"
+      ],
+      "settings": {}
     },
     "related": {
       "type": "product-recommendations",
-      "settings": { "heading": "You may also like", "intent": "related", "products_to_show": 12 }
+      "settings": {
+        "heading": "You may also like",
+        "intent": "related",
+        "products_to_show": 12
+      }
     }
   },
-  "order": ["main", "related"]
+  "order": [
+    "main",
+    "related"
+  ]
 }

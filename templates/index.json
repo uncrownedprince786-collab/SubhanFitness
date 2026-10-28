@@ -55,84 +55,6 @@
         "speed": 6
       }
     },
-    "cardio_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Move More",
-        "heading": "Treadmills",
-        "collection": "treadmills",
-        "layout": "carousel",
-        "products_per_row": 6,
-        "products_to_show": 12,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "exercise_cycles": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Ride & Pedal",
-        "heading": "Exercise Cycles",
-        "collection": "exercise-bikes",
-        "layout": "carousel",
-        "products_per_row": 6,
-        "products_to_show": 12,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "fitness_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Train Anywhere",
-        "heading": "Fitness Accessories",
-        "collection": "fitness-accessories",
-        "layout": "carousel",
-        "products_per_row": 6,
-        "products_to_show": 12,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "recovery_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Recover Faster",
-        "heading": "Body Massagers",
-        "collection": "body-massagers",
-        "layout": "carousel",
-        "products_per_row": 6,
-        "products_to_show": 12,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "body_support_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Build Your Rack",
-        "heading": "Benches & Rods",
-        "collection": "weight-benches",
-        "layout": "carousel",
-        "products_per_row": 6,
-        "products_to_show": 12,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
-    "bags_showcase": {
-      "type": "featured-collection",
-      "settings": {
-        "subheading": "Carry It All",
-        "heading": "Bags & Shaker",
-        "collection": "bags-gear",
-        "layout": "carousel",
-        "products_per_row": 6,
-        "products_to_show": 12,
-        "show_view_all": true,
-        "background": ""
-      }
-    },
     "spotlight": {
       "type": "featured-products",
       "blocks": {
@@ -202,6 +124,84 @@
         "products_per_row": 6,
         "show_view_all": false,
         "view_all_link": "shopify://products/ab-king-pro-6-packs-machine-heavy-duty",
+        "background": ""
+      }
+    },
+    "cardio_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Move More",
+        "heading": "Treadmills",
+        "collection": "treadmills",
+        "layout": "carousel",
+        "products_per_row": 6,
+        "products_to_show": 12,
+        "show_view_all": true,
+        "background": ""
+      }
+    },
+    "exercise_cycles": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Ride & Pedal",
+        "heading": "Exercise Cycles",
+        "collection": "exercise-bikes",
+        "layout": "carousel",
+        "products_per_row": 6,
+        "products_to_show": 12,
+        "show_view_all": true,
+        "background": ""
+      }
+    },
+    "fitness_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Train Anywhere",
+        "heading": "Fitness Accessories",
+        "collection": "fitness-accessories",
+        "layout": "carousel",
+        "products_per_row": 6,
+        "products_to_show": 12,
+        "show_view_all": true,
+        "background": ""
+      }
+    },
+    "body_support_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Build Your Rack",
+        "heading": "Benches & Rods",
+        "collection": "weight-benches",
+        "layout": "carousel",
+        "products_per_row": 6,
+        "products_to_show": 12,
+        "show_view_all": true,
+        "background": ""
+      }
+    },
+    "recovery_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Recover Faster",
+        "heading": "Body Massagers",
+        "collection": "body-massagers",
+        "layout": "carousel",
+        "products_per_row": 6,
+        "products_to_show": 12,
+        "show_view_all": true,
+        "background": ""
+      }
+    },
+    "bags_showcase": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Carry It All",
+        "heading": "Bags & Shaker",
+        "collection": "bags-gear",
+        "layout": "carousel",
+        "products_per_row": 6,
+        "products_to_show": 12,
+        "show_view_all": true,
         "background": ""
       }
     },
@@ -301,13 +301,13 @@
   },
   "order": [
     "hero",
+    "spotlight",
     "cardio_showcase",
     "exercise_cycles",
     "fitness_showcase",
     "body_support_showcase",
     "recovery_showcase",
     "bags_showcase",
-    "spotlight",
     "categories",
     "newsletter"
   ]
