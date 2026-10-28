@@ -8,7 +8,7 @@
       "type": "main-collection-product-grid",
       "settings": {
         "enable_filtering": true,
-        "products_per_row": 4,
+        "products_per_row": 6,
         "products_per_page": 24,
         "pagination_style": "pagination"
       }

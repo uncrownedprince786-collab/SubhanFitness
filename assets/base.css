@@ -853,7 +853,7 @@ p { margin: 0 0 1em; }
 .breadcrumbs a:hover { color: var(--color-accent); }
 .breadcrumbs .sep { color: var(--color-border); }
 
-.collection-layout { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
+.collection-layout { display: grid; grid-template-columns: 230px 1fr; gap: 2.4rem; align-items: start; }
 .facets { position: sticky; top: 2rem; }
 .facets__form {}
 .facets__group { border-bottom: 1px solid var(--color-border); padding: 1.4rem 0; }
@@ -1070,7 +1070,8 @@ p { margin: 0 0 1em; }
    tablet, 4 on desktop; scrolling pages to the next full set (scroll-snap). */
 .scroll-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 1 * var(--grid-gap)) / 2); gap: var(--grid-gap); overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
 @media (min-width: 600px) { .scroll-carousel { grid-auto-columns: calc((100% - 2 * var(--grid-gap)) / 3); } }
-@media (min-width: 990px) { .scroll-carousel { grid-auto-columns: calc((100% - 3 * var(--grid-gap)) / 4); } }
+@media (min-width: 990px) { .scroll-carousel { grid-auto-columns: calc((100% - 4 * var(--grid-gap)) / 5); } }
+@media (min-width: 1240px) { .scroll-carousel { grid-auto-columns: calc((100% - 5 * var(--grid-gap)) / 6); } }
 .scroll-carousel > * { scroll-snap-align: start; }
 /* Scrollbar hidden — navigate with the prev/next arrows (touch swipe still works on mobile) */
 .scroll-carousel::-webkit-scrollbar { display: none; height: 0; width: 0; }
@@ -1078,7 +1079,7 @@ p { margin: 0 0 1em; }
 /* ==========================================================================
    Responsive
    ========================================================================== */
-@media (max-width: 1200px) {
+@media (max-width: 1239px) {
   .grid--6 { grid-template-columns: repeat(4, 1fr); }
   .grid--5 { grid-template-columns: repeat(4, 1fr); }
 }
@@ -1197,4 +1198,47 @@ p { margin: 0 0 1em; }
   .product__thumb, .product__thumb:hover, .variant-swatch label, .card__quick-add {
     transition: none !important; transform: none !important;
   }
+}
+
+/* ==========================================================================
+   Compact product cards for six-up rows
+   Six cards share the 1400px page width, so the card chrome is trimmed to keep
+   the image the biggest thing on the card instead of the padding.
+   ========================================================================== */
+@media (min-width: 1240px) {
+  .grid--6 .card__content,
+  .scroll-carousel .card__content { padding: 1.2rem 1.2rem 1.4rem; gap: .55rem; }
+  .grid--6 .card__media img,
+  .scroll-carousel .card__media img { padding: 1rem; }
+  .grid--6 .card__title,
+  .scroll-carousel .card__title { font-size: 1.35rem; line-height: 1.38; }
+  .grid--6 .card__vendor,
+  .scroll-carousel .card__vendor { font-size: .95rem; }
+  .grid--6 .price__regular,
+  .grid--6 .price--on-sale .price__sale,
+  .scroll-carousel .price__regular,
+  .scroll-carousel .price--on-sale .price__sale { font-size: 1.6rem; }
+  .grid--6 .price--on-sale .price__compare,
+  .scroll-carousel .price--on-sale .price__compare { font-size: 1.2rem; }
+  .grid--6 .card__badges,
+  .scroll-carousel .card__badges { top: .7rem; left: .7rem; }
+}
+
+/* ==========================================================================
+   Sales-proof popup (Qikify Salekit app)
+   The app injects its own markup and styles, so these are size overrides only —
+   nothing here touches when or how often it fires.
+   ========================================================================== */
+#qikify-salekit .qsk-sproof-elm { width: 400px !important; padding: 12px !important; }
+#qikify-salekit .qsk-salespop-thumbnail {
+  flex: 0 0 86px !important; width: 86px !important; max-width: 86px !important; height: 86px !important;
+}
+#qikify-salekit .qsk-salespop-thumbnail img {
+  width: 86px !important; height: 86px !important; object-fit: contain !important;
+}
+#qikify-salekit .qsk-sproof-content { font-size: 16px !important; }
+#qikify-salekit .qsk-sproof-line { font-size: 15px !important; line-height: 1.45 !important; }
+#qikify-salekit .qsk-salespop-time { font-size: 13px !important; }
+@media (max-width: 480px) {
+  #qikify-salekit .qsk-sproof-elm { width: calc(100vw - 24px) !important; }
 }

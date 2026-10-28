@@ -32,7 +32,7 @@
         </div>
 
         {%- paginate search.results by 24 -%}
-          <div class="product-grid grid--4">
+          <div class="product-grid grid--6">
             {%- for item in search.results -%}
               {%- if item.object_type == 'product' -%}
                 {% render 'card-product', product: item %}

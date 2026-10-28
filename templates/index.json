@@ -62,8 +62,8 @@
         "heading": "Treadmills",
         "collection": "treadmills",
         "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
+        "products_per_row": 6,
+        "products_to_show": 12,
         "show_view_all": true,
         "background": ""
       }
@@ -75,8 +75,8 @@
         "heading": "Exercise Cycles",
         "collection": "exercise-bikes",
         "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
+        "products_per_row": 6,
+        "products_to_show": 12,
         "show_view_all": true,
         "background": ""
       }
@@ -88,8 +88,8 @@
         "heading": "Fitness Accessories",
         "collection": "fitness-accessories",
         "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
+        "products_per_row": 6,
+        "products_to_show": 12,
         "show_view_all": true,
         "background": ""
       }
@@ -101,8 +101,8 @@
         "heading": "Body Massagers",
         "collection": "body-massagers",
         "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
+        "products_per_row": 6,
+        "products_to_show": 12,
         "show_view_all": true,
         "background": ""
       }
@@ -114,8 +114,8 @@
         "heading": "Benches & Rods",
         "collection": "weight-benches",
         "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
+        "products_per_row": 6,
+        "products_to_show": 12,
         "show_view_all": true,
         "background": ""
       }
@@ -127,8 +127,8 @@
         "heading": "Bags & Shaker",
         "collection": "bags-gear",
         "layout": "carousel",
-        "products_per_row": 4,
-        "products_to_show": 8,
+        "products_per_row": 6,
+        "products_to_show": 12,
         "show_view_all": true,
         "background": ""
       }
@@ -199,7 +199,7 @@
         "subheading": "Editor's Picks",
         "heading": "Featured Products",
         "layout": "carousel",
-        "products_per_row": 5,
+        "products_per_row": 6,
         "show_view_all": false,
         "view_all_link": "shopify://products/ab-king-pro-6-packs-machine-heavy-duty",
         "background": ""

@@ -23,7 +23,7 @@
     },
     "related": {
       "type": "product-recommendations",
-      "settings": { "heading": "You may also like", "intent": "related", "products_to_show": 8 }
+      "settings": { "heading": "You may also like", "intent": "related", "products_to_show": 12 }
     }
   },
   "order": ["main", "related"]
